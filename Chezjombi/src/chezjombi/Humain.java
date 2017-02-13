@@ -1,5 +1,7 @@
 package chezjombi;
 
+import java.util.Objects;
+
 
 /**
  * Classe Mere Humain
@@ -9,7 +11,7 @@ package chezjombi;
  */
 
 public class Humain {
-    
+   
     private final String prenom;
     protected String surnom;
     protected float porteMonaie;
@@ -24,6 +26,7 @@ public class Humain {
  * @param cotePopularite
  * @param crieSignificatif 
  */
+    
     public Humain(String prenom, String surnom, float porteMonaie, int cotePopularite,String crieSignificatif){
         
         this.prenom = prenom;
@@ -34,6 +37,13 @@ public class Humain {
         
     }
 
+
+/**
+ * Getteur de l'attribue prenom
+ * @return prenom 
+ */
+    
+    
     public String getPrenom() {
         return prenom;
     }
@@ -50,8 +60,79 @@ public class Humain {
         return crieSignificatif;
     }
     
-   
+
+/**
+ * Setteur de l'attribue surnom
+ * @param surnom 
+ */    
+
+    public void setSurnom(String surnom) {
+        this.surnom = surnom;
+    }
+
+    public void setPorteMonaie(float porteMonaie) {
+        this.porteMonaie = porteMonaie;
+    }
+
+    public void setCrieSignificatif(String crieSignificatif) {
+        this.crieSignificatif = crieSignificatif;
+    }
+/**
+ * Modification du hash code pour la fonction equals
+ * @return hash 
+ */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.prenom);
+        hash = 71 * hash + Objects.hashCode(this.surnom);
+        hash = 71 * hash + Float.floatToIntBits(this.porteMonaie);
+        hash = 71 * hash + this.cotePopularite;
+        hash = 71 * hash + Objects.hashCode(this.crieSignificatif);
+        return hash;
+    }
+/**
+ * redefinition de la methode equal
+ * @param obj
+ * @return boolean true => equal, false => no equal
+ * 
+ */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Humain other = (Humain) obj;
+        if (Float.floatToIntBits(this.porteMonaie) != Float.floatToIntBits(other.porteMonaie)) {
+            return false;
+        }
+        if (this.cotePopularite != other.cotePopularite) {
+            return false;
+        }
+        if (!Objects.equals(this.prenom, other.prenom)) {
+            return false;
+        }
+        if (!Objects.equals(this.surnom, other.surnom)) {
+            return false;
+        }
+        if (!Objects.equals(this.crieSignificatif, other.crieSignificatif)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "je suis un huamin mon prenom est : "+prenom+" J'ai comme surnom : "+surnom+" Je dispose de : "+porteMonaie+" euro pour boire ma cote de popularite est de : "+cotePopularite+" et mon crie est : "+crieSignificatif;
+    }
     
+
     
     
 }
