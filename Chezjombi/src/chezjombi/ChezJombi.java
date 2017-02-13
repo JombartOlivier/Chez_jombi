@@ -15,7 +15,8 @@ public class ChezJombi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Humain olivier = new Humain("Olivier","Jombart",100,10,"rrrrr");
+        System.out.println(olivier);
     }
     
 }
