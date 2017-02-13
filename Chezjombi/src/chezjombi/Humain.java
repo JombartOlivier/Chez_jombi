@@ -12,9 +12,9 @@ import java.util.Objects;
 
 public class Humain {
    
-    private final String prenom;
+    protected String prenom;
     protected String surnom;
-    protected float porteMonaie;
+    protected float porteMonnaie;
     protected int cotePopularite;
     protected String crieSignificatif;
     
@@ -31,7 +31,7 @@ public class Humain {
         
         this.prenom = prenom;
         this.surnom = surnom;
-        this.porteMonaie = porteMonaie;
+        this.porteMonnaie = porteMonaie;
         this.cotePopularite = cotePopularite;
         this.crieSignificatif = crieSignificatif;
         
@@ -52,8 +52,8 @@ public class Humain {
         return surnom;
     }
 
-    public float getPorteMonaie() {
-        return porteMonaie;
+    public float getPorteMonnaie() {
+        return porteMonnaie;
     }
 
     public String getCrieSignificatif() {
@@ -70,8 +70,8 @@ public class Humain {
         this.surnom = surnom;
     }
 
-    public void setPorteMonaie(float porteMonaie) {
-        this.porteMonaie = porteMonaie;
+    public void setPorteMonnaie(float porteMonnaie) {
+        this.porteMonnaie = porteMonnaie;
     }
 
     public void setCrieSignificatif(String crieSignificatif) {
@@ -86,7 +86,7 @@ public class Humain {
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.prenom);
         hash = 71 * hash + Objects.hashCode(this.surnom);
-        hash = 71 * hash + Float.floatToIntBits(this.porteMonaie);
+        hash = 71 * hash + Float.floatToIntBits(this.porteMonnaie);
         hash = 71 * hash + this.cotePopularite;
         hash = 71 * hash + Objects.hashCode(this.crieSignificatif);
         return hash;
@@ -109,7 +109,7 @@ public class Humain {
             return false;
         }
         final Humain other = (Humain) obj;
-        if (Float.floatToIntBits(this.porteMonaie) != Float.floatToIntBits(other.porteMonaie)) {
+        if (Float.floatToIntBits(this.porteMonnaie) != Float.floatToIntBits(other.porteMonnaie)) {
             return false;
         }
         if (this.cotePopularite != other.cotePopularite) {
@@ -129,7 +129,7 @@ public class Humain {
 
     @Override
     public String toString() {
-        return "je suis un huamin mon prenom est : "+prenom+" J'ai comme surnom : "+surnom+" Je dispose de : "+porteMonaie+" euro pour boire ma cote de popularite est de : "+cotePopularite+" et mon crie est : "+crieSignificatif;
+        return "je suis un huamin mon prenom est : "+prenom+" J'ai comme surnom : "+surnom+" Je dispose de : "+porteMonnaie+" euro pour boire ma cote de popularite est de : "+cotePopularite+" et mon crie est : "+crieSignificatif;
     }
     
 
