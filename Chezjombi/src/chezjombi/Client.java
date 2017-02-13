@@ -11,8 +11,10 @@ package chezjombi;
  */
 public class Client extends Humain {
     
-    public Client(String prenom, String surnom, float porteMonaie, int cotePopularite) {
-        super(prenom, surnom, porteMonaie, cotePopularite);
+    public Client(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif) {
+        super(prenom, surnom, porteMonaie, cotePopularite, crieSignificatif);
     }
+    
+
     
 }
