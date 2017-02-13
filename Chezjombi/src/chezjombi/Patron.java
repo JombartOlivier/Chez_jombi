@@ -2,7 +2,7 @@
 package chezjombi;
 
 /**
- * Classe Mere Humain
+ * Classe Fille Patron
  * Created by Arthur Duytschaever on 13/02/2017.
  * @author  Olivie Jombart, Arthur Duytschaever
  * @version v1.0
