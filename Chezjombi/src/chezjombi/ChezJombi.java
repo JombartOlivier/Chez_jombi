@@ -17,8 +17,8 @@ public class ChezJombi {
     public static void main(String[] args) {
         Humain olivier = new Humain("Olivier","Jombart",100,10,"rrrrr");
         System.out.println(olivier);
-        Humain olivier=new Client("Arthur","Duytschaever",1220,1,"GRAOU");
-        System.out.println(olivier);
+        Humain arthur=new Client("Arthur","Duytschaever",1220,1,"GRAOU","Bush","Rince Cochon",12,"BADASS");
+        System.out.println(arthur);
     }
     
 }
