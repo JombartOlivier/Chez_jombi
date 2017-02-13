@@ -9,7 +9,7 @@ package chezjombi;
  *
  * @author Olivier
  */
-public class Chezjombi {
+public class ChezJombi {
 
     /**
      * @param args the command line arguments
