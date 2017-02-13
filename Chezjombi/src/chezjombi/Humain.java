@@ -2,8 +2,12 @@ package chezjombi;
 
 
 /**
- * Created by ISEN on 13/02/2017.
+ * Classe Mere Humain
+ * Created by Arthur Duytschaever on 13/02/2017.
+ * @author  Olivie Jombart, Arthur Duytschaever
+ * @version v1.0
  */
+
 public class Humain {
     
     private final String prenom;
@@ -12,6 +16,14 @@ public class Humain {
     protected int cotePopularite;
     protected String crieSignificatif;
     
+/**
+ * Construteur de la classe humain  
+ * @param prenom
+ * @param surnom
+ * @param porteMonaie
+ * @param cotePopularite
+ * @param crieSignificatif 
+ */
     public Humain(String prenom, String surnom, float porteMonaie, int cotePopularite,String crieSignificatif){
         
         this.prenom = prenom;
