@@ -132,6 +132,31 @@ public class Humain {
         return "je suis un huamin mon prenom est : "+prenom+" J'ai comme surnom : "+surnom+" Je dispose de : "+porteMonnaie+" euro pour boire ma cote de popularite est de : "+cotePopularite+" et mon crie est : "+crieSignificatif;
     }
     
+    public void Talk(String je_dit,Humain a_qui){
+          if(surnom == "none" && prenom == "none" && a_qui.prenom =="none"){
+             
+              System.out.println("Je n'ai pas de prenom ni de surnom je ne peux donc pas parler");
+             
+          }
+          if(surnom == "none" && prenom != "none" && a_qui.prenom !="none"){
+              System.out.println(prenom +"à" + a_qui.prenom+": "+je_dit);
+          }
+          if(surnom == "none" && prenom != "none" && a_qui.prenom =="none"){
+              System.out.println(prenom +"à" + a_qui.prenom+": "+je_dit);
+          }
+          
+          else{
+              System.out.println(surnom+" : "+je_dit);
+          }
+    }
+    
+    public void Pay(float price){
+        porteMonnaie = porteMonnaie - price;
+    }
+
+    public void PayADrink(Humain personne,){
+        
+    }
 
     
     
