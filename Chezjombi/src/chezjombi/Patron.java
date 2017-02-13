@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chezjombi;
 
 /**
- *
- * @author Olivier
+ * Classe Mere Humain
+ * Created by Arthur Duytschaever on 13/02/2017.
+ * @author  Olivie Jombart, Arthur Duytschaever
+ * @version v1.0
  */
+
 public class Patron extends Humain {
     
     public Patron(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif) {
