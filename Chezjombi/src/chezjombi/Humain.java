@@ -15,6 +15,7 @@ public class Humain {
     protected float porteMonnaie;
     protected int cotePopularite;
     protected String crieSignificatif;
+    protected Boisson verre;
 
     /**
      * Construteur de la classe humain
@@ -61,6 +62,11 @@ public class Humain {
         return crieSignificatif;
     }
 
+    public Boisson getVerre() {
+        return verre;
+    }
+    
+
     /**
      * Setteur de l'attribue surnom
      *
@@ -77,6 +83,12 @@ public class Humain {
     public void setCrieSignificatif(String crieSignificatif) {
         this.crieSignificatif = crieSignificatif;
     }
+
+    public void setVerre(Boisson verre) {
+        this.verre = verre;
+    }
+    
+    
 
     /**
      * Modification du hash code pour la fonction equals
@@ -166,7 +178,8 @@ public class Humain {
     }
     
     public void OffrireUnVerre(Humain personne){
-        
+       personne.setVerre(this.verre);
+       Pay(this.verre);
     }
             
     
