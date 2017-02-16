@@ -172,7 +172,7 @@ public class Humain {
             System.out.println("Je n'ai pas de prenom ni de surnom je ne peux donc pas parler");
 
         }
-        if (surnom == "none" && prenom != "none" && a_qui.prenom != "none") {
+        if (surnom != "none" && prenom == "none" && a_qui.surnom != "none") {
             
             System.out.println(prenom + " à " + a_qui.prenom + " : " + je_dit);
             
@@ -188,7 +188,7 @@ public class Humain {
         
         }
         else {
-            System.out.println(surnom + " à " + a_qui.surnom + " : " + je_dit);
+            System.out.println(prenom + " à " + a_qui.prenom + " : " + je_dit);
         }
     }
 /**
