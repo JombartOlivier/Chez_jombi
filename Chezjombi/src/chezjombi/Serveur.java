@@ -1,6 +1,8 @@
 
 package chezjombi;
 
+import java.util.Objects;
+
 /**
  * Classe Fille Serveur
  * Created by Arthur Duytschaever on 13/02/2017.
@@ -9,16 +11,57 @@ package chezjombi;
  */
 public class Serveur extends Humain {
     
-    int tailleBiceps;
-    int coefCharme;
+    final int tailleBiceps;
+    final int coefCharme;
     
     public Serveur(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif, int tailleBiceps, int coefCharme) {
         super(prenom,surnom,porteMonaie,cotePopularite,crieSignificatif);
         this.coefCharme = coefCharme;
         this.tailleBiceps = tailleBiceps;
     }
-    
-    
+
+    public int getTailleBiceps() {
+        return tailleBiceps;
+    }
+
+    public int getCoefCharme() {
+        return coefCharme;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + this.tailleBiceps;
+        hash = 59 * hash + this.coefCharme;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Serveur other = (Serveur) obj;
+        if (this.tailleBiceps != other.tailleBiceps) {
+            return false;
+        }
+        if (this.coefCharme != other.coefCharme) {
+            return false;
+        }
+        if((Humain)this != (Humain)obj){
+            return false;
+        }
+
+        return true;
+    }
+
+   
     @Override
     String Sexe(){
         String sexe;
