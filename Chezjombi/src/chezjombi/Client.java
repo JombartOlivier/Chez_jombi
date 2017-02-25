@@ -13,7 +13,7 @@ public class Client extends Humain {
     private final String boissonSecours;
     private final float degreAlcoolemie;
     private final String personnalite;
-    private final String couleurTshirt;
+    //private final String couleurTshirt;
     
     /**
      *
@@ -42,10 +42,20 @@ public class Client extends Humain {
         return "Je suis un client, mon prénom est : "+this.prenom+".\nJ'ai comme surnom : "+this.surnom+".\nJe dispose de : "+this.porteMonnaie+" € pour boire.\nMa cote de popularite est de : "+cotePopularite+"\nMon crie est : "+crieSignificatif+".\nJe bois : " + this.boissonFavorite+".\nJe bois au cas où : " + this.boissonSecours+".\nMon degré : "+this.degreAlcoolemie+"\nMa personnalité : "+this.personnalite+".";
         //return 
     }
+        @Override
+    public void Presentation(){
+        
+    }
+    @Override
+    public String Sexe(){
+        return "1";
+    }
+    @Override
+    void TalkTo(Humain personne,String talk){
+        
+    }
     
     
-    public String {
-    
-}
+
     
 }

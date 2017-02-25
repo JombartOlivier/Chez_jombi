@@ -14,6 +14,17 @@ public class Patron extends Humain {
         super(prenom, surnom, porteMonaie, cotePopularite, crieSignificatif);
     }
     
-   
+        @Override
+    public void Presentation(){
+        
+    }
+    @Override
+    public String Sexe(){
+        return "1";
+    }
+    @Override
+    void TalkTo(Humain personne,String talk){
+        
+    }
     
 }

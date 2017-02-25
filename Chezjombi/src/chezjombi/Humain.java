@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Humain {
+abstract class Humain {
 
     protected String prenom;
     protected String surnom;
@@ -35,6 +35,9 @@ public class Humain {
         this.crieSignificatif = crieSignificatif;
 
     }
+/**
+ * Construteur par defaut de la classe humain
+ */    
     public Humain(){
         this.prenom = "none";
         this.surnom = "none";
@@ -42,6 +45,12 @@ public class Humain {
         this.cotePopularite = 0;
         this.crieSignificatif = "none"; 
     }
+/**
+ * Construteur de la Humain 
+ * un
+ * @param prenom
+ * @param porteMonaie 
+ */    
     public Humain(String prenom,float porteMonaie){
         this.prenom = prenom;
         this.porteMonnaie = porteMonaie;
@@ -162,47 +171,29 @@ public class Humain {
         return "je suis un huamin mon prenom est : " + prenom + " J'ai comme surnom : " + surnom + " Je dispose de : " + porteMonnaie + " euro pour boire ma cote de popularite est de : " + cotePopularite + " et mon crie est : " + crieSignificatif;
     }
 /**
- * methode permettant de faire parler un humain
- * @param je_dit
- * @param a_qui 
+ * methode abstraite permettant de faire parler un personnage
  */
-    public void Talk(String je_dit, Humain a_qui) {
-        if (surnom == "none" && prenom == "none") {
-
-            System.out.println("Je n'ai pas de prenom ni de surnom je ne peux donc pas parler");
-
-        }
-        if (surnom != "none" && prenom == "none" && a_qui.surnom != "none") {
-            
-            System.out.println(prenom + " à " + a_qui.prenom + " : " + je_dit);
-            
-        }
-        if (surnom == "none" && prenom != "none" && a_qui.prenom == "none" && a_qui.surnom != "none") {
-            
-            System.out.println(prenom + " à " + a_qui.surnom + " : " + je_dit);
-            
-        } 
-        if(surnom != "none" && prenom == "none" && a_qui.prenom != "none" && a_qui.surnom == "none"){
-            
-            System.out.println(surnom + " à " + a_qui.prenom + " : " + je_dit);
+    abstract void TalkTo(Humain personne,String talk);
+    
+    abstract  String Sexe();
+    
+    abstract void Presentation();
         
-        }
-        else {
-            System.out.println(prenom + " à " + a_qui.prenom + " : " + je_dit);
-        }
-    }
+   
+        
+    
 /**
  * methode permettant de payer une boisson 
  * @param verre 
  */
-    public void Pay(Boisson verre) {
+    public void PayADrink(Boisson verre) {
         porteMonnaie = porteMonnaie - verre.getPrix();
     }
 /**
  * methode permettant de boire 25% de son verre
  * @param verre 
  */
-    public void Boire(Boisson verre) {
+    public void Drink(Boisson verre) {
         int quantite = verre.getQuantite();
         verre.setQuantite(quantite-25);     
     }
@@ -210,18 +201,19 @@ public class Humain {
  * methode pour finir son verre d'une traite
  * @param verre 
  */
-    public void FinirSonVerre(Boisson verre){
+    public void FinishADrink(Boisson verre){
         verre.setQuantite(0);
     }
 /**
  * methode pour offrire un verre à quelqu'un
  * @param personne 
  */    
-    public void OffrireUnVerre(Humain personne){
+    public void OffertADrink(Humain personne){
        personne.setVerre(this.verre);
-       Pay(this.verre);
+       PayADrink(this.verre);
        
     }
+    
             
     
     

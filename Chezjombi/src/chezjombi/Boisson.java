@@ -8,9 +8,12 @@ package chezjombi;
 import java.util.Objects;
 
 /**
+ * Classe Mere Humain Created by Arthur Duytschaever on 13/02/2017.
  *
- * @author ISEN
+ * @author Olivie Jombart, Arthur Duytschaever
+ * @version v1.0
  */
+
 public class  Boisson {
     
     private final String nom;
@@ -21,7 +24,7 @@ public class  Boisson {
     
     
 /**
- * Construteur de la classe boisson 
+ * Construteur de la classe boisson pour les boisson alcoolisée
  * @param nom
  * @param quantite
  * @param prix
@@ -43,35 +46,89 @@ public Boisson(String nom, int quantite, float prix, boolean alcoolise, float ta
         
 }
 
+/**
+ * Construteur de la classe boisson pour les boisson non alcoolisée
+ * @param nom
+ * @param quantite
+ * @param prix 
+ */
+
+public Boisson(String nom, int quantite, float prix){
+        this.nom = nom;
+        this.quantite = quantite;
+        this.prix = prix;
+        this.alcoolise = false;
+        this.tauxAlcool = 0;
+}
+/**
+ * Getteur de l'attribue nom  
+ * @return nom
+ */
+
     public String getNom() {
         return nom;
     }
-
+    
+/**
+ * Getteur de l'attribue quantite
+ * @return quantite
+ */
+    
     public int getQuantite() {
         return quantite;
     }
-
+    
+/**
+ * Getteur de l'attribue prix
+ * @return prix
+ */
+    
     public float getPrix() {
         return prix;
     }
-
+    
+/**
+ * Getteur de l'attribue alcoolise
+ * @return alcoolise
+ */
+    
     public boolean isAlcoolise() {
         return alcoolise;
     }
-
+    
+/**
+ * Getteur de l'attribue taux d'alcool
+ * @return taux d'alcool
+ */
     public float getTauxAlcool() {
         return tauxAlcool;
     }
-
+    
+/**
+ * Setteur de l'attribue quantite 
+ * @param quantite 
+ */
+    
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
-
+    
+/**
+ * override de la methode toString 
+ * @return nom + " au prix de : "+prix+" avec un degres d'aclool a "+tauxAlcool
+ */
+    
     @Override
     public String toString() {
         return nom + " au prix de : "+prix+" avec un degres d'aclool a "+tauxAlcool;
     }
-
+    
+/**
+ * Override de la methode hasCode 
+ * Necessaire pour Override la methode equals
+ * @return hash
+ */
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -82,7 +139,13 @@ public Boisson(String nom, int quantite, float prix, boolean alcoolise, float ta
         hash = 29 * hash + Float.floatToIntBits(this.tauxAlcool);
         return hash;
     }
-
+    
+/**
+ * Override la methode equals 
+ * @param obj
+ * @return boolean
+ */
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
