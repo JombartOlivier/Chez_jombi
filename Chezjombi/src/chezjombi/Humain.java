@@ -16,6 +16,7 @@ abstract class Humain {
     protected int cotePopularite;
     protected String crieSignificatif;
     protected Order verre;
+    protected String sexe;
 
     /**
      * Construteur de la classe humain
@@ -107,9 +108,11 @@ abstract class Humain {
         this.crieSignificatif = crieSignificatif;
     }
 
-    public void Order(Order verre) {
+    public void setVerre(Order verre) {
         this.verre = verre;
     }
+
+
     
     
 
@@ -175,7 +178,7 @@ abstract class Humain {
  */
     abstract void TalkTo(Humain personne,String talk);
     
-    abstract  String Sexe();
+    abstract  void Sexe();
     
     abstract void Presentation();
         
@@ -211,7 +214,7 @@ abstract class Humain {
  * @param personne 
  */    
     public void OffertADrink(Humain personne){
-       personne.Order(this.verre);
+       personne.setVerre(this.verre);
        PayADrink(this.verre);
        
     }

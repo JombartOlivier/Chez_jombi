@@ -1,7 +1,7 @@
 
 package chezjombi;
 
-
+//import java.math.MathContext;
 
 /**
  * Classe Fille Serveur
@@ -11,8 +11,8 @@ package chezjombi;
  */
 public class Serveur extends Humain {
     
-    final int tailleBiceps;
-    final int coefCharme;
+    protected double tailleBiceps;
+    protected double  coefCharme;
     
     public Serveur(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif, int tailleBiceps, int coefCharme) {
         super(prenom,surnom,porteMonaie,cotePopularite,crieSignificatif);
@@ -20,21 +20,22 @@ public class Serveur extends Humain {
         this.tailleBiceps = tailleBiceps;
     }
 
-    public int getTailleBiceps() {
+    public double getTailleBiceps() {
         return tailleBiceps;
     }
 
-    public int getCoefCharme() {
+    public double getCoefCharme() {
         return coefCharme;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + this.tailleBiceps;
-        hash = 59 * hash + this.coefCharme;
+        int hash = 5;
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.tailleBiceps) ^ (Double.doubleToLongBits(this.tailleBiceps) >>> 32));
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.coefCharme) ^ (Double.doubleToLongBits(this.coefCharme) >>> 32));
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -63,18 +64,18 @@ public class Serveur extends Humain {
 
    
     @Override
-    String Sexe(){
-        String sexe;
-        if(this.coefCharme !=0 && this.tailleBiceps == -1){
-            return sexe = "Woman";
+    void Sexe(){
+       
+        if(this.sexe == "Woman"){
+            this.coefCharme=Math.random()*100;
+            this.tailleBiceps = -1;
         }
-        if(this.tailleBiceps != 0 && this.coefCharme == -1){
-            return sexe = "Man"; 
-        }
-        else{
-            return sexe = "error";
+        if(this.sexe == "Man"){
+            this.tailleBiceps =  Math.random()*100;
+            this.coefCharme = -1;
         }
     }
+
     
     @Override 
     void TalkTo(Humain personne,String talk){
@@ -83,25 +84,24 @@ public class Serveur extends Humain {
        
     @Override
     void Presentation(){
-        String sexe = Sexe();
-        if( sexe == "Woman"){
+
+        if(this. sexe == "Woman"){
            System.out.println("I am your waitress my name is "+this.prenom+" but you can call me "+this.surnom);
            System.out.println("what do you want to drink ? ");
         }
-        if(sexe == "Man"){
+        if(this.sexe == "Man"){
            System.out.println("I am your server my name is "+this.prenom+" but you can call me "+this.surnom);
            System.out.println("what do you want to drink ? ");
         }
         
     }
-/**
+    /**
  * Methode permettant que la serveuse apporte le verre et de recuperer l'argent
  * @param personne 
  */
-    void BringADrink(Humain personne){
-        personne.Order(this.verre);// Service du verre
+    void BringAdrink(Humain personne){
+        personne.setVerre(this.verre);// Service du verre
         this.verre = null;
-        TalkTo(personne,"Et voila votre verre cela fera :" +verre.getPrix());
     }
     
     

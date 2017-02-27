@@ -22,7 +22,6 @@ public class  Order {
 /**
  * Construteur de la classe boisson pour les boisson alcoolisée
  * @param nom
- * @param quantite
  * @param prix
  * @param alcoolise
  * @param tauxAlcool 
