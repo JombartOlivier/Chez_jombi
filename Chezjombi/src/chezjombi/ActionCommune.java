@@ -11,4 +11,9 @@ package chezjombi;
  */
 public interface ActionCommune {
     
+    abstract void TalkTo(Humain personne,String talk);
+    
+    abstract  void Sexe();
+    
+    abstract void Presentation();
 }
