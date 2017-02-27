@@ -1,7 +1,7 @@
 
 package chezjombi;
 
-import java.util.Objects;
+
 
 /**
  * Classe Fille Serveur
@@ -65,10 +65,10 @@ public class Serveur extends Humain {
     @Override
     String Sexe(){
         String sexe;
-        if(this.coefCharme !=0 && this.tailleBiceps == 0){
+        if(this.coefCharme !=0 && this.tailleBiceps == -1){
             return sexe = "Woman";
         }
-        if(this.tailleBiceps != 0 && this.coefCharme == 0){
+        if(this.tailleBiceps != 0 && this.coefCharme == -1){
             return sexe = "Man"; 
         }
         else{
@@ -93,6 +93,15 @@ public class Serveur extends Humain {
            System.out.println("what do you want to drink ? ");
         }
         
+    }
+/**
+ * Methode permettant que la serveuse apporte le verre et de recuperer l'argent
+ * @param personne 
+ */
+    void BringADrink(Humain personne){
+        personne.setVerre(this.verre);// Service du verre
+        this.verre = null;
+        //TalkTo(personne,"Et voila votre verre cela fera :" +verre.getPrix());
     }
     
 }

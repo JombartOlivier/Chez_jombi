@@ -18,10 +18,11 @@ public class ChezJombi {
     public static void main(String[] args) {
         Humain serv1 = new Serveur("A","B",10,20,"Haa",10,10);
         //serv1.Presentation();
-        Humain serv2 = new Serveur("A","B",10,20,"Haa",10,10);
-        if((Serveur)serv1 == (Serveur)serv2){
-            System.out.println("True");
-        }
+        Humain serv2 = new Serveur("A","B",10,20,"Haa",20,10);
+        Boisson bierre = new Boisson("bierre",100,10, true, 2);
+        serv1.setVerre(bierre);
+        System.out.println(serv1.getPorteMonnaie());
+        serv2.BringADrink(serv1);
     }
 
     

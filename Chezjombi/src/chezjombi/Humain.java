@@ -186,8 +186,10 @@ abstract class Humain {
  * methode permettant de payer une boisson 
  * @param verre 
  */
-    public void PayADrink(Boisson verre) {
+    public float PayADrink(Boisson verre) {
+        float money;
         porteMonnaie = porteMonnaie - verre.getPrix();
+        return money = verre.getPrix();
     }
 /**
  * methode permettant de boire 25% de son verre
