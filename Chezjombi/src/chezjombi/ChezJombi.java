@@ -18,11 +18,11 @@ public class ChezJombi {
     public static void main(String[] args) {
         Humain serv1 = new Serveur("A","B",10,20,"Haa",10,10);
         //serv1.Presentation();
-        Humain serv2 = new Serveur("A","B",10,20,"Haa",20,10);
-        Boisson bierre = new Boisson("bierre",100,10, true, 2);
-        serv1.setVerre(bierre);
+        Humain serv2 = new Serveur("C","B",10,20,"Haa",20,10);
+        Order bierre = new Order("bierre",100,10, true, 2);
+        serv1.Order(bierre);
         System.out.println(serv1.getPorteMonnaie());
-        serv2.BringADrink(serv1);
+        serv2.TalkTo(serv1,"test");
     }
 
     

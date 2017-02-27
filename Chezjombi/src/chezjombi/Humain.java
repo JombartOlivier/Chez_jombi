@@ -15,7 +15,7 @@ abstract class Humain {
     protected float porteMonnaie;
     protected int cotePopularite;
     protected String crieSignificatif;
-    protected Boisson verre;
+    protected Order verre;
 
     /**
      * Construteur de la classe humain
@@ -85,7 +85,7 @@ abstract class Humain {
         return crieSignificatif;
     }
 
-    public Boisson getVerre() {
+    public Order getVerre() {
         return verre;
     }
     
@@ -107,7 +107,7 @@ abstract class Humain {
         this.crieSignificatif = crieSignificatif;
     }
 
-    public void Order(Boisson verre) {
+    public void Order(Order verre) {
         this.verre = verre;
     }
     
@@ -186,7 +186,7 @@ abstract class Humain {
  * methode permettant de payer une boisson 
  * @param verre 
  */
-    public float PayADrink(Boisson verre) {
+    public float PayADrink(Order verre) {
         float money;
         porteMonnaie = porteMonnaie - verre.getPrix();
         return money = verre.getPrix();
@@ -195,7 +195,7 @@ abstract class Humain {
  * methode permettant de boire 25% de son verre
  * @param verre 
  */
-    public void Drink(Boisson verre) {
+    public void Drink(Order verre) {
         int quantite = verre.getQuantite();
         verre.setQuantite(quantite-25);     
     }
@@ -203,7 +203,7 @@ abstract class Humain {
  * methode pour finir son verre d'une traite
  * @param verre 
  */
-    public void FinishADrink(Boisson verre){
+    public void FinishADrink(Order verre){
         verre.setQuantite(0);
     }
 /**

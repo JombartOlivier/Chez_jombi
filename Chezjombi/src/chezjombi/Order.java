@@ -10,7 +10,7 @@ import java.util.Objects;
  * @version v1.0
  */
 
-public class  Boisson {
+public class  Order {
     
     private final String nom;
     private  int quantite;
@@ -28,9 +28,9 @@ public class  Boisson {
  * @param tauxAlcool 
  */
 
-public Boisson(String nom, int quantite, float prix, boolean alcoolise, float tauxAlcool) {
+public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         this.nom = nom;
-        this.quantite = quantite;
+        this.quantite = 100;
         this.prix = prix;
         this.alcoolise = alcoolise;
         if(alcoolise == false){
@@ -49,9 +49,9 @@ public Boisson(String nom, int quantite, float prix, boolean alcoolise, float ta
  * @param prix 
  */
 
-public Boisson(String nom, int quantite, float prix){
+public Order(String nom, int quantite, float prix){
         this.nom = nom;
-        this.quantite = quantite;
+        this.quantite = 100;
         this.prix = prix;
         this.alcoolise = false;
         this.tauxAlcool = 0;
@@ -153,7 +153,7 @@ public Boisson(String nom, int quantite, float prix){
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Boisson other = (Boisson) obj;
+        final Order other = (Order) obj;
         if (this.quantite != other.quantite) {
             return false;
         }
