@@ -99,9 +99,9 @@ public class Serveur extends Humain {
  * @param personne 
  */
     void BringADrink(Humain personne){
-        personne.setVerre(this.verre);// Service du verre
+        personne.Order(this.verre);// Service du verre
         this.verre = null;
-        //TalkTo(personne,"Et voila votre verre cela fera :" +verre.getPrix());
+        TalkTo(personne,"Et voila votre verre cela fera :" +verre.getPrix());
     }
     
 }

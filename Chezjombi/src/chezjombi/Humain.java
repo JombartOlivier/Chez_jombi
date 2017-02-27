@@ -107,7 +107,7 @@ abstract class Humain {
         this.crieSignificatif = crieSignificatif;
     }
 
-    public void setVerre(Boisson verre) {
+    public void Order(Boisson verre) {
         this.verre = verre;
     }
     
@@ -211,7 +211,7 @@ abstract class Humain {
  * @param personne 
  */    
     public void OffertADrink(Humain personne){
-       personne.setVerre(this.verre);
+       personne.Order(this.verre);
        PayADrink(this.verre);
        
     }
