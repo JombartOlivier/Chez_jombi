@@ -1,6 +1,6 @@
 package chezjombi;
 
-import java.util.Objects;
+
 
 /**
  * Classe Mere Humain Created by Arthur Duytschaever on 13/02/2017.
@@ -9,218 +9,108 @@ import java.util.Objects;
  * @version v1.0
  */
 abstract class Humain {
-
+    
     protected String prenom;
     protected String surnom;
-    protected float porteMonnaie;
-    protected int cotePopularite;
-    protected String crieSignificatif;
-    protected Order verre;
+    protected Order boissonPreferee;
+    protected Order boissonSecours;
     protected String sexe;
-
-    /**
-     * Construteur de la classe humain
-     *
-     * @param prenom
-     * @param surnom
-     * @param porteMonaie
-     * @param cotePopularite
-     * @param crieSignificatif
-     */
-    public Humain(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif) {
-
-        this.prenom = prenom;
-        this.surnom = surnom;
-        this.porteMonnaie = porteMonaie;
-        this.cotePopularite = cotePopularite;
-        this.crieSignificatif = crieSignificatif;
-
-    }
-/**
- * Construteur par defaut de la classe humain
- */    
-    public Humain(){
-        this.prenom = "none";
-        this.surnom = "none";
-        this.porteMonnaie = 0;
-        this.cotePopularite = 0;
-        this.crieSignificatif = "none"; 
-    }
-/**
- * Construteur de la Humain 
- * un
- * @param prenom
- * @param porteMonaie 
- */    
-    public Humain(String prenom,float porteMonaie){
-        this.prenom = prenom;
-        this.porteMonnaie = porteMonaie;
-        this.surnom = "none";
-        this.cotePopularite = 0;
-        this.crieSignificatif = "none";
-    }
-
-    /**
-     * Getteur de l'attribue prenom
-     *
-     * @return prenom
-     */
-    public String getPrenom() {
-        return prenom;
-    }
-
-    /**
-     * Getteur de l'attribue surnom
-     *
-     * @return
-     */
-    public String getSurnom() {
-        return surnom;
-    }
-
-    public float getPorteMonnaie() {
-        return porteMonnaie;
-    }
-
-    public String getCrieSignificatif() {
-        return crieSignificatif;
-    }
-
-    public Order getVerre() {
-        return verre;
-    }
+    protected int tailleBiceps;
+    protected int agilite;
+    protected int charme;
+    protected float degreeAlcoolemie;
+    protected int argent;
+    protected Order boissonDe;
+    protected Order maBoisson;
+  
     
-
-    /**
-     * Setteur de l'attribue surnom
-     *
-     * @param surnom
-     */
-    public void setSurnom(String surnom) {
-        this.surnom = surnom;
-    }
-
-    public void setPorteMonnaie(float porteMonnaie) {
-        this.porteMonnaie = porteMonnaie;
-    }
-
-    public void setCrieSignificatif(String crieSignificatif) {
-        this.crieSignificatif = crieSignificatif;
-    }
-
-    public void setVerre(Order verre) {
-        this.verre = verre;
-    }
-
-
-    
-    
-
-    /**
-     * Modification du hash code pour la fonction equals
-     *
-     * @return hash
-     */
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.prenom);
-        hash = 71 * hash + Objects.hashCode(this.surnom);
-        hash = 71 * hash + Float.floatToIntBits(this.porteMonnaie);
-        hash = 71 * hash + this.cotePopularite;
-        hash = 71 * hash + Objects.hashCode(this.crieSignificatif);
-        return hash;
-    }
-
-    /**
-     * redefinition de la methode equal
-     *
-     * @param obj
-     * @return boolean true => equal, false => no equal
-     *
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Humain other = (Humain) obj;
-        if (Float.floatToIntBits(this.porteMonnaie) != Float.floatToIntBits(other.porteMonnaie)) {
-            return false;
-        }
-        if (this.cotePopularite != other.cotePopularite) {
-            return false;
-        }
-        if (!Objects.equals(this.prenom, other.prenom)) {
-            return false;
-        }
-        if (!Objects.equals(this.surnom, other.surnom)) {
-            return false;
-        }
-        if (!Objects.equals(this.crieSignificatif, other.crieSignificatif)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "je suis un huamin mon prenom est : " + prenom + " J'ai comme surnom : " + surnom + " Je dispose de : " + porteMonnaie + " euro pour boire ma cote de popularite est de : " + cotePopularite + " et mon crie est : " + crieSignificatif;
-    }
-/**
- * methode abstraite permettant de faire parler un personnage
- */
-    abstract void TalkTo(Humain personne,String talk);
-    
-    abstract  void Sexe();
-    
-    abstract void Presentation();
+// COnstruteur Client    
+    public Humain(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
         
+        this.prenom = prenom;
+        this.surnom = surnom;
+        this.boissonPreferee = boissonPreferee;
+        this.boissonSecours = boissonSecours;
+        this.sexe = sexe;
+        this.tailleBiceps = tailleBiceps;
+        this.agilite = agilite;
+        this.charme = charme;
+        this.argent = argent;
+    }
+// construteur Serveur
+    public Humain(String prenom, String sexe, int tailleBiceps) {
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.tailleBiceps = tailleBiceps;
+
+    }
+// Construteur Barman
+    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
+        this.prenom = prenom;
+        this.surnom = surnom;
+        this.boissonPreferee = boissonPreferee;
+        this.sexe = sexe;
+        this.tailleBiceps = tailleBiceps;
+        this.charme = charme;
+    }
+// Construteur Patron
+    public Humain(String prenom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme) {
+        this.prenom = prenom;
+        this.boissonPreferee = boissonPreferee;
+        this.boissonSecours = boissonSecours;
+        this.sexe = sexe;
+        this.tailleBiceps = tailleBiceps;
+        this.agilite = agilite;
+        this.charme = charme;
+    }
+    
+    
+    
+    abstract protected void Parler(Humain personne, String phrase);
+    abstract protected void OffrirUnVerre(Order boisson,Humain personne);
+    abstract protected void ApporterBoisson(Humain personne);
+    abstract protected void PrendreUneCommande(Order boisson);
+    abstract public void SePresenter();
+    
+    
    
-        
-    
-/**
- * methode permettant de payer une boisson 
- * @param verre 
- */
-    public float PayADrink(Order verre) {
-        float money;
-        porteMonnaie = porteMonnaie - verre.getPrix();
-        return money = verre.getPrix();
-    }
-/**
- * methode permettant de boire 25% de son verre
- * @param verre 
- */
-    public void Drink(Order verre) {
-        int quantite = verre.getQuantite();
-        verre.setQuantite(quantite-25);     
-    }
-/**
- * methode pour finir son verre d'une traite
- * @param verre 
- */
-    public void FinishADrink(Order verre){
-        verre.setQuantite(0);
-    }
-/**
- * methode pour offrire un verre à quelqu'un
- * @param personne 
- */    
-    public void OffertADrink(Humain personne){
-       personne.setVerre(this.verre);
-       PayADrink(this.verre);
-       
-    }
-    
-            
-    
-    
+    protected void Boire(){
+        int quantite = this.maBoisson.getQuantite();
+        if(this.maBoisson == null){
+            System.out.println("Je n'est pas de boisson il m'n fau vite une");
+        }else{
+           this.maBoisson.setQuantite(quantite-25);
+           System.out.println("Glou Glou Glou il me reste "+this.maBoisson.getQuantite()+"% de ma boisson");
+           if(this.maBoisson.getQuantite()== 0){
+               this.maBoisson = null;
+           }
+        }
 
+        
+    }
+   
+    protected void AllerAuWC(){
+        
+        this.degreeAlcoolemie = this.degreeAlcoolemie - 25;
+        
+        if("Homme".equals(this.sexe)){
+            System.out.println("Je vais pisser");
+        }
+        if("Femme".equals(this.sexe)){
+            System.out.println("Je vais au toilette");
+        }
+    }
+    protected void Payer(int prix){
+
+        if(this.argent - prix< 0){
+            System.out.println("jen'ai pas d'argent");
+        }
+        else{
+            System.out.println("Voila");
+            this.argent = this.argent - prix;
+        }
+    }
+
+    
+    
 }

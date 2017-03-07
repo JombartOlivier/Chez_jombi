@@ -17,6 +17,11 @@ public class  Order {
     private final float prix;
     private final boolean alcoolise;
     private final float tauxAlcool;
+
+    /**
+     *
+     */
+    public   Humain proprieteDe;
     
     
 /**
@@ -25,9 +30,10 @@ public class  Order {
  * @param prix
  * @param alcoolise
  * @param tauxAlcool 
+ * @param proprieteDe 
  */
 
-public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
+public Order(String nom, float prix, boolean alcoolise, float tauxAlcool,Humain proprieteDe) {
         this.nom = nom;
         this.quantite = 100;
         this.prix = prix;
@@ -38,6 +44,7 @@ public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         else{
            this.tauxAlcool = tauxAlcool; 
         }
+        this.proprieteDe = proprieteDe;
         
 }
 
