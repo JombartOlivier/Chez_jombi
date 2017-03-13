@@ -38,7 +38,7 @@ public class Patron extends Humain {
     }
 
     @Override
-    protected void PrendreUneCommande(Humain personne) {
+    protected void PrendreUneCommande(Humain personne, Barman personne1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   

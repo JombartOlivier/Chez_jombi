@@ -18,10 +18,11 @@ public class ChezJombi {
     public static void main(String[] args) {
         Humain serv1 = new Serveur("Jombart", "Homme", 10);
         Order boisson = new Order("bierre", 10, true,10);
+        Barman bar1 = new Barman("Arthur","tuture",boisson,boisson,"homme",10,10,10,10);
         serv1.setBoissonDe(boisson);
         serv1.setMaBoisson(boisson);
         serv1.Boire();
-        serv1.PrendreUneCommande(serv1);
+        serv1.PrendreUneCommande(serv1,bar1);
         //serv1.Boire();
     }
 

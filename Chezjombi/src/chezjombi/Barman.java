@@ -10,12 +10,49 @@ package chezjombi;
 public class Barman extends Humain {
     
     private float caisse;
-    
+    private Order BoissonApreparer;
+    private String nomBoisson;
+    private boolean alcoolise;
+    private int degresDalcool;
 
     public Barman(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
         super(prenom, surnom, boissonPreferee, boissonSecours, sexe, tailleBiceps, agilite, charme, argent);
         
     }
+
+    public String getNomBoisson() {
+        return nomBoisson;
+    }
+
+    public void setNomBoisson(String nomBoisson) {
+        this.nomBoisson = nomBoisson;
+    }
+
+    public boolean isAlcoolise() {
+        return alcoolise;
+    }
+
+    public void setAlcoolise(boolean alcoolise) {
+        this.alcoolise = alcoolise;
+    }
+
+    public int getDegresDalcool() {
+        return degresDalcool;
+    }
+
+    public void setDegresDalcool(int degresDalcool) {
+        this.degresDalcool = degresDalcool;
+    }
+
+    public Order getBoissonApreparer() {
+        return BoissonApreparer;
+    }
+
+    public void setBoissonApreparer(Order BoissonApreparer) {
+        this.BoissonApreparer = BoissonApreparer;
+    }
+    
+    
 
     public float getCaisse() {
         return caisse;
@@ -62,7 +99,7 @@ public class Barman extends Humain {
 
 
     @Override
-    protected void PrendreUneCommande(Humain personne) {
+    protected void PrendreUneCommande(Humain personne, Barman personne1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

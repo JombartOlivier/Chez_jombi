@@ -222,12 +222,12 @@ abstract class Humain {
     abstract protected void ApporterBoisson(Humain personne);
 
     /**
-     * Methode abstraite permettant au different personnage de prendre une
+     * Methode abstraite permettant au different personnage de prendre uneS
      * commande
      *
      * @param boisson
      */
-    abstract protected void PrendreUneCommande(Humain personne);
+    abstract protected void PrendreUneCommande(Humain personne, Barman personne1);
 
     /**
      * Methode abstraite permettant au different personnage de se presenter

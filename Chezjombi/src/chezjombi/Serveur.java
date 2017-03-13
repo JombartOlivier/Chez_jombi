@@ -1,4 +1,5 @@
 package chezjombi;
+
 import java.util.Scanner;
 
 //import java.math.MathContext;
@@ -8,11 +9,11 @@ import java.util.Scanner;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-
 public class Serveur extends Humain {
-    private float  monnaie;
+
+    private float monnaie;
     private Order commande;
-    
+
     public Serveur(String prenom, String sexe, int tailleBiceps) {
         super(prenom, sexe, tailleBiceps);
         monnaie = 0;
@@ -58,11 +59,8 @@ public class Serveur extends Humain {
         this.boissonDe = null;
 
     }
-    
 
-    
-    @Override
-    protected void PrendreUneCommande(Humain personne) {
+    protected void PrendreUneCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
         String str = "Souhaiter vous boire votre boisson preferer ou voulez vous la composer vous meme";
         this.Parler(personne, str);
@@ -70,20 +68,43 @@ public class Serveur extends Humain {
         System.out.println(str);
         str = "composer sois meme [2]";
         System.out.println(str);
-        str ="0";
-        while(!("1".equals(str) || "2".equals(str))){
+        str = "0";
+        while (!("1".equals(str) || "2".equals(str))) {
             str = sc.nextLine();
         }
-        if("1".equals(str)){
-            this.commande = personne.boissonPreferee;
+        if ("1".equals(str)) {
+            System.out.println("Vous avez choisi votre boisson preferé");
+            personne1.setBoissonApreparer(personne.boissonPreferee);
         }
-        if("2".equals(str)){
-          str = ""; 
+        if ("2".equals(str)) {
+            System.out.println("Vous avez choisi de faire votre boisson vous meme");
+            str = "Quel est le nom de votre boisson ?";
+            this.Parler(personne, str);
+            str = sc.nextLine();
+            personne1.setNomBoisson(str);
+            str = "Votre boisson est elle alcoolisée ?";
+            this.Parler(personne, str);
+            str = "oui [1]";
+            System.out.println(str);
+            str = "non [2]";
+            System.out.println(str);
+            while (!("1".equals(str) || "2".equals(str))) {
+                str = sc.nextLine();
+            }
+            if ("1".equals(str)) {
+                personne1.setAlcoolise(true);
+                str = "quel est le degrée d'acool de votre boisson";
+                this.Parler(personne, str);
+                str = sc.nextLine();
+                int degreedalcool = Integer.parseInt(str);
+                personne1.setDegresDalcool(degreedalcool);
+            } 
+            else {
+                personne1.setAlcoolise(false);
+            }
         }
-        
-        
-        
-       
+        str = "Je vous rapporte ça tout de suite";
+        this.Parler(personne, str);
     }
 
     @Override
@@ -104,15 +125,17 @@ public class Serveur extends Humain {
             super.Boire();
         }
     }
-/**
- * Methode pour Transmettre l'argent au barman dans la caisse
- * @param personne 
- */    
-    protected void TransmettreArgentBarman(Barman personne){
+
+    /**
+     * Methode pour Transmettre l'argent au barman dans la caisse
+     *
+     * @param personne
+     */
+    protected void TransmettreArgentBarman(Barman personne) {
         String str = "Voici de l'argent a mettre dans la caisse " + this.monnaie;
         this.Parler(personne, str);
         personne.setCaisse(this.monnaie);
-        this.monnaie = 0;  
+        this.monnaie = 0;
     }
-    
+
 }
