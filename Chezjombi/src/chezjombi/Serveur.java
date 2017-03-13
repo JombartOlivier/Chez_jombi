@@ -13,6 +13,8 @@ public class Serveur extends Humain {
         super(prenom, sexe, tailleBiceps);
     }
 
+    
+
     /**
      *
      * @param personne
@@ -20,7 +22,7 @@ public class Serveur extends Humain {
      */
     @Override
     public void Parler(Humain personne, String phrase) {
-        System.out.println(this.prenom + " dit a " + personne.prenom + phrase);
+        System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase);
     }
 
     /**
@@ -46,14 +48,13 @@ public class Serveur extends Humain {
 
         System.out.println("Voici votre boisson cela fera" + this.boissonDe.getPrix());
         personne.maBoisson = this.boissonDe;
-        personne.maBoisson.proprieteDe = personne;
         this.boissonDe = null;
 
     }
 
     @Override
     protected void PrendreUneCommande(Order boisson) {
-
+        System.out.println("Que vouslez vous boire ?");
     }
 
     @Override
@@ -61,6 +62,9 @@ public class Serveur extends Humain {
         if ("Homme".equals(this.sexe)) {
             System.out.println("Bonjour je suis votre serveur je m'appelle " + this.prenom);
         }
+        if("Femme".equals(this.sexe)){
+            System.out.println("Bonjour je suis votre serveuse je m'appelle " + this.prenom);
+        }  
     }
 
     @Override

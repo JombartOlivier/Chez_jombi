@@ -8,11 +8,11 @@ package chezjombi;
  * @version v1.0
  */
 public class Fournisseur extends Humain {
-    
-    public Fournisseur(String prenom, String surnom, float porteMonaie, int cotePopularite, String crieSignificatif) {
-        
-        super(prenom, surnom, porteMonaie, cotePopularite, crieSignificatif);
+
+    public Fournisseur(String prenom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme) {
+        super(prenom, boissonPreferee, boissonSecours, sexe, tailleBiceps, agilite, charme);
     }
+
     
     public void Presentation(){
         
@@ -24,5 +24,30 @@ public class Fournisseur extends Humain {
     
     void TalkTo(Humain personne,String talk){
         
+    }
+
+    @Override
+    protected void Parler(Humain personne, String phrase) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void OffrirUnVerre(Order boisson, Humain personne) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void ApporterBoisson(Humain personne) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void PrendreUneCommande(Order boisson) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void SePresenter() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
