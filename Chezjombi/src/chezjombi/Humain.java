@@ -1,7 +1,5 @@
 package chezjombi;
 
-
-
 /**
  * Classe Mere Humain Created by Arthur Duytschaever on 13/02/2017.
  *
@@ -9,7 +7,7 @@ package chezjombi;
  * @version v1.0
  */
 abstract class Humain {
-    
+
     protected String prenom;
     protected String surnom;
     protected Order boissonPreferee;
@@ -22,24 +20,22 @@ abstract class Humain {
     protected int argent;
     protected Order boissonDe;
     protected Order maBoisson;
-  
-    
-  
-/**
- * Construteur Destinée à la classe Client
- * @param prenom
- * @param surnom
- * @param boissonPreferee
- * @param boissonSecours
- * @param sexe
- * @param tailleBiceps
- * @param agilite
- * @param charme
- * @param argent 
- */
-    
+
+    /**
+     * Construteur Destinée à la classe Client
+     *
+     * @param prenom
+     * @param surnom
+     * @param boissonPreferee
+     * @param boissonSecours
+     * @param sexe
+     * @param tailleBiceps
+     * @param agilite
+     * @param charme
+     * @param argent
+     */
     public Humain(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
-        
+
         this.prenom = prenom;
         this.surnom = surnom;
         this.boissonPreferee = boissonPreferee;
@@ -51,13 +47,13 @@ abstract class Humain {
         this.argent = argent;
     }
 
-/**
- * Construteur Destinée à la classe Serveur
- * @param prenom
- * @param sexe
- * @param tailleBiceps 
- */
-    
+    /**
+     * Construteur Destinée à la classe Serveur
+     *
+     * @param prenom
+     * @param sexe
+     * @param tailleBiceps
+     */
     public Humain(String prenom, String sexe, int tailleBiceps) {
         this.prenom = prenom;
         this.sexe = sexe;
@@ -65,16 +61,16 @@ abstract class Humain {
 
     }
 
-/**
- * Construteur Destinée à la classe Barman
- * @param prenom
- * @param surnom
- * @param boissonPreferee
- * @param sexe
- * @param tailleBiceps
- * @param charme 
- */
-    
+    /**
+     * Construteur Destinée à la classe Barman
+     *
+     * @param prenom
+     * @param surnom
+     * @param boissonPreferee
+     * @param sexe
+     * @param tailleBiceps
+     * @param charme
+     */
     public Humain(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
         this.prenom = prenom;
         this.surnom = surnom;
@@ -83,7 +79,7 @@ abstract class Humain {
         this.tailleBiceps = tailleBiceps;
         this.charme = charme;
     }
- 
+
     /**
      * Construteur Destinée à la classe Parron
      *
@@ -200,97 +196,119 @@ abstract class Humain {
     public void setMaBoisson(Order maBoisson) {
         this.maBoisson = maBoisson;
     }
-    
 
-/**
- * Methode abstraite permettant au different personnage de parler
- * @param personne
- * @param phrase 
- */   
-    
-    abstract protected void Parler(Humain personne, String phrase);
-    
-/**
- * Methode abstraite permettant au different personnage d'offrire  boire
- * @param boisson
- * @param personne 
- */
-    abstract protected void OffrirUnVerre(Order boisson,Humain personne);
-    
     /**
-     * Methode abstraite permettant au different personnage d' apporter une boisson
-     * @param personne 
+     * Methode abstraite permettant au different personnage de parler
+     *
+     * @param personne
+     * @param phrase
+     */
+    abstract protected void Parler(Humain personne, String phrase);
+
+    /**
+     * Methode abstraite permettant au different personnage d'offrire boire
+     *
+     * @param boisson
+     * @param personne
+     */
+    abstract protected void OffrirUnVerre(Order boisson, Humain personne);
+
+    /**
+     * Methode abstraite permettant au different personnage d' apporter une
+     * boisson
+     *
+     * @param personne
      */
     abstract protected void ApporterBoisson(Humain personne);
+
     /**
-     * Methode abstraite permettant au different personnage de prendre une commande
-     * @param boisson 
+     * Methode abstraite permettant au different personnage de prendre une
+     * commande
+     *
+     * @param boisson
      */
-    abstract protected void PrendreUneCommande(Order boisson);
+    abstract protected void PrendreUneCommande(Humain personne);
+
     /**
      * Methode abstraite permettant au different personnage de se presenter
      */
     abstract public void SePresenter();
-    
-    
-/**
- * Methode  permettant au different personnage de boire
- * en cas de boisson alcooliser augmente le taux d'alcoolmie
- */   
-    protected void Boire(){
+
+    /**
+     * Methode pour se battre
+     *
+     * @param personne
+     */
+    protected void SeBattre(Humain personne) {
+        
+        if (this.tailleBiceps < personne.tailleBiceps) {
+            System.out.println("Aie j'ai mal ça fait mal");
+            System.out.println("Vous avez perdu la bagarre");
+        }
+        if (this.tailleBiceps == personne.tailleBiceps) {
+            System.out.println("ça pique");
+            System.out.println("Vous étes à égalité");
+        } else {
+            System.out.println("This is a Spartan !!!!!!!!!!!");
+            System.out.println("Vous remportez la victoire");
+        }
+
+    }
+
+    /**
+     * Methode permettant au different personnage de boire en cas de boisson
+     * alcooliser augmente le taux d'alcoolmie
+     */
+    protected void Boire() {
         int quantite = this.maBoisson.getQuantite();
-        if(this.maBoisson == null){
+        if (this.maBoisson == null) {
             System.out.println("Je n'est pas de boisson il m'en faut vite une");
-        }else{
-           this.maBoisson.setQuantite(quantite-25);
-           System.out.println("*Glou Glou Glou* il me reste "+this.maBoisson.getQuantite()+"% de ma boisson");
-           if(this.maBoisson.getTauxAlcool() !=-1){
-               this.degreeAlcoolemie = this.degreeAlcoolemie + this.maBoisson.getTauxAlcool();
-           }
-           if(this.maBoisson.getQuantite()== 0){
-               this.maBoisson = null;
-           }
+        } else {
+            this.maBoisson.setQuantite(quantite - 25);
+            System.out.println("*Glou Glou Glou* il me reste " + this.maBoisson.getQuantite() + "% de ma boisson");
+            if (this.maBoisson.getTauxAlcool() != -1) {
+                this.degreeAlcoolemie = this.degreeAlcoolemie + this.maBoisson.getTauxAlcool();
+            }
+            if (this.maBoisson.getQuantite() == 0) {
+                this.maBoisson = null;
+            }
         }
 
-        
     }
-/**
- * Methode  permettant au different personnage d'aller au toillette
- * en cas degres d'alcoolmie >25 baisse le degree d'alcoolmie diminue de 25 
- */   
-    protected void AllerAuWC(){
-        
-       
-        
-        if("Homme".equals(this.sexe)){
+
+    /**
+     * Methode permettant au different personnage d'aller au toillette en cas
+     * degres d'alcoolmie >25 baisse le degree d'alcoolmie diminue de 25
+     */
+    protected void AllerAuWC() {
+
+        if ("Homme".equals(this.sexe)) {
             System.out.println("Je vais pisser");
-            if(this.degreeAlcoolemie>25){
-                 this.degreeAlcoolemie = this.degreeAlcoolemie - 25;
+            if (this.degreeAlcoolemie > 25) {
+                this.degreeAlcoolemie = this.degreeAlcoolemie - 25;
             }
         }
-        if("Femme".equals(this.sexe)){
+        if ("Femme".equals(this.sexe)) {
             System.out.println("Je vais au toilette");
-            if(this.degreeAlcoolemie>25){
-                this.degreeAlcoolemie = this.degreeAlcoolemie - 25; 
+            if (this.degreeAlcoolemie > 25) {
+                this.degreeAlcoolemie = this.degreeAlcoolemie - 25;
             }
         }
     }
-    protected void Payer(int prix){
 
-        if(this.argent - prix< 0){
-            System.out.println("jen'ai pas d'argent");
-        }
-        else{
+    /**
+     * Methode pour payer
+     *
+     * @param prix
+     */
+    protected void Payer(int prix) {
+
+        if (this.argent - prix < 0) {
+            System.out.println("je n'ai pas d'argent");
+        } else {
             System.out.println("Voila");
             this.argent = this.argent - prix;
         }
     }
-    protected void Commander(Serveur personne){
-        
-        
-        
-    }
 
-    
-    
 }

@@ -41,13 +41,14 @@ public class Fournisseur extends Humain {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
-    protected void PrendreUneCommande(Order boisson) {
+    public void SePresenter() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void SePresenter() {
+    protected void PrendreUneCommande(Humain personne) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

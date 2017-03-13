@@ -1,4 +1,5 @@
 package chezjombi;
+import java.util.Scanner;
 
 //import java.math.MathContext;
 /**
@@ -7,13 +8,19 @@ package chezjombi;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Serveur extends Humain {
 
+public class Serveur extends Humain {
+    private float  monnaie;
+    private Order commande;
+    
     public Serveur(String prenom, String sexe, int tailleBiceps) {
         super(prenom, sexe, tailleBiceps);
+        monnaie = 0;
     }
 
-    
+    public void setMonnaie(int monnaie) {
+        this.monnaie = monnaie;
+    }
 
     /**
      *
@@ -51,10 +58,32 @@ public class Serveur extends Humain {
         this.boissonDe = null;
 
     }
+    
 
+    
     @Override
-    protected void PrendreUneCommande(Order boisson) {
-        System.out.println("Que vouslez vous boire ?");
+    protected void PrendreUneCommande(Humain personne) {
+        Scanner sc = new Scanner(System.in);
+        String str = "Souhaiter vous boire votre boisson preferer ou voulez vous la composer vous meme";
+        this.Parler(personne, str);
+        str = "boisson preferer [1]";
+        System.out.println(str);
+        str = "composer sois meme [2]";
+        System.out.println(str);
+        str ="0";
+        while(!("1".equals(str) || "2".equals(str))){
+            str = sc.nextLine();
+        }
+        if("1".equals(str)){
+            this.commande = personne.boissonPreferee;
+        }
+        if("2".equals(str)){
+          str = ""; 
+        }
+        
+        
+        
+       
     }
 
     @Override
@@ -62,9 +91,9 @@ public class Serveur extends Humain {
         if ("Homme".equals(this.sexe)) {
             System.out.println("Bonjour je suis votre serveur je m'appelle " + this.prenom);
         }
-        if("Femme".equals(this.sexe)){
+        if ("Femme".equals(this.sexe)) {
             System.out.println("Bonjour je suis votre serveuse je m'appelle " + this.prenom);
-        }  
+        }
     }
 
     @Override
@@ -75,7 +104,15 @@ public class Serveur extends Humain {
             super.Boire();
         }
     }
-
+/**
+ * Methode pour Transmettre l'argent au barman dans la caisse
+ * @param personne 
+ */    
+    protected void TransmettreArgentBarman(Barman personne){
+        String str = "Voici de l'argent a mettre dans la caisse " + this.monnaie;
+        this.Parler(personne, str);
+        personne.setCaisse(this.monnaie);
+        this.monnaie = 0;  
+    }
+    
 }
-
-

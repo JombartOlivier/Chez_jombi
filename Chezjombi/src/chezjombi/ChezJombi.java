@@ -16,14 +16,12 @@ public class ChezJombi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Humain serv1 = new Serveur("Jombart", "Femme", 10);
-        Order boisson = new Order("bierre", 10, false,5);
+        Humain serv1 = new Serveur("Jombart", "Homme", 10);
+        Order boisson = new Order("bierre", 10, true,10);
         serv1.setBoissonDe(boisson);
         serv1.setMaBoisson(boisson);
         serv1.Boire();
-        serv1.Boire();
-        serv1.Boire();
-        serv1.Boire();
+        serv1.PrendreUneCommande(serv1);
         //serv1.Boire();
     }
 

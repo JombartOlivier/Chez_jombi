@@ -50,13 +50,15 @@ public class Client extends Humain {
         this.boissonDe = null;
     }
 
-    @Override
-    protected void PrendreUneCommande(Order boisson) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     @Override
     public void SePresenter() {
         System.out.println("Bonjour je suis un client du barre mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
+    }
+
+    @Override
+    protected void PrendreUneCommande(Humain personne) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
