@@ -41,7 +41,7 @@ public class Serveur extends Humain {
      */
     @Override
     public void Parler(Humain personne, String phrase) {
-        System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase);
+        System.out.println(this.prenom + " dit à " + personne.prenom + " : " + phrase);
     }
 
     /**
@@ -53,11 +53,11 @@ public class Serveur extends Humain {
     protected void OffrirUnVerre(Order boisson, Humain personne) {
         String str;
         if ("Homme".equals(this.sexe)) {
-            str = "je ne suis qu'un serveur je peux pas vous offrire un verre";
+            str = "Je ne suis qu'un serveur je peux pas vous offrir un verre";
             Parler(personne, str);
         }
         if ("Femme".equals(this.sexe)) {
-            str = "je ne suis qu'une serveuse je peux pas vous offrire un verre";
+            str = "Je ne suis qu'une serveuse je peux pas vous offrir un verre";
             Parler(personne, str);
         }
     }
@@ -73,24 +73,24 @@ public class Serveur extends Humain {
 
     protected void PrendreUneCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
-        String str = "Souhaiter vous boire votre boisson preferer ou voulez vous la composer vous meme";
+        String str = "Souhaitez vous boire votre boisson préferée ou voulez vous la composer vous-même ?";
         this.Parler(personne, str);
-        str = "boisson preferer [1]";
+        str = "-> Boisson préferée [1]";
         System.out.println(str);
-        str = "composer sois meme [2]";
+        str = "-> Composer sois-même [2]";
         System.out.println(str);
         str = "0";
         while (!("1".equals(str) || "2".equals(str))) {
             str = sc.nextLine();
         }
         if ("1".equals(str)) {
-            System.out.println("Vous avez choisi votre boisson preferé");
+            System.out.println("Vous avez choisi votre boisson preferée");
             personne1.setNomBoisson(personne.boissonPreferee.getNom());
             personne1.setDegresDalcool(personne.boissonPreferee.getTauxAlcool());
             personne1.setAlcoolise(personne.boissonPreferee.isAlcoolise());
         }
         if ("2".equals(str)) {
-            System.out.println("Vous avez choisi de faire votre boisson vous meme");
+            System.out.println("Vous avez choisi de faire votre boisson vous-même");
             str = "Quel est le nom de votre boisson ?";
             this.Parler(personne, str);
             str = sc.nextLine();
@@ -106,7 +106,7 @@ public class Serveur extends Humain {
             }
             if ("1".equals(str)) {
                 personne1.setAlcoolise(true);
-                str = "quel est le degrée d'acool de votre boisson";
+                str = "Quel est le degré d'alcool de votre boisson ?";
                 this.Parler(personne, str);
                 str = sc.nextLine();
                 int degreedalcool = Integer.parseInt(str);

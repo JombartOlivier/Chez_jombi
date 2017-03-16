@@ -190,9 +190,5 @@ public Order(String nom, int quantite, float prix){
         }
         return true;
     }
-    
-    
-
-
 
 }
