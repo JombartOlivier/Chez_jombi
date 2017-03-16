@@ -1,5 +1,6 @@
 package chezjombi;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -10,8 +11,15 @@ import java.util.Scanner;
  */
 public class Client extends Humain {
 
-    public Client(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
-        super(prenom, surnom, boissonPreferee, boissonSecours, sexe, tailleBiceps, agilite, charme, argent);
+    public Client(String prenom, String surnom, Order boissonPreferee,String sexe, int argent) {
+        super(prenom, surnom, boissonPreferee, sexe, argent);
+        Random r = new Random();
+        int aleatoire = r.nextInt(101);
+        this.charme = aleatoire;
+        aleatoire = r.nextInt(101);
+        this.tailleBiceps = aleatoire;
+        aleatoire = r.nextInt(101);
+        this.agilite = aleatoire;
     }
     
     
@@ -39,6 +47,10 @@ public class Client extends Humain {
     @Override
     protected void OffrirUnVerre(Order boisson, Humain personne) {
         
+        String str = "Allez, celle ci est pour moi";
+        this.Parler(personne, str);
+        personne.maBoisson = boisson;
+        this.Payer((int) boisson.getPrix());
 
     }
 

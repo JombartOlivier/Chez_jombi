@@ -34,17 +34,13 @@ abstract class Humain {
      * @param charme
      * @param argent
      */
-    public Humain(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
+    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe,int argent) {
 
         this.prenom = prenom;
         this.surnom = surnom;
         this.boissonPreferee = boissonPreferee;
-        this.boissonSecours = boissonSecours;
-        this.sexe = sexe;
-        this.tailleBiceps = tailleBiceps;
-        this.agilite = agilite;
-        this.charme = charme;
         this.argent = argent;
+        this.sexe = sexe;
     }
 
     /**
@@ -52,12 +48,11 @@ abstract class Humain {
      *
      * @param prenom
      * @param sexe
-     * @param tailleBiceps
      */
-    public Humain(String prenom, String sexe, int tailleBiceps) {
+    public Humain(String prenom, String sexe) {
         this.prenom = prenom;
         this.sexe = sexe;
-        this.tailleBiceps = tailleBiceps;
+        
 
     }
 

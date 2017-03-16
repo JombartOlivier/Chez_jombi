@@ -1,5 +1,6 @@
 package chezjombi;
 
+import java.util.Random;
 import java.util.Scanner;
 
 //import java.math.MathContext;
@@ -13,12 +14,22 @@ public class Serveur extends Humain {
 
     private float monnaie;
     private Order commande;
-
-    public Serveur(String prenom, String sexe, int tailleBiceps) {
-        super(prenom, sexe, tailleBiceps);
-        monnaie = 0;
+/**
+ * Construteur de serveur
+ * @param prenom
+ * @param sexe 
+ */
+    public Serveur(String prenom, String sexe) {
+        super(prenom, sexe);
+        Random r = new Random();
+        int aleatoire = r.nextInt(101);
+        this.tailleBiceps = aleatoire;
+        this.monnaie = 0;
     }
-
+/**
+ * Setteur Monnaie serveur
+ * @param monnaie 
+ */
     public void setMonnaie(int monnaie) {
         this.monnaie = monnaie;
     }
