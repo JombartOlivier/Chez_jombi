@@ -10,13 +10,12 @@ package chezjombi;
 public class Barman extends Humain {
     
     private float caisse;
-    private Order BoissonApreparer;
     private String nomBoisson;
     private boolean alcoolise;
-    private int degresDalcool;
+    private float degresDalcool;
 
     public Barman(String prenom, String surnom,Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
-        super(prenom, surnom, boissonPreferee, sexe, tailleBiceps, charme);//Humain(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
+        super(prenom, surnom, boissonPreferee, sexe, tailleBiceps, charme);
         
     }
 
@@ -36,21 +35,15 @@ public class Barman extends Humain {
         this.alcoolise = alcoolise;
     }
 
-    public int getDegresDalcool() {
+    public float getDegresDalcool() {
         return degresDalcool;
     }
 
-    public void setDegresDalcool(int degresDalcool) {
+    public void setDegresDalcool(float degresDalcool) {
         this.degresDalcool = degresDalcool;
     }
 
-    public Order getBoissonApreparer() {
-        return BoissonApreparer;
-    }
-
-    public void setBoissonApreparer(Order BoissonApreparer) {
-        this.BoissonApreparer = BoissonApreparer;
-    }
+  
     
     
 
@@ -67,12 +60,28 @@ public class Barman extends Humain {
     public void Presentation(){
         
     }
-   
+    
+    protected void PreparerUneBoisson(){
+        if(this.alcoolise == true){
+            float prix = this.degresDalcool*(float)1.2;
+            Order b1 = new Order(this.nomBoisson,prix,this.alcoolise,this.degresDalcool);
+            
+        }
+        if(this.alcoolise == false){
+            Order b1 = new Order(this.nomBoisson,3,this.alcoolise,this.degresDalcool);
+        }
+
+    }
 
 
     @Override
     protected void Parler(Humain personne, String phrase) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
+             System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase +" Fraté ");
+        }
+        if(this.degreeAlcoolemie>15){
+            System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ "LALALALA");
+        }
     }
 
     @Override

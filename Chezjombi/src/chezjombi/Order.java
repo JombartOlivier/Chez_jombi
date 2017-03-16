@@ -14,7 +14,7 @@ public class  Order {
     
     private final String nom;
     private  int quantite;
-    private final float prix;
+    private  float prix;
     private final boolean alcoolise;
     private final float tauxAlcool;
 
@@ -44,9 +44,22 @@ public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         else{
            this.tauxAlcool = tauxAlcool; 
         }
+      
 
         
 }
+
+    public Order(String nom, boolean alcoolise, float tauxAlcool) {
+        this.nom = nom;
+        this.alcoolise = alcoolise;
+        if(alcoolise == false){
+            this.tauxAlcool = 0;
+        }
+        else{
+           this.tauxAlcool = tauxAlcool; 
+        }
+        this.quantite = 100;
+    }
 
 /**
  * Construteur de la classe boisson pour les boisson non alcoolisée

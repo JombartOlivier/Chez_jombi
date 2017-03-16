@@ -69,7 +69,9 @@ public class Patron extends Humain {
         }
         if ("1".equals(str)) {
             System.out.println("Vous avez choisi votre boisson preferé");
-            personne1.setBoissonApreparer(personne.boissonPreferee);
+            personne1.setNomBoisson(personne.boissonPreferee.getNom());
+            personne1.setDegresDalcool(personne.boissonPreferee.getTauxAlcool());
+            personne1.setAlcoolise(personne.boissonPreferee.isAlcoolise());
         }
         if ("2".equals(str)) {
             System.out.println("Vous avez choisi de faire votre boisson vous meme");
