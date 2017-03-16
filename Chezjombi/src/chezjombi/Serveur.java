@@ -65,7 +65,7 @@ public class Serveur extends Humain {
     @Override
     protected void ApporterBoisson(Humain personne) {
 
-        System.out.println("Voici votre boisson cela fera" + this.boissonDe.getPrix());
+        System.out.println("Voici votre boisson cela fera " + this.boissonDe.getPrix()+"€");
         personne.maBoisson = this.boissonDe;
         this.boissonDe = null;
 

@@ -135,7 +135,7 @@ public Order(String nom, int quantite, float prix){
     
     @Override
     public String toString() {
-        return nom + " au prix de : "+prix+" avec un degres d'aclool a "+tauxAlcool;
+        return nom + " au prix de : "+prix+"€ avec un degrès d'aclool à "+tauxAlcool;
     }
     
 /**
