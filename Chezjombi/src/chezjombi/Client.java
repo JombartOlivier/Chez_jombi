@@ -18,7 +18,7 @@ public class Client extends Humain {
         this.charme = aleatoire;
         aleatoire = r.nextInt(101);
         this.tailleBiceps = aleatoire;
-        aleatoire = r.nextInt(101);
+        aleatoire = r.nextInt(101); 
         this.agilite = aleatoire;
     }
     
@@ -66,11 +66,17 @@ public class Client extends Humain {
 
     @Override
     public void SePresenter() {
-        System.out.println("Bonjour je suis un client du barre mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
+        System.out.println("Bonjour je suis un client du bar mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
     }
 
     @Override
     protected void PrendreUneCommande(Humain personne, Barman personne1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if("homme".equals(this.sexe)){
+            System.out.println("Tu m'as prit pour qui je suis pas un serveur....");
+        }
+        if("Femme".equals(this.sexe)){
+            System.out.println("Tu m'as prit pour qui je suis pas un serveuse....");
+        }
+        
     }
 }
