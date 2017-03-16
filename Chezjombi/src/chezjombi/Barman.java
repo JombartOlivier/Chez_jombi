@@ -15,8 +15,8 @@ public class Barman extends Humain {
     private boolean alcoolise;
     private int degresDalcool;
 
-    public Barman(String prenom, String surnom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme, int argent) {
-        super(prenom, surnom, boissonPreferee, boissonSecours, sexe, tailleBiceps, agilite, charme, argent);
+    public Barman(String prenom, String surnom,Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
+        super(prenom, surnom, boissonPreferee, sexe, tailleBiceps, charme);//Humain(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
         
     }
 
@@ -68,13 +68,7 @@ public class Barman extends Humain {
         
     }
    
-    public String Sexe(){
-        return "1";
-    }
-    
-    void TalkTo(Humain personne,String talk){
-        
-    }
+
 
     @Override
     protected void Parler(Humain personne, String phrase) {

@@ -76,7 +76,7 @@ abstract class Humain {
     }
 
     /**
-     * Construteur Destinée à la classe Parron
+     * Construteur Destinée à la classe Patron
      *
      * @param prenom
      * @param boissonPreferee
@@ -86,10 +86,9 @@ abstract class Humain {
      * @param agilite
      * @param charme
      */
-    public Humain(String prenom, Order boissonPreferee, Order boissonSecours, String sexe, int tailleBiceps, int agilite, int charme) {
+    public Humain(String prenom, Order boissonPreferee, String sexe, int tailleBiceps, int agilite, int charme) {
         this.prenom = prenom;
         this.boissonPreferee = boissonPreferee;
-        this.boissonSecours = boissonSecours;
         this.sexe = sexe;
         this.tailleBiceps = tailleBiceps;
         this.agilite = agilite;
