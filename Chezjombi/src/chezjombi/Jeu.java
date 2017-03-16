@@ -41,12 +41,13 @@ public class Jeu {
             while (nombreLancé < 4) {
                 aleatoire = r.nextInt(21);
                 aleatoire_2 = r.nextInt(10);
+                aleatoire_3=r.nextInt(11)+1;
                 aleatoire_4 = r.nextInt(2);
                 aleatoire_5 = r.nextInt(17) + 15;
                 if (manche > aleatoire_5) {
                     aleatoire = aleatoire_4;
                     System.out.println("Lancé [" + nombreLancé + "] = " + aleatoire);
-                } else if (personne.getAgilite() > 25) {
+                } else if (aleatoire_3==5) {
                     aleatoire_3 = r.nextInt(3);
                     if (aleatoire_3 == 0 || aleatoire_3 == 1) {
                         aleatoire *= tab_bonus[aleatoire_3];
@@ -90,5 +91,18 @@ public class Jeu {
         return manche;
     }
 
-    
+    public static void Duel(Humain joueur1,Humain joueur2){
+        int mancheJoueur1=Lancer(joueur1);
+        int mancheJoueur2=Lancer(joueur2);
+        if (mancheJoueur1>mancheJoueur2){
+            System.out.println("Le gagnant de cette partie est : "+joueur2.prenom);
+        }
+        if (mancheJoueur1<mancheJoueur2){
+            System.out.println("Le gagnant de cette partie est :"+joueur1.prenom);
+        }
+        if(mancheJoueur1==mancheJoueur2) {
+            System.out.println("Egalité !");
+        }
+    }
 }
+
