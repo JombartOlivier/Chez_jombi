@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Client extends Humain {
+public class Client extends Humain implements ActionCommune{
 
     public Client(String prenom, String surnom, Order boissonPreferee,String sexe, int argent) {
         super(prenom, surnom, boissonPreferee, sexe, argent);
@@ -24,8 +24,12 @@ public class Client extends Humain {
     
     
 
-    @Override
-    protected void Parler(Humain personne, String phrase) {
+/**
+ * Methode attribuant la parole au client en fonction de leur taux d'alccolmie
+ * @param personne
+ * @param phrase 
+ */    
+    public void Parler(Humain personne, String phrase) {
         if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
              System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase);
         }
@@ -44,8 +48,12 @@ public class Client extends Humain {
         
     }
 
-    @Override
-    protected void OffrirUnVerre(Order boisson, Humain personne) {
+/**
+ * Methode permettant d'offrire un verre 
+ * @param boisson
+ * @param personne 
+ */   
+    public void OffrirUnVerre(Order boisson, Humain personne) {
         
         String str = "Allez, celle ci est pour moi";
         this.Parler(personne, str);
@@ -54,23 +62,30 @@ public class Client extends Humain {
 
     }
 
-    @Override
-    protected void ApporterBoisson(Humain personne) {
+/**
+ * Methode permettant d'apporter un boisson
+ * @param personne 
+ */   
+    public void ApporterBoisson(Humain personne) {
         
         System.out.println("Voici ta boisson abolu : " + this.boissonDe.getPrix());
         personne.maBoisson = this.boissonDe;
         this.boissonDe = null;
     }
 
-   
-
-    @Override
+/**
+ * Methode permettant a un client de se presenter 
+ */   
     public void SePresenter() {
         System.out.println("Bonjour je suis un client du bar mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
     }
 
-    @Override
-    protected void PrendreUneCommande(Humain personne, Barman personne1) {
+/**
+ * Methode permettant d'apporter une commande 
+ * @param personne
+ * @param personne1 
+ */    
+    public void PrendreUneCommande(Humain personne, Barman personne1) {
         if("homme".equals(this.sexe)){
             System.out.println("Tu m'as prit pour qui je suis pas un serveur....");
         }

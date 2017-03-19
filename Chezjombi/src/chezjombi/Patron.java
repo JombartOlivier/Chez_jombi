@@ -10,15 +10,15 @@ import java.util.Scanner;
  * @version v1.0
  */
 
-public class Patron extends Humain {
+public class Patron extends Humain implements ActionCommune{
 
     public Patron(String prenom, Order boissonPreferee, String sexe, int tailleBiceps, int agilite, int charme) {
         super(prenom, boissonPreferee, sexe, tailleBiceps, agilite, charme);
     }
     
 
-    @Override
-    protected void Parler(Humain personne, String phrase) {
+    
+    public void Parler(Humain personne, String phrase) {
         if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
              System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase +"Oublie pas c'est moi le patron.");
         }
@@ -33,8 +33,8 @@ public class Patron extends Humain {
         }
     }
 
-    @Override
-    protected void OffrirUnVerre(Order boisson, Humain personne) {
+    
+    public void OffrirUnVerre(Order boisson, Humain personne) {
         
         String str = "c'est la maison qui offre";
         this.Parler(personne, str);
@@ -42,14 +42,14 @@ public class Patron extends Humain {
         
     }
 
-    @Override
-    protected void ApporterBoisson(Humain personne) {
+    
+    public void ApporterBoisson(Humain personne) {
         System.out.println("Tu m'as prit pour ton chien ? ");
     }
 
  
 
-    @Override
+    
     public void SePresenter() {
         
         if ("Homme".equals(this.sexe)) {
@@ -60,8 +60,8 @@ public class Patron extends Humain {
         }
     }
 
-    @Override
-    protected void PrendreUneCommande(Humain personne, Barman personne1) {
+    
+    public void PrendreUneCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
         String str = "Bonjour je vais personnellement m'occupe de vous aujourd'hui attention sa ne se produit pas tout les jours. que voulais vous boire ?";
         this.Parler(personne, str);

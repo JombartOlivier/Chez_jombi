@@ -11,7 +11,6 @@ abstract class Humain {
     protected String prenom;
     protected String surnom;
     protected Order boissonPreferee;
-    protected Order boissonSecours;
     protected String sexe;
     protected int tailleBiceps;
     protected int agilite;
@@ -119,14 +118,6 @@ abstract class Humain {
         this.boissonPreferee = boissonPreferee;
     }
 
-    public Order getBoissonSecours() {
-        return boissonSecours;
-    }
-
-    public void setBoissonSecours(Order boissonSecours) {
-        this.boissonSecours = boissonSecours;
-    }
-
     public String getSexe() {
         return sexe;
     }
@@ -191,43 +182,7 @@ abstract class Humain {
         this.maBoisson = maBoisson;
     }
 
-    /**
-     * Methode abstraite permettant au different personnage de parler
-     *
-     * @param personne
-     * @param phrase
-     */
-    abstract protected void Parler(Humain personne, String phrase);
-
-    /**
-     * Methode abstraite permettant au different personnage d'offrire boire
-     *
-     * @param boisson
-     * @param personne
-     */
-    abstract protected void OffrirUnVerre(Order boisson, Humain personne);
-
-    /**
-     * Methode abstraite permettant au different personnage d' apporter une
-     * boisson
-     *
-     * @param personne
-     */
-    abstract protected void ApporterBoisson(Humain personne);
-
-    /**
-     * Methode abstraite permettant au different personnage de prendre uneS
-     * commande
-     *
-     * @param boisson
-     */
-    abstract protected void PrendreUneCommande(Humain personne, Barman personne1);
-
-    /**
-     * Methode abstraite permettant au different personnage de se presenter
-     */
-    abstract public void SePresenter();
-
+ 
     /**
      * Methode pour se battre
      *

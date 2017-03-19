@@ -6,7 +6,7 @@ package chezjombi;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Barman extends Humain {
+public class Barman extends Humain implements ActionCommune{
 
     private float caisse;
     private String nomBoisson;
@@ -62,8 +62,7 @@ public class Barman extends Humain {
 
     }
 
-    @Override
-    protected void Parler(Humain personne, String phrase) {
+    public void Parler(Humain personne, String phrase) {
         if (this.degreeAlcoolemie < 5 && this.degreeAlcoolemie > 0) {
             System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase + " Fraté ");
         }
@@ -72,20 +71,20 @@ public class Barman extends Humain {
         }
     }
 
-    @Override
-    protected void OffrirUnVerre(Order boisson, Humain personne) {
+   
+    public void OffrirUnVerre(Order boisson, Humain personne) {
         String str = "Desoler je ne suis pas autorisée à offrire de verre il faut voire ça avec le maitre des lieux";
         this.Parler(personne, str);
 
     }
 
-    @Override
-    protected void ApporterBoisson(Humain personne) {
+    
+    public void ApporterBoisson(Humain personne) {
         String str = "Desoler je ne peux pas bouger de mon bar demander à une serveur/se";
         this.Parler(personne, str);
     }
 
-    @Override
+    
     public void SePresenter() {
         if ("Homme".equals(this.sexe)) {
             System.out.println("Hello, je suis le Barman C'est moi qui prepare toute les boissons je m'appelle " + this.prenom + " et ma boisson preferer est " + this.boissonPreferee);
@@ -95,8 +94,8 @@ public class Barman extends Humain {
         }
     }
 
-    @Override
-    protected void PrendreUneCommande(Humain personne, Barman personne1) {
+    
+    public void PrendreUneCommande(Humain personne, Barman personne1) {
 
     }
 

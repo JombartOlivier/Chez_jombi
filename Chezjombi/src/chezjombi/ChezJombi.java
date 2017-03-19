@@ -21,8 +21,14 @@ public class ChezJombi {
         Humain joueur1=new Client("Olivier","Jombart",o1,"Homme",500);                  // String prenom, String surnom, Order boissonPreferee,String sexe, int argent
         Humain joueur2=new Client("Arthur","Dudu",o2,"Homme",300);
         Humain joueur3=new Serveur("Cam","Femme");
-        joueur3.setBoissonDe(o2);
-        joueur3.Boire();
+        joueur3.setMaBoisson(o2);
+        try{
+         joueur3.Boire();   
+        }catch(NullPointerException e){
+            System.out.println("Vous n'avez pas de boisson");
+        }
+        System.out.println("Je suis passe a autre chose");
+        
         
     }
 
