@@ -80,6 +80,7 @@ public class Jeu {
             System.out.println("Ton score à la manche [" + manche + "] = " + point + "\n");
             manche++;
         }
+        manche--;
         if (manche <= 25) {
             System.out.println("Tu as finit en " + manche + " manches\nTu es plutôt bon toi! ");
 
