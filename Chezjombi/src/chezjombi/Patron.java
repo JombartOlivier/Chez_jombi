@@ -51,7 +51,13 @@ public class Patron extends Humain {
 
     @Override
     public void SePresenter() {
-        System.out.println("Bonjour je suis le patron du bar c'est moi qui dirige mon nom est "+this.prenom+" et ma boisson preferer est "+this.boissonPreferee);
+        
+        if ("Homme".equals(this.sexe)) {
+            System.out.println("Bonjour je suis le patron du bar c'est moi qui dirige mon nom est "+this.prenom+" et ma boisson preferer est "+this.boissonPreferee);
+        }
+        if ("Femme".equals(this.sexe)) {
+            System.out.println("Bonjour je suis la patronne du bar c'est moi qui dirige mon nom est "+this.prenom+" et ma boisson preferer est "+this.boissonPreferee);
+        }
     }
 
     @Override
