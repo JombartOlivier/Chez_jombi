@@ -17,6 +17,7 @@ public class Histoire {
     private static String surnom;
     private static String sexe;
     private static String nom;
+    private static Order boissonPreferer;
 
     public static void jeu() {
 
@@ -36,6 +37,7 @@ public class Histoire {
             switch (classe) {
                 case "1":
                     classe = "Client";
+                    constructionClient();
                     break;
                 case "2":
                     classe = "Serveur";
@@ -47,15 +49,11 @@ public class Histoire {
                     classe = "Patron";
                     break;
                 default:
+                    classe = "0";
                     System.out.println("le numeros est incorrect");
             }
 
         }
-        
-
-                
-        
-
     }
     public static void constructionClient(){
         System.out.println("Vous avez choisie la classe " + classe);
@@ -64,7 +62,7 @@ public class Histoire {
         nom = sc.nextLine();
         System.out.println("Entrée le surnom de votre personnage");
         surnom =sc.nextLine();
-        System.out.println("Uel est le sexe devotre personnage");
+        System.out.println("Quel est le sexe devotre personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -77,7 +75,40 @@ public class Histoire {
         else{
             sexe = "Femme";
         }
-        
-
+        boissonPreferer = generateurBoisson();
+    }
+    
+    public static Order generateurBoisson(){
+        System.out.println("Il vous faut créer votre boisson preferer");
+        String nom;
+        boolean alcoolisee = false;
+        float degresDAlcool = 0.0f;
+        Scanner sc =new Scanner(System.in);
+        System.out.println("Entrée le nom de votre boisson favorite");
+        nom = sc.nextLine();
+        System.out.println("Votre boisson est-elle alcoolisée");
+        System.out.println("Oui [1]");
+        System.out.println("Non [2]");
+        String str = "0";
+        while("0".equals(str)){
+            str = sc.nextLine();
+            switch(str){
+                case "1" : 
+                    alcoolisee = true;
+                    System.out.println("Quel est son degres d'alcool ?");
+                    degresDAlcool = sc.nextFloat();
+                break;
+                case "2" : 
+                    alcoolisee = false;
+                break;
+                default : 
+                    str ="0";
+                    System.out.println("le numeros est incorrect");     
+            }
+        }
+        Order boisson = new Order(nom,alcoolisee,degresDAlcool);
+        boisson.calculprix();
+        System.out.println("Votre boisson preferée est donc " + boisson);
+        return boisson;       
     }
 }

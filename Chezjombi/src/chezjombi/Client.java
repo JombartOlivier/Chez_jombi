@@ -20,7 +20,11 @@ public class Client extends Humain implements ActionCommune{
         this.tailleBiceps = aleatoire;
         aleatoire = r.nextInt(101); 
         this.agilite = aleatoire;
-        aleatoire = r.;
+        aleatoire = r.nextInt(201);
+        while(aleatoire <= 25){
+            aleatoire = r.nextInt(201);
+        }
+        this.argent = aleatoire;
     }
     
     

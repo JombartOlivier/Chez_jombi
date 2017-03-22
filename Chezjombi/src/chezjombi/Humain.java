@@ -191,7 +191,7 @@ abstract class Humain {
         
         if (this.tailleBiceps < personne.tailleBiceps) {
             System.out.println("Aie j'ai mal ça fait mal");
-            System.out.println("Vous avez perdu la bagarre");
+            System.out.println("Vous avez perdu");
         }
         if (this.tailleBiceps == personne.tailleBiceps) {
             System.out.println("ça pique");

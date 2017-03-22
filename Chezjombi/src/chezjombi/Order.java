@@ -43,10 +43,7 @@ public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         }
         else{
            this.tauxAlcool = tauxAlcool; 
-        }
-      
-
-        
+        }       
 }
 
     public Order(String nom, boolean alcoolise, float tauxAlcool) {
@@ -154,7 +151,14 @@ public Order(String nom, int quantite, float prix){
         hash = 29 * hash + Float.floatToIntBits(this.tauxAlcool);
         return hash;
     }
-    
+public void calculprix(){
+            if(this.alcoolise == true){
+                this.prix = this.tauxAlcool*1.25f;
+            }
+            else{
+                this.prix = 3.5f;
+            }
+        }    
 /**
  * Override la methode equals 
  * @param obj
