@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package chezjombi;
+
 import java.util.Scanner;
 
 /**
@@ -28,6 +29,7 @@ public class ChezJombi {
             System.out.println("Vous n'avez pas de boisson");
         }
         System.out.println("Je suis passe a autre chose");
+        chezjombi.Histoire.creationPersonnage();
         
         
     }

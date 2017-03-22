@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Histoire {
 
     private static String classe;
+    private static String surnom;
+    private static String sexe;
     private static String nom;
 
     public static void jeu() {
@@ -47,14 +49,35 @@ public class Histoire {
                 default:
                     System.out.println("le numeros est incorrect");
             }
+
         }
+        
+
+                
+        
+
+    }
+    public static void constructionClient(){
         System.out.println("Vous avez choisie la classe " + classe);
-        switch(classe){
-            case "Client":
-                
-                break;
-                
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrée le nom de votre personnage");
+        nom = sc.nextLine();
+        System.out.println("Entrée le surnom de votre personnage");
+        surnom =sc.nextLine();
+        System.out.println("Uel est le sexe devotre personnage");
+        System.out.println("Femme  [1]");
+        System.out.println("Homme [2]");
+        sexe = "0";
+        while("0".equals(sexe)){
+            sexe = sc.nextLine();            
         }
+        if("Homme".equals(sexe)){
+            sexe = "Homme";
+        }
+        else{
+            sexe = "Femme";
+        }
+        
 
     }
 }

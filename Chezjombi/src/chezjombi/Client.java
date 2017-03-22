@@ -11,8 +11,8 @@ import java.util.Scanner;
  */
 public class Client extends Humain implements ActionCommune{
 
-    public Client(String prenom, String surnom, Order boissonPreferee,String sexe, int argent) {
-        super(prenom, surnom, boissonPreferee, sexe, argent);
+    public Client(String prenom, String surnom, Order boissonPreferee,String sexe) {
+        super(prenom, surnom, boissonPreferee, sexe);
         Random r = new Random();
         int aleatoire = r.nextInt(101);
         this.charme = aleatoire;
@@ -20,6 +20,7 @@ public class Client extends Humain implements ActionCommune{
         this.tailleBiceps = aleatoire;
         aleatoire = r.nextInt(101); 
         this.agilite = aleatoire;
+        aleatoire = r.;
     }
     
     

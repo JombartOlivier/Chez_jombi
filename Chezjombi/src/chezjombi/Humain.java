@@ -33,12 +33,11 @@ abstract class Humain {
      * @param charme
      * @param argent
      */
-    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe,int argent) {
+    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe) {
 
         this.prenom = prenom;
         this.surnom = surnom;
         this.boissonPreferee = boissonPreferee;
-        this.argent = argent;
         this.sexe = sexe;
     }
 
