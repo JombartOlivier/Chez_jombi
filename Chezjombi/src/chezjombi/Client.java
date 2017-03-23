@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Client extends Humain implements ActionCommune{
+public class Client extends Humain {
 
     public Client(String prenom, String surnom, Order boissonPreferee,String sexe) {
         super(prenom, surnom, boissonPreferee, sexe);
@@ -34,6 +34,7 @@ public class Client extends Humain implements ActionCommune{
  * @param personne
  * @param phrase 
  */    
+    @Override
     public void Parler(Humain personne, String phrase) {
         if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
              System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase);
@@ -58,6 +59,7 @@ public class Client extends Humain implements ActionCommune{
  * @param boisson
  * @param personne 
  */   
+    @Override
     public void OffrirUnVerre(Order boisson, Humain personne) {
         
         String str = "Allez, celle ci est pour moi";
@@ -71,6 +73,7 @@ public class Client extends Humain implements ActionCommune{
  * Methode permettant d'apporter un boisson
  * @param personne 
  */   
+    @Override
     public void ApporterBoisson(Humain personne) {
         
         System.out.println("Voici ta boisson abolu : " + this.boissonDe.getPrix());
@@ -81,6 +84,7 @@ public class Client extends Humain implements ActionCommune{
 /**
  * Methode permettant a un client de se presenter 
  */   
+    @Override
     public void SePresenter() {
         System.out.println("Bonjour je suis un client du bar mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
     }
@@ -90,6 +94,7 @@ public class Client extends Humain implements ActionCommune{
  * @param personne
  * @param personne1 
  */    
+    @Override
     public void PrendreUneCommande(Humain personne, Barman personne1) {
         if("homme".equals(this.sexe)){
             System.out.println("Tu m'as prit pour qui je suis pas un serveur....");

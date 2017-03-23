@@ -6,7 +6,7 @@ package chezjombi;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-abstract class Humain {
+public class Humain implements ActionCommune{
 
     protected String prenom;
     protected String surnom;
@@ -84,13 +84,10 @@ abstract class Humain {
      * @param agilite
      * @param charme
      */
-    public Humain(String prenom, Order boissonPreferee, String sexe, int tailleBiceps, int agilite, int charme) {
+    public Humain(String prenom, Order boissonPreferee, String sexe) {
         this.prenom = prenom;
         this.boissonPreferee = boissonPreferee;
         this.sexe = sexe;
-        this.tailleBiceps = tailleBiceps;
-        this.agilite = agilite;
-        this.charme = charme;
     }
 
     public String getPrenom() {
@@ -257,6 +254,31 @@ abstract class Humain {
             System.out.println("Voila");
             this.argent = this.argent - prix;
         }
+    }
+
+    @Override
+    public void Parler(Humain personne, String phrase) {
+        
+    }
+
+    @Override
+    public void OffrirUnVerre(Order boisson, Humain personne) {
+
+    }
+
+    @Override
+    public void ApporterBoisson(Humain personne) {
+
+    }
+
+    @Override
+    public void PrendreUneCommande(Humain personne, Barman personne1) {
+
+    }
+
+    @Override
+    public void SePresenter() {
+
     }
 
 }

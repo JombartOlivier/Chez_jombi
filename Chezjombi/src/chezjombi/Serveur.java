@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Serveur extends Humain implements ActionCommune{
+public class Serveur extends Humain{
 
     private float monnaie;
     private Order commande;
@@ -40,6 +40,7 @@ public class Serveur extends Humain implements ActionCommune{
      * @param phrase
      */
 
+    @Override
     public void Parler(Humain personne, String phrase) {
         System.out.println(this.prenom + " dit à " + personne.prenom + " : " + phrase);
     }
@@ -50,6 +51,7 @@ public class Serveur extends Humain implements ActionCommune{
      * @param personne
      */
 
+    @Override
     public void OffrirUnVerre(Order boisson, Humain personne) {
         String str;
         if ("Homme".equals(this.sexe)) {
@@ -63,6 +65,7 @@ public class Serveur extends Humain implements ActionCommune{
     }
 
 
+    @Override
     public void ApporterBoisson(Humain personne) {
 
         System.out.println("Voici votre boisson cela fera " + this.boissonDe.getPrix()+"€");
@@ -71,6 +74,7 @@ public class Serveur extends Humain implements ActionCommune{
 
     }
 
+    @Override
     public void PrendreUneCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
         String str = "Souhaitez vous boire votre boisson préferée ou voulez vous la composer vous-même ?";
@@ -121,6 +125,7 @@ public class Serveur extends Humain implements ActionCommune{
     }
 
     
+    @Override
     public void SePresenter() {
         if ("Homme".equals(this.sexe)) {
             System.out.println("Bonjour je suis votre serveur je m'appelle " + this.prenom);
@@ -131,6 +136,7 @@ public class Serveur extends Humain implements ActionCommune{
     }
 
     
+    @Override
     protected void Boire() {
         if (this.maBoisson.isAlcoolise() == true) {
             System.out.println("Je ne peut pas boire de boisson alcoolisée");

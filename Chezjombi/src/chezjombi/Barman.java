@@ -1,20 +1,27 @@
 package chezjombi;
 
+import java.util.Random;
+
 /**
  * Classe Fille Barman Created by Arthur Duytschaever on 13/02/2017.
  *
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Barman extends Humain implements ActionCommune{
+public class Barman extends Humain {
 
     private float caisse;
     private String nomBoisson;
     private boolean alcoolise;
     private float degresDalcool;
 
-    public Barman(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
-        super(prenom, surnom, boissonPreferee, sexe, tailleBiceps, charme);
+    public Barman(String prenom, String surnom, Order boissonPreferee, String sexe) {
+        super(prenom, surnom, boissonPreferee, sexe);
+        Random r = new Random();
+        int aleatoire = r.nextInt(101);
+        this.charme = aleatoire;
+        aleatoire = r.nextInt(101);
+        this.tailleBiceps = aleatoire; 
 
     }
 
@@ -62,6 +69,7 @@ public class Barman extends Humain implements ActionCommune{
 
     }
 
+    @Override
     public void Parler(Humain personne, String phrase) {
         if (this.degreeAlcoolemie < 5 && this.degreeAlcoolemie > 0) {
             System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase + " Fraté ");
@@ -72,6 +80,7 @@ public class Barman extends Humain implements ActionCommune{
     }
 
    
+    @Override
     public void OffrirUnVerre(Order boisson, Humain personne) {
         String str = "Desoler je ne suis pas autorisée à offrire de verre il faut voire ça avec le maitre des lieux";
         this.Parler(personne, str);
@@ -79,12 +88,14 @@ public class Barman extends Humain implements ActionCommune{
     }
 
     
+    @Override
     public void ApporterBoisson(Humain personne) {
         String str = "Desoler je ne peux pas bouger de mon bar demander à une serveur/se";
         this.Parler(personne, str);
     }
 
     
+    @Override
     public void SePresenter() {
         if ("Homme".equals(this.sexe)) {
             System.out.println("Hello, je suis le Barman C'est moi qui prepare toute les boissons je m'appelle " + this.prenom + " et ma boisson preferer est " + this.boissonPreferee);
@@ -95,6 +106,7 @@ public class Barman extends Humain implements ActionCommune{
     }
 
     
+    @Override
     public void PrendreUneCommande(Humain personne, Barman personne1) {
 
     }
