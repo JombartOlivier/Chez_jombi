@@ -33,7 +33,7 @@ public class Jeu {
 
     }
 
-    public static int Lancer(Humain personne) {
+    public static int lancer(Humain personne) {
 
         int manche = 1;
         int point = 501;
@@ -189,9 +189,9 @@ public class Jeu {
         return manche;
     }
 
-    public static void Duel(Humain joueur1, Humain joueur2) {
-        int mancheJoueur1 = Lancer(joueur1);
-        int mancheJoueur2 = Lancer(joueur2);
+    public static void duel(Humain joueur1, Humain joueur2) {
+        int mancheJoueur1 = lancer(joueur1);
+        int mancheJoueur2 = lancer(joueur2);
         if (mancheJoueur1 > mancheJoueur2) {
             System.out.println("\nLe gagnant de cette partie est : " + joueur2.prenom);
         }
