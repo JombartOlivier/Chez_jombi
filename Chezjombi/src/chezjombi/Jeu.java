@@ -31,14 +31,23 @@ public class Jeu {
 
     }
 
+    /**
+     * Notice d'utilisation
+     */
     public static void notice() {
         System.out.println("Les règles sont assez simple : tu commences avec un score de 501, \n"
-                + " * tu as 3 lancés de flechette à chaque manche. Tu déduis de ton score, le résultat de ta manche. Tu gagnes\n"
-                + " * quand tu arrives à 0. ATTENTION : si ton score est négatif, c'est à dire différent de zéro, tu recommences ta\n"
-                + " * manche. Ton agilité t'aidera peut-etre dans la partie ;). Le gagnant de la partie est celui qui est arrivé à 0 \n"
-                + " * avec un nombre de manche le plus petit.\n");
+                + "tu as 3 lancés de flechette à chaque manche. Tu déduis de ton score, le résultat de ta manche. Tu gagnes\n"
+                + "quand tu arrives à 0. ATTENTION : si ton score est négatif, c'est à dire différent de zéro, tu recommences ta\n"
+                + "manche. Ton agilité t'aidera peut-etre dans la partie ;). Le gagnant de la partie est celui qui est arrivé à 0 \n"
+                + "avec un nombre de manche le plus petit.\n");
     }
 
+    /**
+     * méthode permettant lorqu'un personnage souhaite joueur de lancer sa partie, toutes les actions du joeur sont écrites dans un fichier texte
+     * afin d'être consultable par la suite. 
+     * @param personne
+     * @return manche
+     */
     public static int lancer(Humain personne) {
 
         int manche = 1;
@@ -195,6 +204,11 @@ public class Jeu {
         return manche;
     }
 
+    /**
+     *Méthode permettant de confronter deux joueurs et d'afficher le vainqueur du duel.
+     * @param joueur1
+     * @param joueur2
+     */
     public static void duel(Humain joueur1, Humain joueur2) {
         int mancheJoueur1 = lancer(joueur1);
         int mancheJoueur2 = lancer(joueur2);
@@ -209,6 +223,9 @@ public class Jeu {
         }
     }
 
+    /**
+     * Méthode permettant d'afficher le résultat détaillé des deux joueurs. 
+     */
     public static void afficherResultat() {
         String chaine = "";
         String chaine2 = "";
