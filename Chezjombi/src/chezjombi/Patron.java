@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Patron extends Humain {
 
-    public Patron(String prenom, Order boissonPreferee, String sexe) {
+    public Patron(String prenom, Commande boissonPreferee, String sexe) {
         super(prenom, boissonPreferee, sexe);
         Random r = new Random();
         int aleatoire = r.nextInt(101);
@@ -32,79 +32,79 @@ public class Patron extends Humain {
 
     
     @Override
-    public void Parler(Humain personne, String phrase) {
+    public void parler(Humain personne, String phrase) {
         if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
-             System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase +"Oublie pas c'est moi le patron.");
+             System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase +"Oublie pas, c'est moi le paaaatroon.");
         }
         if(this.degreeAlcoolemie<10 && this.degreeAlcoolemie>5){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase + "Oublie pas c'est moi le bosse.");
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase + "Oublie pas, c'est moi le boosse.");
         }
         if(this.degreeAlcoolemie<15 && this.degreeAlcoolemie>10){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase+" I am the king.");
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : " + phrase+"I am THE king.");
         }
         if(this.degreeAlcoolemie>15){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ "LALALALA");
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ "LALALALA");
         }
     }
 
     
     @Override
-    public void OffrirUnVerre(Order boisson, Humain personne) {
+    public void offrirUnVerre(Commande boisson, Humain personne) {
         
-        String str = "c'est la maison qui offre";
-        this.Parler(personne, str);
+        String str = "C'est la maison qui offre.";
+        this.parler(personne, str);
         personne.maBoisson = boisson;
         
     }
 
     
     @Override
-    public void ApporterBoisson(Humain personne) {
-        System.out.println("Tu m'as prit pour ton chien ? ");
+    public void apporterBoisson(Humain personne) {
+        System.out.println("Tu m'as pris pour ton chien ? ");
     }
 
  
 
     
     @Override
-    public void SePresenter() {
+    public void sePresenter() {
         
         if ("Homme".equals(this.sexe)) {
-            System.out.println("Bonjour je suis le patron du bar c'est moi qui dirige mon nom est "+this.prenom+" et ma boisson preferer est "+this.boissonPreferee);
+            System.out.println("Bonjour, je suis le patron du bar et c'est moi qui dirige. Mon nom est "+this.prenom+" et ma boisson preferée est "+this.boissonPreferee);
         }
         if ("Femme".equals(this.sexe)) {
-            System.out.println("Bonjour je suis la patronne du bar c'est moi qui dirige mon nom est "+this.prenom+" et ma boisson preferer est "+this.boissonPreferee);
+            System.out.println("Bonjour, je suis la patronne du bar et c'est moi qui dirige. Mon nom est "+this.prenom+" et ma boisson preferée est "+this.boissonPreferee);
         }
     }
 
     
     @Override
-    public void PrendreUneCommande(Humain personne, Barman personne1) {
+    public void prendreCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
-        String str = "Bonjour je vais personnellement m'occupe de vous aujourd'hui attention sa ne se produit pas tout les jours. que voulais vous boire ?";
-        this.Parler(personne, str);
-        str = "boisson preferer [1]";
+        String str = "Bonjour, je vais personnellement m'occupe de vous aujourd'hui. Je suisd désolé ça ne se produira plus. Que voulez vous boire ?";
+        this.parler(personne, str);
+        str = "Boisson preferée [1]";
         System.out.println(str);
-        str = "composer sois meme [2]";
+        str = "Composer sois-même [2]";
         System.out.println(str);
         str = "0";
         while (!("1".equals(str) || "2".equals(str))) {
             str = sc.nextLine();
         }
         if ("1".equals(str)) {
-            System.out.println("Vous avez choisi votre boisson preferé");
+            System.out.println("Vous avez choisi votre boisson preferée");
             personne1.setNomBoisson(personne.boissonPreferee.getNom());
             personne1.setDegresDalcool(personne.boissonPreferee.getTauxAlcool());
             personne1.setAlcoolise(personne.boissonPreferee.isAlcoolise());
         }
         if ("2".equals(str)) {
-            System.out.println("Vous avez choisi de faire votre boisson vous meme");
+            System.out.println("Vous avez choisi de faire votre boisson vous-même");
             str = "Quel est le nom de ta bibine ?";
-            this.Parler(personne, str);
+            this.parler(personne, str);
             str = sc.nextLine();
             personne1.setNomBoisson(str);
-            str = "on picole aujourd'hui ou pas ?";
-            this.Parler(personne, str);
+            str = "On picole aujourd'hui ou pas ?";
+            this.parler(personne, str);
             str = "oui [1]";
             System.out.println(str);
             str = "non [2]";
@@ -114,8 +114,8 @@ public class Patron extends Humain {
             }
             if ("1".equals(str)) {
                 personne1.setAlcoolise(true);
-                str = "aller faut pas ta filliette";
-                this.Parler(personne, str);
+                str = "Aller faut pas ta mauviette !";
+                this.parler(personne, str);
                 str = sc.nextLine();
                 int degreedalcool = Integer.parseInt(str);
                 personne1.setDegresDalcool(degreedalcool);
@@ -124,8 +124,8 @@ public class Patron extends Humain {
                 personne1.setAlcoolise(false);
             }
         }
-        str = "Je fait apporter ça tout de suite";
-        this.Parler(personne, str);
+        str = "Je te fais apporter ça tout de suite";
+        this.parler(personne, str);
     }
   
     

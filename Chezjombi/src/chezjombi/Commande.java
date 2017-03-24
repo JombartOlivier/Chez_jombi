@@ -10,7 +10,7 @@ import java.util.Objects;
  * @version v1.0
  */
 
-public class  Order {
+public class  Commande {
     
     private final String nom;
     private  int quantite;
@@ -25,7 +25,7 @@ public class  Order {
     
     
 /**
- * Construteur de la classe boisson pour les boisson alcoolisée
+ * Construteur de la classe boisson pour les boissons alcoolisées
  * @param nom
  * @param prix
  * @param alcoolise
@@ -33,7 +33,7 @@ public class  Order {
  * @param proprieteDe 
  */
 
-public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
+public Commande(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         this.nom = nom;
         this.quantite = 100;
         this.prix = prix;
@@ -46,7 +46,7 @@ public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
         }       
 }
 
-    public Order(String nom, boolean alcoolise, float tauxAlcool) {
+    public Commande(String nom, boolean alcoolise, float tauxAlcool) {
         this.nom = nom;
         this.alcoolise = alcoolise;
         if(alcoolise == false){
@@ -59,13 +59,13 @@ public Order(String nom, float prix, boolean alcoolise, float tauxAlcool) {
     }
 
 /**
- * Construteur de la classe boisson pour les boisson non alcoolisée
+ * Construteur de la classe boisson pour les boissons non alcoolisées
  * @param nom
  * @param quantite
  * @param prix 
  */
 
-public Order(String nom, int quantite, float prix){
+public Commande(String nom, int quantite, float prix){
         this.nom = nom;
         this.quantite = 100;
         this.prix = prix;
@@ -73,7 +73,7 @@ public Order(String nom, int quantite, float prix){
         this.tauxAlcool = 0;
 }
 /**
- * Getteur de l'attribue nom  
+ * Getteur de l'attribut nom  
  * @return nom
  */
 
@@ -82,7 +82,7 @@ public Order(String nom, int quantite, float prix){
     }
     
 /**
- * Getteur de l'attribue quantite
+ * Getteur de l'attribut quantité
  * @return quantite
  */
     
@@ -91,7 +91,7 @@ public Order(String nom, int quantite, float prix){
     }
     
 /**
- * Getteur de l'attribue prix
+ * Getteur de l'attribut prix
  * @return prix
  */
     
@@ -100,7 +100,7 @@ public Order(String nom, int quantite, float prix){
     }
     
 /**
- * Getteur de l'attribue alcoolise
+ * Getteur de l'attribut alcoolisé
  * @return alcoolise
  */
     
@@ -117,7 +117,7 @@ public Order(String nom, int quantite, float prix){
     }
     
 /**
- * Setteur de l'attribue quantite 
+ * Setteur de l'attribut quantité 
  * @param quantite 
  */
     
@@ -127,7 +127,7 @@ public Order(String nom, int quantite, float prix){
     
 /**
  * override de la methode toString 
- * @return nom + " au prix de : "+prix+" avec un degres d'aclool a "+tauxAlcool
+ * @return nom + " au prix de : "+prix+" avec un degré d'aclool à "+tauxAlcool
  */
     
     @Override
@@ -176,7 +176,7 @@ public void calculprix(){
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Order other = (Order) obj;
+        final Commande other = (Commande) obj;
         if (this.quantite != other.quantite) {
             return false;
         }

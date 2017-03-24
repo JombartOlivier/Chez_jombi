@@ -15,7 +15,7 @@ public class Barman extends Humain {
     private boolean alcoolise;
     private float degresDalcool;
 
-    public Barman(String prenom, String surnom, Order boissonPreferee, String sexe) {
+    public Barman(String prenom, String surnom, Commande boissonPreferee, String sexe) {
         super(prenom, surnom, boissonPreferee, sexe);
         Random r = new Random();
         int aleatoire = r.nextInt(101);
@@ -57,20 +57,20 @@ public class Barman extends Humain {
         this.caisse = caisse;
     }
 
-    protected void PreparerUneBoisson() {
+    protected void preparerUneBoisson() {
         if (this.alcoolise == true) {
             float prix = this.degresDalcool * (float) 1.2;
-            Order b1 = new Order(this.nomBoisson, prix, this.alcoolise, this.degresDalcool);
+            Commande b1 = new Commande(this.nomBoisson, prix, this.alcoolise, this.degresDalcool);
 
         }
         if (this.alcoolise == false) {
-            Order b1 = new Order(this.nomBoisson, 3, this.alcoolise, this.degresDalcool);
+            Commande b1 = new Commande(this.nomBoisson, 3, this.alcoolise, this.degresDalcool);
         }
 
     }
 
     @Override
-    public void Parler(Humain personne, String phrase) {
+    public void parler(Humain personne, String phrase) {
         if (this.degreeAlcoolemie < 5 && this.degreeAlcoolemie > 0) {
             System.out.println(this.prenom + " dit a " + personne.prenom + " : " + phrase + " Fraté ");
         }
@@ -81,33 +81,33 @@ public class Barman extends Humain {
 
    
     @Override
-    public void OffrirUnVerre(Order boisson, Humain personne) {
-        String str = "Desoler je ne suis pas autorisée à offrire de verre il faut voire ça avec le maitre des lieux";
-        this.Parler(personne, str);
+    public void offrirUnVerre(Commande boisson, Humain personne) {
+        String str = "Desolé, je ne suis pas autorisé à offrir de verre. Il faut voir ça avec le patron";
+        this.parler(personne, str);
 
     }
 
     
     @Override
-    public void ApporterBoisson(Humain personne) {
-        String str = "Desoler je ne peux pas bouger de mon bar demander à une serveur/se";
-        this.Parler(personne, str);
+    public void apporterBoisson(Humain personne) {
+        String str = "Desolé, je ne peux pas bouger de mon bar. Demander à une serveur/se";
+        this.parler(personne, str);
     }
 
     
     @Override
-    public void SePresenter() {
+    public void sePresenter() {
         if ("Homme".equals(this.sexe)) {
-            System.out.println("Hello, je suis le Barman C'est moi qui prepare toute les boissons je m'appelle " + this.prenom + " et ma boisson preferer est " + this.boissonPreferee);
+            System.out.println("Hello, je suis le Barman. C'est moi qui prépare toutes les boissons je m'appelle " + this.prenom + " et ma boisson preferée est " + this.boissonPreferee);
         }
         if ("Femme".equals(this.sexe)) {
-            System.out.println("Hello, je suis le Barwoman (si si ça se dit) C'est moi qui prepare toute les boissons je m'appelle " + this.prenom + " et ma boisson preferer est " + this.boissonPreferee);
+            System.out.println("Hello, je suis le Barwoman (si si ça se dit). C'est moi qui prépare toutes les boissons je m'appelle " + this.prenom + " et ma boisson preferer est " + this.boissonPreferee);
         }
     }
 
     
     @Override
-    public void PrendreUneCommande(Humain personne, Barman personne1) {
+    public void prendreCommande(Humain personne, Barman personne1) {
 
     }
 

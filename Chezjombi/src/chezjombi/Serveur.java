@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Serveur extends Humain{
 
     private float monnaie;
-    private Order commande;
+    private Commande commande;
 /**
  * Construteur de serveur
  * @param prenom
@@ -41,7 +41,7 @@ public class Serveur extends Humain{
      */
 
     @Override
-    public void Parler(Humain personne, String phrase) {
+    public void parler(Humain personne, String phrase) {
         System.out.println(this.prenom + " dit à " + personne.prenom + " : " + phrase);
     }
 
@@ -52,33 +52,33 @@ public class Serveur extends Humain{
      */
 
     @Override
-    public void OffrirUnVerre(Order boisson, Humain personne) {
+    public void offrirUnVerre(Commande boisson, Humain personne) {
         String str;
         if ("Homme".equals(this.sexe)) {
-            str = "Je ne suis qu'un serveur je peux pas vous offrir un verre";
-            Parler(personne, str);
+            str = "Je ne suis qu'un serveur, je peux pas vous offrir un verre";
+            parler(personne, str);
         }
         if ("Femme".equals(this.sexe)) {
-            str = "Je ne suis qu'une serveuse je peux pas vous offrir un verre";
-            Parler(personne, str);
+            str = "Je ne suis qu'une serveuse, je peux pas vous offrir un verre";
+            parler(personne, str);
         }
     }
 
 
     @Override
-    public void ApporterBoisson(Humain personne) {
+    public void apporterBoisson(Humain personne) {
 
-        System.out.println("Voici votre boisson cela fera " + this.boissonDe.getPrix()+"€");
+        System.out.println("Voici votre boisson, cela fera " + this.boissonDe.getPrix()+"€");
         personne.maBoisson = this.boissonDe;
         this.boissonDe = null;
 
     }
 
     @Override
-    public void PrendreUneCommande(Humain personne, Barman personne1) {
+    public void prendreCommande(Humain personne, Barman personne1) {
         Scanner sc = new Scanner(System.in);
         String str = "Souhaitez vous boire votre boisson préferée ou voulez vous la composer vous-même ?";
-        this.Parler(personne, str);
+        this.parler(personne, str);
         str = "-> Boisson préferée [1]";
         System.out.println(str);
         str = "-> Composer sois-même [2]";
@@ -96,14 +96,14 @@ public class Serveur extends Humain{
         if ("2".equals(str)) {
             System.out.println("Vous avez choisi de faire votre boisson vous-même");
             str = "Quel est le nom de votre boisson ?";
-            this.Parler(personne, str);
+            this.parler(personne, str);
             str = sc.nextLine();
             personne1.setNomBoisson(str);
             str = "Votre boisson est elle alcoolisée ?";
-            this.Parler(personne, str);
-            str = "oui [1]";
+            this.parler(personne, str);
+            str = "Oui [1]";
             System.out.println(str);
-            str = "non [2]";
+            str = "Non [2]";
             System.out.println(str);
             while (!("1".equals(str) || "2".equals(str))) {
                 str = sc.nextLine();
@@ -111,7 +111,7 @@ public class Serveur extends Humain{
             if ("1".equals(str)) {
                 personne1.setAlcoolise(true);
                 str = "Quel est le degré d'alcool de votre boisson ?";
-                this.Parler(personne, str);
+                this.parler(personne, str);
                 str = sc.nextLine();
                 int degreedalcool = Integer.parseInt(str);
                 personne1.setDegresDalcool(degreedalcool);
@@ -121,38 +121,38 @@ public class Serveur extends Humain{
             }
         }
         str = "Je vous rapporte ça tout de suite";
-        this.Parler(personne, str);
+        this.parler(personne, str);
     }
 
     
     @Override
-    public void SePresenter() {
+    public void sePresenter() {
         if ("Homme".equals(this.sexe)) {
-            System.out.println("Bonjour je suis votre serveur je m'appelle " + this.prenom);
+            System.out.println("Bonjour je suis votre serveur, je m'appelle " + this.prenom);
         }
         if ("Femme".equals(this.sexe)) {
-            System.out.println("Bonjour je suis votre serveuse je m'appelle " + this.prenom);
+            System.out.println("Bonjour je suis votre serveuse, je m'appelle " + this.prenom);
         }
     }
 
     
     @Override
-    protected void Boire() {
+    protected void boire() {
         if (this.maBoisson.isAlcoolise() == true) {
-            System.out.println("Je ne peut pas boire de boisson alcoolisée");
+            System.out.println("Je ne peux pas boire de boisson alcoolisée");
         } else {
-            super.Boire();
+            super.boire();
         }
     }
 
     /**
-     * Methode pour Transmettre l'argent au barman dans la caisse
+     * Méthode pour transmettre l'argent au barman dans la caisse
      *
      * @param personne
      */
     protected void TransmettreArgentBarman(Barman personne) {
-        String str = "Voici de l'argent a mettre dans la caisse " + this.monnaie;
-        this.Parler(personne, str);
+        String str = "Voici de l'argent à mettre dans la caisse : " + this.monnaie+"€";
+        this.parler(personne, str);
         personne.setCaisse(this.monnaie);
         this.monnaie = 0;
     }

@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Client extends Humain {
 
-    public Client(String prenom, String surnom, Order boissonPreferee,String sexe) {
+    public Client(String prenom, String surnom, Commande boissonPreferee,String sexe) {
         super(prenom, surnom, boissonPreferee, sexe);
         Random r = new Random();
         int aleatoire = r.nextInt(101);
@@ -30,27 +30,24 @@ public class Client extends Humain {
     
 
 /**
- * Methode attribuant la parole au client en fonction de leur taux d'alccolmie
+ * Methode attribuant la parole au client en fonction de leurs taux d'alccolmie
  * @param personne
  * @param phrase 
  */    
     @Override
-    public void Parler(Humain personne, String phrase) {
+    public void parler(Humain personne, String phrase) {
         if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
-             System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase);
+             System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase);
         }
         if(this.degreeAlcoolemie<10 && this.degreeAlcoolemie>5){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ phrase + "Hip");
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase + "Hip");
         }
         if(this.degreeAlcoolemie<15 && this.degreeAlcoolemie>10){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : " +personne.prenom+ phrase);
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : " +personne.prenom+ phrase);
         }
         if(this.degreeAlcoolemie>15){
-            System.out.println(this.prenom + " dit a " + personne.prenom + " : "+ "LALALALA");
+            System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ "LALALALA");
         }
-            
-        
-       
         
     }
 
@@ -60,12 +57,12 @@ public class Client extends Humain {
  * @param personne 
  */   
     @Override
-    public void OffrirUnVerre(Order boisson, Humain personne) {
+    public void offrirUnVerre(Commande boisson, Humain personne) {
         
         String str = "Allez, celle ci est pour moi";
-        this.Parler(personne, str);
+        this.parler(personne, str);
         personne.maBoisson = boisson;
-        this.Payer((int) boisson.getPrix());
+        this.payer((int) boisson.getPrix());
 
     }
 
@@ -74,19 +71,19 @@ public class Client extends Humain {
  * @param personne 
  */   
     @Override
-    public void ApporterBoisson(Humain personne) {
+    public void apporterBoisson(Humain personne) {
         
-        System.out.println("Voici ta boisson abolu : " + this.boissonDe.getPrix());
+        System.out.println("Voici ta boisson voulu : " + this.boissonDe.getPrix());
         personne.maBoisson = this.boissonDe;
         this.boissonDe = null;
     }
 
 /**
- * Methode permettant a un client de se presenter 
+ * Methode permettant a un client de se presenter. 
  */   
     @Override
-    public void SePresenter() {
-        System.out.println("Bonjour je suis un client du bar mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+" ma boisson favourite "+this.boissonPreferee);
+    public void sePresenter() {
+        System.out.println("Bonjour, je suis un client du bar. Mon prenom est : "+this.prenom+" mais vous pouvez m'appeler "+this.surnom+", ma boisson favorite est "+this.boissonPreferee);
     }
 
 /**
@@ -95,12 +92,12 @@ public class Client extends Humain {
  * @param personne1 
  */    
     @Override
-    public void PrendreUneCommande(Humain personne, Barman personne1) {
-        if("homme".equals(this.sexe)){
-            System.out.println("Tu m'as prit pour qui je suis pas un serveur....");
+    public void prendreCommande(Humain personne, Barman personne1) {
+        if("Homme".equals(this.sexe)){
+            System.out.println("Tu m'as pris pour qui ? Je ne suis pas un serveur...");
         }
         if("Femme".equals(this.sexe)){
-            System.out.println("Tu m'as prit pour qui je suis pas un serveuse....");
+            System.out.println("Tu m'as prise pour qui ? Je ne suis pas un serveuse...");
         }
         
     }

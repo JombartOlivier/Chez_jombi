@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chezjombi;
 
 /**
@@ -11,41 +6,41 @@ package chezjombi;
  */
 public interface ActionCommune {
         /**
-     * Methode abstraite permettant au different personnage de parler
+     * Methode abstraite permettant aux differents personnages de parler
      *
      * @param personne
      * @param phrase
      */
-    public void Parler(Humain personne, String phrase);
+    public void parler(Humain personne, String phrase);
 
     /**
-     * Methode abstraite permettant au different personnage d'offrire boire
+     * Methode abstraite permettant aux differents personnages d'offrir à boire
      *
      * @param boisson
      * @param personne
      */
-    abstract public void OffrirUnVerre(Order boisson, Humain personne);
+    abstract public void offrirUnVerre(Commande boisson, Humain personne);
 
     /**
-     * Methode abstraite permettant au different personnage d' apporter une
+     * Methode abstraite permettant aux differents personnages d'apporter une
      * boisson
      *
      * @param personne
      */
-    abstract public void ApporterBoisson(Humain personne);
+    abstract public void apporterBoisson(Humain personne);
 
     /**
-     * Methode abstraite permettant au different personnage de prendre uneS
+     * Methode abstraite permettant aux differents personnages de prendre une
      * commande
      *
      * @param boisson
      */
-    abstract public void PrendreUneCommande(Humain personne, Barman personne1);
+    abstract public void prendreCommande(Humain personne, Barman personne1);
 
     /**
-     * Methode abstraite permettant au different personnage de se presenter
+     * Methode abstraite permettant aux differents personnages de se présenter.
      */
-    abstract public void SePresenter();
+    abstract public void sePresenter();
 
  
 }

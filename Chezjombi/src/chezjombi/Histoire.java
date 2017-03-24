@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chezjombi;
 
 import java.util.Random;
@@ -18,7 +14,7 @@ public class Histoire {
     private static String surnom;
     private static String sexe;
     private static String nom;
-    private static Order boissonPreferer;
+    private static Commande boissonPreferee;
     private static Humain joueur;
 
     private final static String TABLEAUSURNOM[] = {"coco"};
@@ -55,13 +51,14 @@ public class Histoire {
      * Methode pour Creer son personnage
      */
     public static void creationPersonnage() {
-        System.out.println("Quel classe de personnage souhaité vous jouer ?");
-        System.out.println("Client  [1]");
+        System.out.println("Présentation du jeu, des persos....");
+        System.out.println("Quelle classe de personnage souhaitez-vous jouer ?");
+        System.out.println("Client    [1]");
         System.out.println("Serveur [2]");
-        System.out.println("Barman  [3]");
-        System.out.println("Patron  [4]");
+        System.out.println("Barman [3]");
+        System.out.println("Patron   [4]");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le numeros de votre classe");
+        System.out.println("Entrez le numéro de votre classe");
         classe = "0";
         while ("0".equals(classe)) {
             classe = sc.nextLine();
@@ -69,7 +66,7 @@ public class Histoire {
                 case "1":
                     classe = "Client";
                     constructionClient();
-                    joueur = new Client(nom, surnom, boissonPreferer, sexe);
+                    joueur = new Client(nom, surnom, boissonPreferee, sexe);
                     break;
                 case "2":
                     classe = "Serveur";
@@ -80,33 +77,33 @@ public class Histoire {
                 case "3":
                     classe = "Barman";
                     constructionBarman();
-                    joueur = new Barman(nom, surnom, boissonPreferer, sexe);
+                    joueur = new Barman(nom, surnom, boissonPreferee, sexe);
 
                     break;
                 case "4":
                     classe = "Patron";
                     constructionPatron();
-                    joueur = new Patron(nom, boissonPreferer, sexe);
+                    joueur = new Patron(nom, boissonPreferee, sexe);
 
                     break;
                 default:
                     classe = "0";
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("le numéro est incorrect");
             }
 
         }
-        joueur.SePresenter();
+        joueur.sePresenter();
     }
 
     /**
-     * Methode pour creer un patron
+     * Methode pour créer un patron.
      */
     public static void constructionPatron() {
-        System.out.println("Vous avez choisie la classe " + classe);
+        System.out.println("Vous avez choisi la classe " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le nom de votre personnage");
+        System.out.println("Entrez le nom de votre personnage");
         nom = sc.nextLine();
-        System.out.println("Quel est le sexe devotre personnage");
+        System.out.println("Quel est le sexe de votre personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -120,25 +117,25 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("Le numéro est incorrect");
                     sexe = "0";
             }
         }
-        boissonPreferer = generateurBoisson();
+        boissonPreferee = generateurBoisson();
 
     }
 
     /**
-     * Methode pour creer un barman
+     * Methode pour créer un barman
      */
     public static void constructionBarman() {
-        System.out.println("Vous avez choisie la classe " + classe);
+        System.out.println("Vous avez choisi la classe " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le nom de votre personnage");
+        System.out.println("Entrez le nom de votre personnage");
         nom = sc.nextLine();
-        System.out.println("Entrée le surnom de votre personnage");
+        System.out.println("Entrez le surnom de votre personnage");
         surnom = sc.nextLine();
-        System.out.println("Quel est le sexe devotre personnage");
+        System.out.println("Quel est le sexe de votre personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -152,11 +149,11 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("Le numéro est incorrect");
                     sexe = "0";
             }
         }
-        boissonPreferer = generateurBoisson();
+        boissonPreferee = generateurBoisson();
 
     }
 
@@ -164,11 +161,11 @@ public class Histoire {
      * Methode pour creer un serveur
      */
     public static void constructionServeur() {
-        System.out.println("Vous avez choisie la classe " + classe);
+        System.out.println("Vous avez choisi la classe " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le nom de votre personnage");
+        System.out.println("Entrez le nom de votre personnage");
         nom = sc.nextLine();
-        System.out.println("Quel est le sexe devotre personnage");
+        System.out.println("Quel est le sexe de votre personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -182,7 +179,7 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("Le numéro est incorrect");
                     sexe = "0";
             }
         }
@@ -193,13 +190,13 @@ public class Histoire {
      * Methode pour creer un client
      */
     public static void constructionClient() {
-        System.out.println("Vous avez choisie la classe " + classe);
+        System.out.println("Vous avez choisi la classe " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le nom de votre personnage");
+        System.out.println("Entrez le nom de votre personnage");
         nom = sc.nextLine();
-        System.out.println("Entrée le surnom de votre personnage");
+        System.out.println("Entrez le surnom de votre personnage");
         surnom = sc.nextLine();
-        System.out.println("Quel est le sexe devotre personnage");
+        System.out.println("Quel est le sexe de votre personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -213,27 +210,27 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("Le numero est incorrect");
                     sexe = "0";
             }
         }
-        boissonPreferer = generateurBoisson();
+        boissonPreferee = generateurBoisson();
 
     }
 
     /**
      * pour generer une boisson
      *
-     * @return une boisson de type Order
+     * @return une boisson de type Commande
      */
-    public static Order generateurBoisson() {
-        System.out.println("Il vous faut créer votre boisson preferer");
-        String pnom;
+    public static Commande generateurBoisson() {
+        System.out.println("Il vous faut créer votre boisson preferée");
+        String pNom;
         boolean alcoolisee = false;
         float degresDAlcool = 0.0f;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrée le nom de votre boisson favorite");
-        pnom = sc.nextLine();
+        System.out.println("Entrez le nom de votre boisson favorite :");
+        pNom = sc.nextLine();
         System.out.println("Votre boisson est-elle alcoolisée");
         System.out.println("Oui [1]");
         System.out.println("Non [2]");
@@ -243,7 +240,7 @@ public class Histoire {
             switch (str) {
                 case "1":
                     alcoolisee = true;
-                    System.out.println("Quel est son degres d'alcool ?");
+                    System.out.println("Quel est son degré d'alcool ?");
                     degresDAlcool = sc.nextFloat();
                     break;
                 case "2":
@@ -251,10 +248,10 @@ public class Histoire {
                     break;
                 default:
                     str = "0";
-                    System.out.println("le numeros est incorrect");
+                    System.out.println("Le numéro est incorrect");
             }
         }
-        Order boisson = new Order(pnom, alcoolisee, degresDAlcool);
+        Commande boisson = new Commande(pNom, alcoolisee, degresDAlcool);
         boisson.calculprix();
         System.out.println("Votre boisson preferée est donc " + boisson);
         return boisson;
@@ -263,16 +260,16 @@ public class Histoire {
     /**
      * pour generer aleatoirement une boisson
      *
-     * @return une boisson de type Order
+     * @return une boisson de type Commande
      */
-    public static Order generationAleatoirBoisson() {
+    public static Commande generationAleatoirBoisson() {
         Random r = new Random();
         int nbElement = NOMBOISSON.length;
         int aleatoire = r.nextInt(nbElement);
         String nomBoisson = NOMBOISSON[aleatoire];
         boolean alccoliser = r.nextBoolean();
         float degresDalcool = r.nextFloat();
-        Order boisson = new Order(nomBoisson, alccoliser, degresDalcool);
+        Commande boisson = new Commande(nomBoisson, alccoliser, degresDalcool);
         return boisson;
     }
 
@@ -282,7 +279,7 @@ public class Histoire {
             case "Client":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Client");
-                    client[i] = new Client(nom, surnom, boissonPreferer, sexe);
+                    client[i] = new Client(nom, surnom, boissonPreferee, sexe);
                 }
                 break;
             case "Serveur":
@@ -294,13 +291,13 @@ public class Histoire {
             case "Barman":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Barman");
-                    barman[i] = new Barman(nom, surnom, boissonPreferer, sexe);
+                    barman[i] = new Barman(nom, surnom, boissonPreferee, sexe);
                 }
                 break;
             case "Patron":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Patron");
-                    patron[i] = new Patron(nom, boissonPreferer, sexe);
+                    patron[i] = new Patron(nom, boissonPreferee, sexe);
                 }
                 break;
         }
@@ -331,16 +328,16 @@ public class Histoire {
                 int nbElementSurnom = TABLEAUSURNOM.length;
                 aleatoire = r.nextInt(nbElementSurnom);
                 surnom = TABLEAUMASCULIN[aleatoire];
-                boissonPreferer = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoirBoisson();
                 break;
             case "Barman":
                 nbElementSurnom = TABLEAUSURNOM.length;
                 aleatoire = r.nextInt(nbElementSurnom);
                 surnom = TABLEAUMASCULIN[aleatoire];
-                boissonPreferer = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoirBoisson();
                 break;
             case "Patron":
-                boissonPreferer = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoirBoisson();
                 break;
             case "Serveur":
 

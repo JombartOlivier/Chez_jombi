@@ -1,7 +1,7 @@
 package chezjombi;
 
 /**
- * Classe Mere Humain Created by Arthur Duytschaever on 13/02/2017.
+ * Classe Mère Humain 
  *
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
@@ -10,18 +10,18 @@ public class Humain implements ActionCommune{
 
     protected String prenom;
     protected String surnom;
-    protected Order boissonPreferee;
+    protected Commande boissonPreferee;
     protected String sexe;
     protected int tailleBiceps;
     protected int agilite;
     protected int charme;
     protected float degreeAlcoolemie;
     protected int argent;
-    protected Order boissonDe;
-    protected Order maBoisson;
+    protected Commande boissonDe;
+    protected Commande maBoisson;
 
     /**
-     * Construteur Destinée à la classe Client
+     * Construteur destiné à la classe Client
      *
      * @param prenom
      * @param surnom
@@ -33,7 +33,7 @@ public class Humain implements ActionCommune{
      * @param charme
      * @param argent
      */
-    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe) {
+    public Humain(String prenom, String surnom, Commande boissonPreferee, String sexe) {
 
         this.prenom = prenom;
         this.surnom = surnom;
@@ -42,20 +42,18 @@ public class Humain implements ActionCommune{
     }
 
     /**
-     * Construteur Destinée à la classe Serveur
+     * Construteur destiné à la classe Serveur
      *
      * @param prenom
      * @param sexe
      */
     public Humain(String prenom, String sexe) {
         this.prenom = prenom;
-        this.sexe = sexe;
-        
-
+        this.sexe = sexe;     
     }
 
     /**
-     * Construteur Destinée à la classe Barman
+     * Construteur destiné à la classe Barman
      *
      * @param prenom
      * @param surnom
@@ -64,7 +62,7 @@ public class Humain implements ActionCommune{
      * @param tailleBiceps
      * @param charme
      */
-    public Humain(String prenom, String surnom, Order boissonPreferee, String sexe, int tailleBiceps, int charme) {
+    public Humain(String prenom, String surnom, Commande boissonPreferee, String sexe, int tailleBiceps, int charme) {
         this.prenom = prenom;
         this.surnom = surnom;
         this.boissonPreferee = boissonPreferee;
@@ -74,7 +72,7 @@ public class Humain implements ActionCommune{
     }
 
     /**
-     * Construteur Destinée à la classe Patron
+     * Construteur destiné à la classe Patron
      *
      * @param prenom
      * @param boissonPreferee
@@ -84,7 +82,7 @@ public class Humain implements ActionCommune{
      * @param agilite
      * @param charme
      */
-    public Humain(String prenom, Order boissonPreferee, String sexe) {
+    public Humain(String prenom, Commande boissonPreferee, String sexe) {
         this.prenom = prenom;
         this.boissonPreferee = boissonPreferee;
         this.sexe = sexe;
@@ -106,11 +104,11 @@ public class Humain implements ActionCommune{
         this.surnom = surnom;
     }
 
-    public Order getBoissonPreferee() {
+    public Commande getBoissonPreferee() {
         return boissonPreferee;
     }
 
-    public void setBoissonPreferee(Order boissonPreferee) {
+    public void setBoissonPreferee(Commande boissonPreferee) {
         this.boissonPreferee = boissonPreferee;
     }
 
@@ -162,19 +160,19 @@ public class Humain implements ActionCommune{
         this.argent = argent;
     }
 
-    public Order getBoissonDe() {
+    public Commande getBoissonDe() {
         return boissonDe;
     }
 
-    public void setBoissonDe(Order boissonDe) {
+    public void setBoissonDe(Commande boissonDe) {
         this.boissonDe = boissonDe;
     }
 
-    public Order getMaBoisson() {
+    public Commande getMaBoisson() {
         return maBoisson;
     }
 
-    public void setMaBoisson(Order maBoisson) {
+    public void setMaBoisson(Commande maBoisson) {
         this.maBoisson = maBoisson;
     }
 
@@ -184,33 +182,33 @@ public class Humain implements ActionCommune{
      *
      * @param personne
      */
-    protected void SeBattre(Humain personne) {
+    protected void seBattre(Humain personne) {
         
         if (this.tailleBiceps < personne.tailleBiceps) {
-            System.out.println("Aie j'ai mal ça fait mal");
-            System.out.println("Vous avez perdu");
+            System.out.println("Aie j'ai mal ça fait mal !");
+            System.out.println("Vous avez perdu !");
         }
         if (this.tailleBiceps == personne.tailleBiceps) {
-            System.out.println("ça pique");
-            System.out.println("Vous étes à égalité");
+            System.out.println("ça pique !");
+            System.out.println("Vous êtes à égalité !");
         } else {
             System.out.println("This is a Spartan !!!!!!!!!!!");
-            System.out.println("Vous remportez la victoire");
+            System.out.println("Vous remportez la victoire !");
         }
 
     }
 
     /**
-     * Methode permettant au different personnage de boire en cas de boisson
-     * alcooliser augmente le taux d'alcoolmie
+     * Méthode permettant aux differents personnages de boire en cas de boisson
+     * alcoolisée et augmente le taux d'alcoolmie.
      */
-    protected void Boire() {
+    protected void boire() {
         int quantite = this.maBoisson.getQuantite();
         if (this.maBoisson == null) {
-            System.out.println("Je n'est pas de boisson il m'en faut vite une");
+            System.out.println("Je n'ai pas de boisson, il m'en faut vite une");
         } else {
             this.maBoisson.setQuantite(quantite - 25);
-            System.out.println("*Glou Glou Glou* il me reste " + this.maBoisson.getQuantite() + "% de ma boisson");
+            System.out.println("*Glou Glou Glou* Il me reste " + this.maBoisson.getQuantite() + "% de ma boisson.");
             if (this.maBoisson.getTauxAlcool() != -1) {
                 this.degreeAlcoolemie = this.degreeAlcoolemie + this.maBoisson.getTauxAlcool();
             }
@@ -222,10 +220,10 @@ public class Humain implements ActionCommune{
     }
 
     /**
-     * Methode permettant au different personnage d'aller au toillette en cas
-     * degres d'alcoolmie >25 baisse le degree d'alcoolmie diminue de 25
+     * Méthode permettant aux differents personnages d'aller aux toillettes en cas
+     * de degré d'alcoolémie >25, baisse le degré d'alcoolémie de 25.
      */
-    protected void AllerAuWC() {
+    protected void allerAuWC() {
 
         if ("Homme".equals(this.sexe)) {
             System.out.println("Je vais pisser");
@@ -242,42 +240,42 @@ public class Humain implements ActionCommune{
     }
 
     /**
-     * Methode pour payer
+     * Méthode pour payer
      *
      * @param prix
      */
-    protected void Payer(int prix) {
+    protected void payer(int prix) {
 
         if (this.argent - prix < 0) {
-            System.out.println("je n'ai pas d'argent");
+            System.out.println("Je n'ai pas d'argent.");
         } else {
-            System.out.println("Voila");
+            System.out.println("Tenez");
             this.argent = this.argent - prix;
         }
     }
 
     @Override
-    public void Parler(Humain personne, String phrase) {
+    public void parler(Humain personne, String phrase) {
         
     }
 
     @Override
-    public void OffrirUnVerre(Order boisson, Humain personne) {
+    public void offrirUnVerre(Commande boisson, Humain personne) {
 
     }
 
     @Override
-    public void ApporterBoisson(Humain personne) {
+    public void apporterBoisson(Humain personne) {
 
     }
 
     @Override
-    public void PrendreUneCommande(Humain personne, Barman personne1) {
+    public void prendreCommande(Humain personne, Barman personne1) {
 
     }
 
     @Override
-    public void SePresenter() {
+    public void sePresenter() {
 
     }
 

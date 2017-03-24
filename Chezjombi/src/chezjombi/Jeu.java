@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chezjombi;
 
 import java.io.BufferedReader;
 import java.util.Random;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
+ * Classe permettant de jouer au jeu de flechette 501. Les règles sont assez
+ * simple : tu commences avec un score de 501, tu as 3 lancés de flechette à
+ * chaque manche. Tu déduis de ton score, le résultat de ta manche. Tu gagnes
+ * quand tu arrives à 0. ATTENTION : si ton score est négatif, c'est à dire
+ * différent de zéro, tu recommences ta manche. Ton agilité t'aidera peut-etre
+ * dans la partie ;). Le gagnant de la partie est celui qui est arrivé à 0 avec
+ * un nombre de manche le plus petit.
  *
  * @author Olivier
  */
@@ -31,6 +29,14 @@ public class Jeu {
 
     public Jeu(Humain personne) {
 
+    }
+
+    public static void notice() {
+        System.out.println("Les règles sont assez simple : tu commences avec un score de 501, \n"
+                + " * tu as 3 lancés de flechette à chaque manche. Tu déduis de ton score, le résultat de ta manche. Tu gagnes\n"
+                + " * quand tu arrives à 0. ATTENTION : si ton score est négatif, c'est à dire différent de zéro, tu recommences ta\n"
+                + " * manche. Ton agilité t'aidera peut-etre dans la partie ;). Le gagnant de la partie est celui qui est arrivé à 0 \n"
+                + " * avec un nombre de manche le plus petit.\n");
     }
 
     public static int lancer(Humain personne) {
@@ -205,9 +211,9 @@ public class Jeu {
 
     public static void afficherResultat() {
         String chaine = "";
-        String chaine2="";
+        String chaine2 = "";
         String fichier = "resultat_joueur1.txt";
-        String fichier2="resultat_joueur2.txt";
+        String fichier2 = "resultat_joueur2.txt";
 
         try {
             InputStream ips = new FileInputStream(fichier);
@@ -222,7 +228,7 @@ public class Jeu {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-         try {
+        try {
             InputStream ips2 = new FileInputStream(fichier2);
             InputStreamReader ipsr2 = new InputStreamReader(ips2);
             BufferedReader br2 = new BufferedReader(ipsr2);
