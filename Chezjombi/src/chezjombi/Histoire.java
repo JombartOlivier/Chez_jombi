@@ -38,7 +38,7 @@ public class Histoire {
         "Margarita", "Tequila Sunrise", "Absinthe", "Rhum", "Vodka", "Whisky", "Tequila", "Ricard", "Pastis", "SuzeBrandy", "Martinez", "Maverick", "Mint Julep", "Negroni", "Paradise", "Pink Lady", "Porto Flip",
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
-    public static Serveur serveur[] ={};
+    public static Serveur serveur[];
     public static Barman barman[] = {};
     public static Client client[] = {};
     public static Patron patron[] = {};
@@ -51,14 +51,19 @@ public class Histoire {
      * Methode pour Creer son personnage
      */
     public static void creationPersonnage() {
-        System.out.println("Présentation du jeu, des persos....");
-        System.out.println("Quelle classe de personnage souhaitez-vous jouer ?");
+        System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans"+
+                "Pegi 12.  "+
+                "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"+
+                "en un client, un serveur, un barman ou tout simplement le patron du bar."+
+                "Chaque personnnage dispose d'un privilège, tu les découvriras suivant les actions"+
+                "que tu feras au sein du simulateur. Maintenant à toi de jouer ;).");
+        System.out.println("Quel personnage souhaitez-vous jouer ?");
         System.out.println("Client    [1]");
         System.out.println("Serveur [2]");
         System.out.println("Barman [3]");
         System.out.println("Patron   [4]");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le numéro de votre classe");
+        System.out.println("Entrez le numéro du personnage");
         classe = "0";
         while ("0".equals(classe)) {
             classe = sc.nextLine();
@@ -219,7 +224,7 @@ public class Histoire {
     }
 
     /**
-     * pour generer une boisson
+     * Pour génerer une boisson
      *
      * @return une boisson de type Commande
      */
@@ -265,11 +270,12 @@ public class Histoire {
     public static Commande generationAleatoirBoisson() {
         Random r = new Random();
         int nbElement = NOMBOISSON.length;
-        int aleatoire = r.nextInt(nbElement);
+        int aleatoire = r.nextInt(nbElement+1);
         String nomBoisson = NOMBOISSON[aleatoire];
-        boolean alccoliser = r.nextBoolean();
+        boolean alcooliser = r.nextBoolean();
         float degresDalcool = r.nextFloat();
-        Commande boisson = new Commande(nomBoisson, alccoliser, degresDalcool);
+        float prixBoisson=r.nextInt(10)+1;
+        Commande boisson = new Commande(nomBoisson, prixBoisson,alcooliser, degresDalcool);
         return boisson;
     }
 
@@ -279,7 +285,7 @@ public class Histoire {
             case "Client":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Client");
-                    client[i] = new Client(nom, surnom, boissonPreferee, sexe);
+//                    client[i] = new Client(nom, surnom, boissonPreferee, sexe);
                 }
                 break;
             case "Serveur":
@@ -315,20 +321,22 @@ public class Histoire {
         sexe = TABLEAUSEXE[aleatoire];
         if ("Homme".equals(sexe)) {
             int nbElementMasculin = TABLEAUMASCULIN.length;
-            aleatoire = r.nextInt(nbElementMasculin);
+            aleatoire = r.nextInt(nbElementMasculin+1);
             nom = TABLEAUMASCULIN[aleatoire];
         } else {
             int nbElementFemminin = TABLEAUFEMMIN.length;
-            aleatoire = r.nextInt(nbElementFemminin);
+            aleatoire = r.nextInt(nbElementFemminin+1);
             nom = TABLEAUFEMMIN[aleatoire];
         }
 
         switch (classe) {
             case "Client":
                 int nbElementSurnom = TABLEAUSURNOM.length;
-                aleatoire = r.nextInt(nbElementSurnom);
+                aleatoire = r.nextInt(nbElementSurnom+1);
                 surnom = TABLEAUMASCULIN[aleatoire];
+               
                 boissonPreferee = generationAleatoirBoisson();
+                System.out.println(boissonPreferee);
                 break;
             case "Barman":
                 nbElementSurnom = TABLEAUSURNOM.length;
