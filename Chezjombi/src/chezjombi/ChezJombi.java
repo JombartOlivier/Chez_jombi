@@ -17,7 +17,12 @@ public class ChezJombi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-            Histoire.creationPersonnage();
+            Client c1;
+            Histoire.constructionAleatoire(3,"Client");
+            for(int i=0;i<=Histoire.client.length-1;i++){
+                c1 = Histoire.client[i];
+                c1.SePresenter();
+            }
 
         
         
