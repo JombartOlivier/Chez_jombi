@@ -132,7 +132,7 @@ public Commande(String nom, int quantite, float prix){
     
     @Override
     public String toString() {
-        return nom + " au prix de : "+prix+"€ avec un degrès d'aclool à "+tauxAlcool;
+        return nom + " au prix de : "+(int)prix+"€ avec un degrès d'aclool à "+tauxAlcool;
     }
     
 /**
@@ -153,10 +153,10 @@ public Commande(String nom, int quantite, float prix){
     }
 public void calculprix(){
             if(this.alcoolise == true){
-                this.prix = this.tauxAlcool*1.25f;
+                this.prix = this.tauxAlcool*(float)1.25;
             }
             else{
-                this.prix = 3.5f;
+                this.prix = (float)3.5;
             }
         }    
 /**

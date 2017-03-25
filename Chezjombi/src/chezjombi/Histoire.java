@@ -38,10 +38,10 @@ public class Histoire {
         "Margarita", "Tequila Sunrise", "Absinthe", "Rhum", "Vodka", "Whisky", "Tequila", "Ricard", "Pastis", "SuzeBrandy", "Martinez", "Maverick", "Mint Julep", "Negroni", "Paradise", "Pink Lady", "Porto Flip",
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
-    public static Serveur serveur[];
-    public static Barman barman[] = {};
-    public static Client client[] = {};
-    public static Patron patron[] = {};
+    public static Serveur serveur[]=new Serveur[20];
+    public static Barman barman[] = new Barman[20];
+    public static Client client[] = new Client[20];
+    public static Patron patron[] = new Patron[20];
 
     public static void jeu() {
 
@@ -270,12 +270,13 @@ public class Histoire {
     public static Commande generationAleatoirBoisson() {
         Random r = new Random();
         int nbElement = NOMBOISSON.length;
-        int aleatoire = r.nextInt(nbElement+1);
+        int aleatoire = r.nextInt(nbElement);
         String nomBoisson = NOMBOISSON[aleatoire];
         boolean alcooliser = r.nextBoolean();
-        float degresDalcool = r.nextFloat();
-        float prixBoisson=r.nextInt(10)+1;
-        Commande boisson = new Commande(nomBoisson, prixBoisson,alcooliser, degresDalcool);
+        float degresDalcool = r.nextFloat()*50;
+        //float prixBoisson=r.nextInt(10)+1;
+        Commande boisson = new Commande(nomBoisson,alcooliser, degresDalcool);
+        boisson.calculprix();
         return boisson;
     }
 
@@ -285,7 +286,7 @@ public class Histoire {
             case "Client":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Client");
-//                    client[i] = new Client(nom, surnom, boissonPreferee, sexe);
+                    client[i] = new Client(nom, surnom, boissonPreferee, sexe);
                 }
                 break;
             case "Serveur":
@@ -321,19 +322,19 @@ public class Histoire {
         sexe = TABLEAUSEXE[aleatoire];
         if ("Homme".equals(sexe)) {
             int nbElementMasculin = TABLEAUMASCULIN.length;
-            aleatoire = r.nextInt(nbElementMasculin+1);
+            aleatoire = r.nextInt(nbElementMasculin);
             nom = TABLEAUMASCULIN[aleatoire];
         } else {
             int nbElementFemminin = TABLEAUFEMMIN.length;
-            aleatoire = r.nextInt(nbElementFemminin+1);
+            aleatoire = r.nextInt(nbElementFemminin);
             nom = TABLEAUFEMMIN[aleatoire];
         }
 
         switch (classe) {
             case "Client":
                 int nbElementSurnom = TABLEAUSURNOM.length;
-                aleatoire = r.nextInt(nbElementSurnom+1);
-                surnom = TABLEAUMASCULIN[aleatoire];
+                aleatoire = r.nextInt(nbElementSurnom);
+                surnom = TABLEAUSURNOM[aleatoire];
                
                 boissonPreferee = generationAleatoirBoisson();
                 System.out.println(boissonPreferee);
