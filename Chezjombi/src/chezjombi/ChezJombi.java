@@ -18,8 +18,7 @@ public class ChezJombi {
      */
     public static void main(String[] args) {
 
-<<<<<<< Updated upstream
-            Client c1;
+            /*Client c1;
             Serveur s1;
             Barman b1;
             Patron p1;
@@ -38,16 +37,9 @@ public class ChezJombi {
                  s1.sePresenter();
                  b1.sePresenter();
                  p1.sePresenter();
-            }
-
+            }*/
+        Histoire.jeu();
                 //c1.sePresenter();
-=======
-            Serveur c1;
-            Histoire.constructionAleatoire(3,"Serveur");
-            
-              
-             
->>>>>>> Stashed changes
             
 
         

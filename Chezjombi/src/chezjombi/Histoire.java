@@ -1,4 +1,3 @@
-
 package chezjombi;
 
 import java.util.Random;
@@ -38,32 +37,66 @@ public class Histoire {
         "Margarita", "Tequila Sunrise", "Absinthe", "Rhum", "Vodka", "Whisky", "Tequila", "Ricard", "Pastis", "SuzeBrandy", "Martinez", "Maverick", "Mint Julep", "Negroni", "Paradise", "Pink Lady", "Porto Flip",
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
-<<<<<<< Updated upstream
-    public static Serveur serveur[]=new Serveur[20];
+    public static Serveur serveur[] = new Serveur[20];
     public static Barman barman[] = new Barman[20];
-    public static Client client[] = new Client[20];
+    public static Client client[] = new Client[21];
     public static Patron patron[] = new Patron[20];
-=======
-    public static Serveur serveur[] ={};
-    public static Barman barman[] = {};
-    public static Client client[] = {};
-    public static Patron patron[] = {};
->>>>>>> Stashed changes
 
     public static void jeu() {
+        System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans"
+                + "Pegi 12.  "
+                + "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"
+                + "en un client, un serveur, un barman ou tout simplement le patron du bar."
+                + "Chaque personnnage dispose d'un privilège, tu les découvriras suivant les actions"
+                + "que tu feras au sein du simulateur. Maintenant à toi de jouer ;).");
+        System.out.println("");
+        System.out.println("Tu vas commencer par creer ton personnage attention au choix que tu fait ils seront definitifs");
+        creationPersonnage();
+        System.out.println("Generation de l'envirronement en cour.");
+        System.out.println("Generation de l'envirronement en cour...");
+        System.out.println("Generation de l'envirronement en cour......");
+        System.out.println("Generation de l'envirronement en cour........");
+        System.out.println("Generation de l'envirronement en cour...........");
+        switch (classe) {
+            case "Client":
+                constructionAleatoire(19, "Client");
+                constructionAleatoire(5, "Serveur");
+                constructionAleatoire(1, "Barman");
+                constructionAleatoire(1, "Patron");
+                break;
+            case "Serveur":
+                constructionAleatoire(20, "Client");
+                constructionAleatoire(4, "Serveur");
+                constructionAleatoire(1, "Barman");
+                constructionAleatoire(1, "Patron");
+                break;
+            case "Barman":
+                constructionAleatoire(20, "Client");
+                constructionAleatoire(5, "Serveur");
+                constructionAleatoire(1, "Patron");
+                break;
+            case "Patron":
+                constructionAleatoire(20, "Client");
+                constructionAleatoire(5, "Serveur");
+                constructionAleatoire(1, "Barman");
+                break;
 
+        }
+        System.out.println("Environnement creer");
+
+    }
+    public static void menuActionClient(){
+        System.out.println("Que souhaites tu faire ?");
+        Scanner sc = new Scanner(System.in);
+        //(Client)joueur.
+        System.out.println("Se Battre [1]             ");
     }
 
     /**
      * Methode pour Creer son personnage
      */
     public static void creationPersonnage() {
-        System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans"+
-                "Pegi 12.  "+
-                "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"+
-                "en un client, un serveur, un barman ou tout simplement le patron du bar."+
-                "Chaque personnnage dispose d'un privilège, tu les découvriras suivant les actions"+
-                "que tu feras au sein du simulateur. Maintenant à toi de jouer ;).");
+
         System.out.println("Quel personnage souhaitez-vous jouer ?");
         System.out.println("Client    [1]");
         System.out.println("Serveur [2]");
@@ -280,9 +313,8 @@ public class Histoire {
         int aleatoire = r.nextInt(nbElement);
         String nomBoisson = NOMBOISSON[aleatoire];
         boolean alcooliser = r.nextBoolean();
-        float degresDalcool = r.nextFloat()*50;
-        //float prixBoisson=r.nextInt(10)+1;
-        Commande boisson = new Commande(nomBoisson,alcooliser, degresDalcool);
+        float degresDalcool = r.nextFloat() * 50;
+        Commande boisson = new Commande(nomBoisson, alcooliser, degresDalcool);
         boisson.calculprix();
         return boisson;
     }
@@ -293,11 +325,7 @@ public class Histoire {
             case "Client":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Client");
-<<<<<<< Updated upstream
                     client[i] = new Client(nom, surnom, boissonPreferee, sexe);
-=======
-                   client[i] = new Client(nom, surnom, boissonPreferee, sexe);
->>>>>>> Stashed changes
                 }
                 break;
             case "Serveur":
@@ -346,7 +374,7 @@ public class Histoire {
                 int nbElementSurnom = TABLEAUSURNOM.length;
                 aleatoire = r.nextInt(nbElementSurnom);
                 surnom = TABLEAUSURNOM[aleatoire];
-               
+
                 boissonPreferee = generationAleatoirBoisson();
                 System.out.println(boissonPreferee);
                 break;
