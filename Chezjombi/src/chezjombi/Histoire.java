@@ -45,15 +45,15 @@ public class Histoire {
     public static Patron patron[] = new Patron[1];
 
     public static void jeu() {
-        System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans"
-                + "Pegi 12.  "
-                + "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"
-                + "en un client, un serveur, un barman ou tout simplement le patron du bar."
-                + "Chaque personnnage dispose d'un privilège, tu les découvriras suivant tes actions choisies"
-                + ". Maintenant à toi de jouer ;).");
+        System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans");
+        System.out.println("Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner");
+        System.out.println("en un client, un serveur, un barman ou tout simplement le patron du bar.");
+        System.out.println("Chaque personnnage dispose d'un privilège, tu les découvriras suivant tes actions choisies.");
+        System.out.println("Maintenant à toi de jouer ;).");
         System.out.println("");
         System.out.println("Tu vas commencer par créer ton personnage. Attention au choix que tu fais, ils seront définitif");
         creationPersonnage();
+        System.out.println("");
         System.out.println("Generation de l'environnement");
         switch (classe) {
             case "Client":
@@ -81,6 +81,7 @@ public class Histoire {
 
         }
         System.out.println("Environnement créer");
+        System.out.println("");
         switch (classe) {
             case "Client":
                 menuActionClient();
@@ -186,25 +187,57 @@ public class Histoire {
                 System.out.println("Jouer avec un client   [1]");
                 System.out.println("Jouer avec le patron  [2]");
                 System.out.println("Voir la notice              [3]");
-                String str3 = "-1";
                 Random r = new Random();
-                while ("-1".equals(str3)) {
+                String str3 = sc.nextLine();
+                if ("1".equals(str3)) {
+                    System.out.println("Nous allons tirer au sort ton adversaire ");
+                    int aleatoire = r.nextInt(client.length);
+                    System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
+                    Jeu.duel(joueur, client[aleatoire]);
+                    System.out.println("Veux-tu les résultats de la partie ?");
+                    System.out.println("Oui  [1]");
+                    System.out.println("Non [2]");
+                    str3 = sc.nextLine();
                     if ("1".equals(str3)) {
-                        System.out.println("Nous allons tirer au sort ton adversaire ");
-                        int aleatoire = r.nextInt(client.length);
-                        System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
-                        Jeu.duel(joueur, client[aleatoire]);
                         Jeu.afficherResultat();
-                    } else if ("2".equals(str3)) {
-                        System.out.println("Tu vas jouer contre " + patron[0].prenom);
-                        Jeu.duel(joueur, patron[0]);
-                    } else if ("3".equals(str3)) {
-                        Jeu.notice();
+                        System.out.println("Fin de la partie, redémarre pour rejouer");
+                        break;
+                    }
+                    if ("2".equals(str3)) {
+                        System.out.println("Fin de la partie, redémarre pour rejouer");
+                        break;
                     } else {
-                        str3 = "-1";
+                        System.out.println("Numero de saisie incorrect, redémarre pour rejouer");
                     }
                 }
-                break;
+
+                if ("2".equals(str3)) {
+                    System.out.println("Tu vas jouer contre " + patron[0].prenom);
+                    Jeu.duel(joueur, patron[0]);
+                    System.out.println("Veux-tu les résultats de la partie ?");
+                    System.out.println("Oui  [1]");
+                    System.out.println("Non [2]");
+                    str3 = sc.nextLine();
+                    if ("1".equals(str3)) {
+                        Jeu.afficherResultat();
+                        System.out.println("Fin de la partie, redémarre pour rejouer");
+                        break;
+                    }
+                    if ("2".equals(str3)) {
+                        System.out.println("Fin de la partie, redémarre pour rejouer");
+                        break;
+                    } else {
+                        System.out.println("Numero de saisie incorrect, redémarre pour rejouer");
+                    }
+                }
+                if ("3".equals(str3)) {
+                    Jeu.notice();
+                    System.out.println("Fin de la partie, redémarre pour rejouer");
+                    break;
+                }
+                else { 
+                break;}
+
             case "9":
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
                 System.out.println("Oui  [1]");
@@ -443,7 +476,7 @@ public class Histoire {
      *
      * @return une boisson de type Commande
      */
-    public static Commande generationAleatoirBoisson() {
+    public static Commande generationAleatoireBoisson() {
         Random r = new Random();
         int nbElement = NOMBOISSON.length;
         int aleatoire = r.nextInt(nbElement);
@@ -511,17 +544,17 @@ public class Histoire {
                 aleatoire = r.nextInt(nbElementSurnom);
                 surnom = TABLEAUSURNOM[aleatoire];
 
-                boissonPreferee = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoireBoisson();
                 System.out.println(boissonPreferee);
                 break;
             case "Barman":
                 nbElementSurnom = TABLEAUSURNOM.length;
                 aleatoire = r.nextInt(nbElementSurnom);
                 surnom = TABLEAUMASCULIN[aleatoire];
-                boissonPreferee = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoireBoisson();
                 break;
             case "Patron":
-                boissonPreferee = generationAleatoirBoisson();
+                boissonPreferee = generationAleatoireBoisson();
                 break;
             case "Serveur":
 
