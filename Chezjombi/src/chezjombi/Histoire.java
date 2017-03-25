@@ -15,6 +15,8 @@ public class Histoire {
     private static String nom;
     private static Commande boissonPreferee;
     private static Humain joueur;
+    private static int choixJoueur;
+    private static boolean fin;
 
     private final static String TABLEAUSURNOM[] = {"coco"};
 
@@ -38,9 +40,9 @@ public class Histoire {
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
     public static Serveur serveur[] = new Serveur[20];
-    public static Barman barman[] = new Barman[20];
+    public static Barman barman[] = new Barman[1];
     public static Client client[] = new Client[21];
-    public static Patron patron[] = new Patron[20];
+    public static Patron patron[] = new Patron[1];
 
     public static void jeu() {
         System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans"
@@ -83,13 +85,151 @@ public class Histoire {
 
         }
         System.out.println("Environnement créer");
+        switch (classe) {
+            case "Client":
+                menuActionClient();
+                break;
+        }
 
     }
-    public static void menuActionClient(){
+
+    public static Humain choixPersonneInteraction() {
+        System.out.println("Avec quel classe de personnage souhaite tu interagir ?");
+        System.out.println("Client  [1]");
+        System.out.println("Serveur [2]");
+        System.out.println("Patron  [3]");
+        System.out.println("Barman  [4]");
+        Humain personneSelectionne = null;
+        Scanner sc = new Scanner(System.in);
+        String choix = "-1";
+        while ("-1".equals(choix)) {
+            choix = sc.nextLine();
+            switch (choix) {
+                case "1":
+                    for (int i = 0; i <= client.length - 1; i++) {
+                        personneSelectionne = client[i];
+                        System.out.println(personneSelectionne.prenom + " [" + i + "]");
+                    }
+                    break;
+                case "2":
+                    for (int i = 0; i <= serveur.length - 1; i++) {
+                        personneSelectionne = serveur[i];
+                        System.out.println(personneSelectionne.prenom + " [" + i + "]");
+                    }
+                    break;
+                case "3":
+                    personneSelectionne = patron[0];
+                    break;
+                case "4":
+                    personneSelectionne = barman[0];
+                    break;
+                default:
+                    choix = "-1";
+                    break;
+            }
+        }
+        System.out.println("Entrée le numeros de la personne que vous avez choisie");
+        int numerosPersonne = -1;
+
+        while (numerosPersonne == -1) {
+            numerosPersonne = sc.nextInt();
+            if (numerosPersonne >= 0 & numerosPersonne <= client.length & "1".equals(choix)) {
+                personneSelectionne = client[numerosPersonne];
+            } else if (numerosPersonne >= 0 && numerosPersonne <= serveur.length && "2".equals(choix)) {
+                personneSelectionne = serveur[numerosPersonne];
+            } else {
+                numerosPersonne = -1;
+            }
+        }
+        System.out.println("Tu as selectionnée " + personneSelectionne.prenom);
+
+        return personneSelectionne;
+
+    }
+
+    public static void menuActionClient() {
+        Humain personneAvecQuiInterragire;
         System.out.println("Que souhaites tu faire ?");
         Scanner sc = new Scanner(System.in);
+        String choix = "-1";
         //(Client)joueur.
-        System.out.println("Se Battre [1]             ");
+        System.out.println("Se Battre            [1]      Aller au toillette [2]");
+        System.out.println("Payer                [3]      Parler             [4]");
+        System.out.println("Offrire un verre     [5]      Se presenter       [6]");
+        System.out.println("Apporter une boisson [7]      Jouer au flechette [8]");
+        System.out.println("Sortir du bar        [9]");
+        choix = sc.nextLine();
+        switch (choix) {
+            case "1":
+                System.out.println("Avec qui veux tu battre ? ");
+                personneAvecQuiInterragire = choixPersonneInteraction();
+                joueur.seBattre(personneAvecQuiInterragire);
+                break;
+            case "2":
+                joueur.allerAuWC();
+                break;
+            case "3":
+                joueur.payer(choixJoueur);
+                break;
+            case "4":
+                System.out.println("A qui veux tu parler ?");
+                personneAvecQuiInterragire = choixPersonneInteraction();
+                System.out.println("Que veux tu dire ?");
+                String str = sc.nextLine();
+                ((Client) joueur).parler(personneAvecQuiInterragire, str);
+                break;
+            case "5":
+                break;
+            case "6":
+                ((Client) joueur).sePresenter();
+                break;
+            case "7":
+                break;
+            case "8":
+                System.out.println("Que veux tu faire ? ");
+                System.out.println("Jouer avec un client   [1]");
+                System.out.println("Jouer avec le patron   [2]");
+                System.out.println("Voire la notice        [3]");
+                String str3 = "-1";
+                Random r = new Random();
+                while ("-1".equals(str3)) {
+                    if ("1".equals(str3)) {
+                        System.out.println("Nous allons tirer au sort ton adversaire ");
+                        int aleatoire = r.nextInt(client.length);
+                        System.out.println("tu vas jouer contre " + client[aleatoire].prenom);
+                        Jeu.duel(joueur, client[aleatoire]);
+                        Jeu.afficherResultat();
+                    } else if ("2".equals(str3)) {
+                        System.out.println("tu vas jouer contre " + patron[0].prenom);
+                        Jeu.duel(joueur, patron[0]);
+                    } else if ("3".equals(str3)) {
+                        Jeu.notice();
+                    } else {
+                        str3 = "-1";
+                    }
+                }
+                break;
+            case "9":
+                System.out.println("Es tu sure de vouloire sortir du bar ton action sera definitif ? ");
+                System.out.println("Oui [1]");
+                System.out.println("Non [2]");
+                String str1 = "-1";
+                while ("-1".equals(str1)) {
+                    str1 = sc.nextLine();
+                    if ("1".equals(str1)) {
+                        fin = true;
+                    } else if ("2".equals(str1)) {
+                        fin = false;
+                    } else {
+                        str1 = "-1";
+                    }
+                }
+                break;
+            default:
+                System.out.println("Le numeros entrée est incorecte");
+                break;
+
+        }
     }
 
     /**
@@ -335,13 +475,13 @@ public class Histoire {
                 }
                 break;
             case "Barman":
-                for (int i = 0; i <= nbPersonne; i++) {
+                for (int i = 0; i < nbPersonne; i++) {
                     generationAleatoirePersonnage("Barman");
                     barman[i] = new Barman(nom, surnom, boissonPreferee, sexe);
                 }
                 break;
             case "Patron":
-                for (int i = 0; i <= nbPersonne; i++) {
+                for (int i = 0; i < nbPersonne; i++) {
                     generationAleatoirePersonnage("Patron");
                     patron[i] = new Patron(nom, boissonPreferee, sexe);
                 }
