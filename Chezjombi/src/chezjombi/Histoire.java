@@ -158,6 +158,7 @@ public class Histoire {
         choix = sc.nextLine();
         Random r= new Random();
         int aleatoire;
+        String str3;
         switch (choix) {
             case "1":
                 System.out.println("Avec qui veux-tu te battre ? ");
@@ -184,11 +185,11 @@ public class Histoire {
                         personneSelectionne = client[i];
                         System.out.println(personneSelectionne.prenom + " [" + i + "]");
                     }
-//                   int str4=sc.nextInt();  //besoin de convertir un string d'entrée en integer ici----------------------------------
-//                 
-//                ((Client) joueur).offrirUnVerre(boissonPreferee, client[str4]);
-//                System.out.println("Argent restant dans mon porte monnaie : "+((Humain) joueur).getArgent()+"€");
-//                System.out.println("Rédémarre le programme pour rejouer");
+                   str3=sc.nextLine();  
+                   int str3ToInt=Integer.parseInt(str3); //Converti String en Integer
+                  ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
+                  System.out.println("Argent restant dans mon porte monnaie : "+((Humain) joueur).getArgent()+"€");
+                  System.out.println("Rédémarre le programme pour rejouer");
                 break;
             case "6":
                 ((Client) joueur).sePresenter();
@@ -202,7 +203,7 @@ public class Histoire {
                 System.out.println("Jouer avec le patron  [2]");
                 System.out.println("Voir la notice              [3]");
                 
-                String str3 = sc.nextLine();
+                str3 = sc.nextLine();
                 if ("1".equals(str3)) {
                     System.out.println("Nous allons tirer au sort ton adversaire ");
                     aleatoire = r.nextInt(client.length);
