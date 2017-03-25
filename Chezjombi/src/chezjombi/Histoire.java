@@ -48,15 +48,15 @@ public class Histoire {
                 + "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"
                 + "en un client, un serveur, un barman ou tout simplement le patron du bar."
                 + "Chaque personnnage dispose d'un privilège, tu les découvriras suivant les actions"
-                + "que tu feras au sein du simulateur. Maintenant à toi de jouer ;).");
+                + ". Maintenant à toi de jouer ;).");
         System.out.println("");
-        System.out.println("Tu vas commencer par creer ton personnage attention au choix que tu fait ils seront definitifs");
+        System.out.println("Tu vas commencer par créer ton personnage attention au choix que tu fais, ils seront définitif");
         creationPersonnage();
-        System.out.println("Generation de l'envirronement en cour.");
-        System.out.println("Generation de l'envirronement en cour...");
-        System.out.println("Generation de l'envirronement en cour......");
-        System.out.println("Generation de l'envirronement en cour........");
-        System.out.println("Generation de l'envirronement en cour...........");
+        System.out.println("Generation de l'envirronement en cours.");
+        System.out.println("Generation de l'envirronement en cours...");
+        System.out.println("Generation de l'envirronement en cours......");
+        System.out.println("Generation de l'envirronement en cours........");
+        System.out.println("Generation de l'envirronement en cours...........");
         switch (classe) {
             case "Client":
                 constructionAleatoire(19, "Client");
@@ -82,7 +82,7 @@ public class Histoire {
                 break;
 
         }
-        System.out.println("Environnement creer");
+        System.out.println("Environnement créer");
 
     }
     public static void menuActionClient(){
