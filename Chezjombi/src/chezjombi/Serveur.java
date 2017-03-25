@@ -150,7 +150,7 @@ public class Serveur extends Humain{
      *
      * @param personne
      */
-    protected void TransmettreArgentBarman(Barman personne) {
+    protected void transmettreArgentBarman(Barman personne) {
         String str = "Voici de l'argent à mettre dans la caisse : " + this.monnaie+"€";
         this.parler(personne, str);
         personne.setCaisse(this.monnaie);

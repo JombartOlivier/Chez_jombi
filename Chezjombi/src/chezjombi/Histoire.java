@@ -49,16 +49,12 @@ public class Histoire {
                 + "Pegi 12.  "
                 + "Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner"
                 + "en un client, un serveur, un barman ou tout simplement le patron du bar."
-                + "Chaque personnnage dispose d'un privilège, tu les découvriras suivant les actions"
+                + "Chaque personnnage dispose d'un privilège, tu les découvriras suivant tes actions choisies"
                 + ". Maintenant à toi de jouer ;).");
         System.out.println("");
-        System.out.println("Tu vas commencer par créer ton personnage attention au choix que tu fais, ils seront définitif");
+        System.out.println("Tu vas commencer par créer ton personnage. Attention au choix que tu fais, ils seront définitif");
         creationPersonnage();
-        System.out.println("Generation de l'envirronement en cours.");
-        System.out.println("Generation de l'envirronement en cours...");
-        System.out.println("Generation de l'envirronement en cours......");
-        System.out.println("Generation de l'envirronement en cours........");
-        System.out.println("Generation de l'envirronement en cours...........");
+        System.out.println("Generation de l'environnement");
         switch (classe) {
             case "Client":
                 constructionAleatoire(19, "Client");
@@ -94,11 +90,11 @@ public class Histoire {
     }
 
     public static Humain choixPersonneInteraction() {
-        System.out.println("Avec quel classe de personnage souhaite tu interagir ?");
-        System.out.println("Client  [1]");
+        System.out.println("Avec quel personnage souhaites-tu interagir ?");
+        System.out.println("Client    [1]");
         System.out.println("Serveur [2]");
-        System.out.println("Patron  [3]");
-        System.out.println("Barman  [4]");
+        System.out.println("Patron   [3]");
+        System.out.println("Barman [4]");
         Humain personneSelectionne = null;
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
@@ -128,7 +124,7 @@ public class Histoire {
                     break;
             }
         }
-        System.out.println("Entrée le numeros de la personne que vous avez choisie");
+        System.out.println("Entre le numéro de la personne que tu as choisi");
         int numerosPersonne = -1;
 
         while (numerosPersonne == -1) {
@@ -141,7 +137,7 @@ public class Histoire {
                 numerosPersonne = -1;
             }
         }
-        System.out.println("Tu as selectionnée " + personneSelectionne.prenom);
+        System.out.println("Tu as selectionné " + personneSelectionne.prenom);
 
         return personneSelectionne;
 
@@ -149,19 +145,19 @@ public class Histoire {
 
     public static void menuActionClient() {
         Humain personneAvecQuiInterragire;
-        System.out.println("Que souhaites tu faire ?");
+        System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
         //(Client)joueur.
-        System.out.println("Se Battre            [1]      Aller au toillette [2]");
-        System.out.println("Payer                [3]      Parler             [4]");
-        System.out.println("Offrire un verre     [5]      Se presenter       [6]");
-        System.out.println("Apporter une boisson [7]      Jouer au flechette [8]");
-        System.out.println("Sortir du bar        [9]");
+        System.out.println("Se Battre                       [1]      Aller au toillette     [2]");
+        System.out.println("Payer                             [3]      Parler                       [4]");
+        System.out.println("Offrire un verre            [5]      Se presenter           [6]");
+        System.out.println("Apporter une boisson [7]      Jouer au flechette  [8]");
+        System.out.println("Sortir du bar                 [9]");
         choix = sc.nextLine();
         switch (choix) {
             case "1":
-                System.out.println("Avec qui veux tu battre ? ");
+                System.out.println("Avec qui veux-tu te battre ? ");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 joueur.seBattre(personneAvecQuiInterragire);
                 break;
@@ -172,9 +168,9 @@ public class Histoire {
                 joueur.payer(choixJoueur);
                 break;
             case "4":
-                System.out.println("A qui veux tu parler ?");
+                System.out.println("A qui veux-tu parler ?");
                 personneAvecQuiInterragire = choixPersonneInteraction();
-                System.out.println("Que veux tu dire ?");
+                System.out.println("Que veux-tu dire ?");
                 String str = sc.nextLine();
                 ((Client) joueur).parler(personneAvecQuiInterragire, str);
                 break;
@@ -186,21 +182,21 @@ public class Histoire {
             case "7":
                 break;
             case "8":
-                System.out.println("Que veux tu faire ? ");
+                System.out.println("Que veux-tu faire ? ");
                 System.out.println("Jouer avec un client   [1]");
-                System.out.println("Jouer avec le patron   [2]");
-                System.out.println("Voire la notice        [3]");
+                System.out.println("Jouer avec le patron  [2]");
+                System.out.println("Voire la notice            [3]");
                 String str3 = "-1";
                 Random r = new Random();
                 while ("-1".equals(str3)) {
                     if ("1".equals(str3)) {
                         System.out.println("Nous allons tirer au sort ton adversaire ");
                         int aleatoire = r.nextInt(client.length);
-                        System.out.println("tu vas jouer contre " + client[aleatoire].prenom);
+                        System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
                         Jeu.duel(joueur, client[aleatoire]);
                         Jeu.afficherResultat();
                     } else if ("2".equals(str3)) {
-                        System.out.println("tu vas jouer contre " + patron[0].prenom);
+                        System.out.println("Tu vas jouer contre " + patron[0].prenom);
                         Jeu.duel(joueur, patron[0]);
                     } else if ("3".equals(str3)) {
                         Jeu.notice();
@@ -210,8 +206,8 @@ public class Histoire {
                 }
                 break;
             case "9":
-                System.out.println("Es tu sure de vouloire sortir du bar ton action sera definitif ? ");
-                System.out.println("Oui [1]");
+                System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
+                System.out.println("Oui  [1]");
                 System.out.println("Non [2]");
                 String str1 = "-1";
                 while ("-1".equals(str1)) {
@@ -226,7 +222,7 @@ public class Histoire {
                 }
                 break;
             default:
-                System.out.println("Le numeros entrée est incorecte");
+                System.out.println("Le numéro de saisi est incorrect");
                 break;
 
         }
@@ -237,13 +233,13 @@ public class Histoire {
      */
     public static void creationPersonnage() {
 
-        System.out.println("Quel personnage souhaitez-vous jouer ?");
+        System.out.println("Quel personnage souhaites-tu jouer ?");
         System.out.println("Client    [1]");
         System.out.println("Serveur [2]");
         System.out.println("Barman [3]");
         System.out.println("Patron   [4]");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le numéro du personnage");
+        System.out.println("Entre le numéro du personnage");
         classe = "0";
         while ("0".equals(classe)) {
             classe = sc.nextLine();
@@ -273,7 +269,7 @@ public class Histoire {
                     break;
                 default:
                     classe = "0";
-                    System.out.println("le numéro est incorrect");
+                    System.out.println("Le numéro de saisi est incorrect");
             }
 
         }
@@ -284,11 +280,11 @@ public class Histoire {
      * Methode pour créer un patron.
      */
     public static void constructionPatron() {
-        System.out.println("Vous avez choisi la classe " + classe);
+        System.out.println("Tu as choisi le personnage " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom de votre personnage");
+        System.out.println("Entre le nom de ton personnage");
         nom = sc.nextLine();
-        System.out.println("Quel est le sexe de votre personnage");
+        System.out.println("Quel est le sexe de ton personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -302,7 +298,7 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("Le numéro est incorrect");
+                    System.out.println("Le numéro de saisi est incorrect");
                     sexe = "0";
             }
         }
@@ -314,13 +310,13 @@ public class Histoire {
      * Methode pour créer un barman
      */
     public static void constructionBarman() {
-        System.out.println("Vous avez choisi la classe " + classe);
+        System.out.println("Tu as choisi le personnage " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom de votre personnage");
+        System.out.println("Entre le nom de ton personnage");
         nom = sc.nextLine();
-        System.out.println("Entrez le surnom de votre personnage");
+        System.out.println("Entre le surnom de ton personnage");
         surnom = sc.nextLine();
-        System.out.println("Quel est le sexe de votre personnage");
+        System.out.println("Quel est le sexe de ton personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -334,7 +330,7 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("Le numéro est incorrect");
+                    System.out.println("Le numéro de saisi est incorrect");
                     sexe = "0";
             }
         }
@@ -346,11 +342,11 @@ public class Histoire {
      * Methode pour creer un serveur
      */
     public static void constructionServeur() {
-        System.out.println("Vous avez choisi la classe " + classe);
+        System.out.println("Tu as choisi le personnage " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom de votre personnage");
+        System.out.println("Entre le nom de ton personnage");
         nom = sc.nextLine();
-        System.out.println("Quel est le sexe de votre personnage");
+        System.out.println("Quel est le sexe de ton personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -364,7 +360,7 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("Le numéro est incorrect");
+                    System.out.println("Le numéro de saisi est incorrect");
                     sexe = "0";
             }
         }
@@ -375,13 +371,13 @@ public class Histoire {
      * Methode pour creer un client
      */
     public static void constructionClient() {
-        System.out.println("Vous avez choisi la classe " + classe);
+        System.out.println("Tu as choisi le personnage " + classe);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom de votre personnage");
+        System.out.println("Entre le nom de ton personnage");
         nom = sc.nextLine();
-        System.out.println("Entrez le surnom de votre personnage");
+        System.out.println("Entre le surnom de ton personnage");
         surnom = sc.nextLine();
-        System.out.println("Quel est le sexe de votre personnage");
+        System.out.println("Quel est le sexe de ton personnage");
         System.out.println("Femme  [1]");
         System.out.println("Homme [2]");
         sexe = "0";
@@ -395,7 +391,7 @@ public class Histoire {
                     sexe = "Homme";
                     break;
                 default:
-                    System.out.println("Le numero est incorrect");
+                    System.out.println("Le numero de saisi est incorrect");
                     sexe = "0";
             }
         }
@@ -409,15 +405,15 @@ public class Histoire {
      * @return une boisson de type Commande
      */
     public static Commande generateurBoisson() {
-        System.out.println("Il vous faut créer votre boisson preferée");
+        System.out.println("Il te faut créer ta boisson preferée");
         String pNom;
         boolean alcoolisee = false;
         float degresDAlcool = 0.0f;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom de votre boisson favorite :");
+        System.out.println("Entre le nom de ta boisson favorite :");
         pNom = sc.nextLine();
-        System.out.println("Votre boisson est-elle alcoolisée");
-        System.out.println("Oui [1]");
+        System.out.println("Ta boisson est-elle alcoolisée ?");
+        System.out.println("Oui  [1]");
         System.out.println("Non [2]");
         String str = "0";
         while ("0".equals(str)) {
@@ -433,12 +429,12 @@ public class Histoire {
                     break;
                 default:
                     str = "0";
-                    System.out.println("Le numéro est incorrect");
+                    System.out.println("Le numéro de saisi est incorrect");
             }
         }
         Commande boisson = new Commande(pNom, alcoolisee, degresDAlcool);
         boisson.calculprix();
-        System.out.println("Votre boisson preferée est donc " + boisson);
+        System.out.println("Ta boisson préferée est donc " + boisson);
         return boisson;
     }
 
