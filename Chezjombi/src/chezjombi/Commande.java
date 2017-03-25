@@ -151,7 +151,7 @@ public Commande(String nom, int quantite, float prix){
         hash = 29 * hash + Float.floatToIntBits(this.tauxAlcool);
         return hash;
     }
-public void calculprix(){
+public void calculPrix(){
             if(this.alcoolise == true){
                 this.prix = this.tauxAlcool*(float)1.25;
             }

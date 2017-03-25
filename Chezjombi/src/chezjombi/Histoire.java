@@ -156,6 +156,8 @@ public class Histoire {
         System.out.println("Apporter une boisson [7]      Jouer aux flechettes [8]");
         System.out.println("Sortir du bar                 [9]");
         choix = sc.nextLine();
+        Random r= new Random();
+        int aleatoire;
         switch (choix) {
             case "1":
                 System.out.println("Avec qui veux-tu te battre ? ");
@@ -176,22 +178,34 @@ public class Histoire {
                 ((Client) joueur).parler(personneAvecQuiInterragire, str);
                 break;
             case "5":
+                   Humain personneSelectionne=null;
+                   System.out.println("A qui veux-tu offrir un verre ?");
+                   for (int i = 0; i <= client.length - 1; i++) {
+                        personneSelectionne = client[i];
+                        System.out.println(personneSelectionne.prenom + " [" + i + "]");
+                    }
+//                   int str4=sc.nextInt();  //besoin de convertir un string d'entrée en integer ici----------------------------------
+//                 
+//                ((Client) joueur).offrirUnVerre(boissonPreferee, client[str4]);
+//                System.out.println("Argent restant dans mon porte monnaie : "+((Humain) joueur).getArgent()+"€");
+//                System.out.println("Rédémarre le programme pour rejouer");
                 break;
             case "6":
                 ((Client) joueur).sePresenter();
                 break;
             case "7":
+                System.out.println("Tu es un client, tu ne peux pas apporter une boisson");
                 break;
             case "8":
                 System.out.println("Que veux-tu faire ? ");
                 System.out.println("Jouer avec un client   [1]");
                 System.out.println("Jouer avec le patron  [2]");
                 System.out.println("Voir la notice              [3]");
-                Random r = new Random();
+                
                 String str3 = sc.nextLine();
                 if ("1".equals(str3)) {
                     System.out.println("Nous allons tirer au sort ton adversaire ");
-                    int aleatoire = r.nextInt(client.length);
+                    aleatoire = r.nextInt(client.length);
                     System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
                     Jeu.duel(joueur, client[aleatoire]);
                     System.out.println("Veux-tu les résultats de la partie ?");
@@ -228,6 +242,7 @@ public class Histoire {
                         break;
                     } else {
                         System.out.println("Numero de saisie incorrect, redémarre pour rejouer");
+                        break;
                     }
                 }
                 if ("3".equals(str3)) {
@@ -466,7 +481,7 @@ public class Histoire {
             }
         }
         Commande boisson = new Commande(pNom, alcoolisee, degresDAlcool);
-        boisson.calculprix();
+        boisson.calculPrix();
         System.out.println("Ta boisson préferée est donc " + boisson);
         return boisson;
     }
@@ -484,10 +499,15 @@ public class Histoire {
         boolean alcooliser = r.nextBoolean();
         float degresDalcool = r.nextFloat() * 50;
         Commande boisson = new Commande(nomBoisson, alcooliser, degresDalcool);
-        boisson.calculprix();
+        boisson.calculPrix();
         return boisson;
     }
 
+    /**
+     *
+     * @param nbPersonne
+     * @param classeAcreer
+     */
     public static void constructionAleatoire(int nbPersonne, String classeAcreer) {
 
         switch (classeAcreer) {

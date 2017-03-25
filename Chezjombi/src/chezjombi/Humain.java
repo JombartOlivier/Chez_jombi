@@ -21,17 +21,11 @@ public class Humain implements ActionCommune{
     protected Commande maBoisson;
 
     /**
-     * Construteur destiné à la classe Client
-     *
+     *  Construteur destiné à la classe Client
      * @param prenom
      * @param surnom
      * @param boissonPreferee
-     * @param boissonSecours
      * @param sexe
-     * @param tailleBiceps
-     * @param agilite
-     * @param charme
-     * @param argent
      */
     public Humain(String prenom, String surnom, Commande boissonPreferee, String sexe) {
 
@@ -73,21 +67,16 @@ public class Humain implements ActionCommune{
 
     /**
      * Construteur destiné à la classe Patron
-     *
      * @param prenom
      * @param boissonPreferee
-     * @param boissonSecours
      * @param sexe
-     * @param tailleBiceps
-     * @param agilite
-     * @param charme
      */
     public Humain(String prenom, Commande boissonPreferee, String sexe) {
         this.prenom = prenom;
         this.boissonPreferee = boissonPreferee;
         this.sexe = sexe;
     }
-
+    
     public String getPrenom() {
         return prenom;
     }
