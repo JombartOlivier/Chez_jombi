@@ -185,7 +185,7 @@ public class Histoire {
                 System.out.println("Que veux-tu faire ? ");
                 System.out.println("Jouer avec un client   [1]");
                 System.out.println("Jouer avec le patron  [2]");
-                System.out.println("Voire la notice            [3]");
+                System.out.println("Voir la notice              [3]");
                 String str3 = "-1";
                 Random r = new Random();
                 while ("-1".equals(str3)) {
