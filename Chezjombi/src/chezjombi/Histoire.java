@@ -44,6 +44,9 @@ public class Histoire {
     public static Client client[] = new Client[21];
     public static Patron patron[] = new Patron[1];
 
+    /**
+     * Méthode permettant d'initialiser le jeu, c'est la méthode principale du projet.
+     */
     public static void jeu() {
         System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans");
         System.out.println("Bienvenue Chez Jombi, le bar on s'y sent comme chez soi. Dans ce jeu vous pourrez vous incarner");
@@ -90,6 +93,11 @@ public class Histoire {
 
     }
 
+    /**
+     * Méthode permettant d'intéragir avec n'importe quel personnage.
+     *
+     * @return personneSelectionne
+     */
     public static Humain choixPersonneInteraction() {
         System.out.println("Avec quel personnage souhaites-tu interagir ?");
         System.out.println("Client    [1]");
@@ -144,6 +152,33 @@ public class Histoire {
 
     }
 
+    /** 
+     * Méthode permettant d'offrir un verre à n'importe quel personnage
+     */
+    public static void choixOffrirVerre() {
+        Scanner sc = new Scanner(System.in);
+        String choix = "-1";
+        String choix_2="";
+        Humain personneSelectionne = null;
+        System.out.println("A qui veux-tu offrir un verre ?");
+        System.out.println("Client    [1]");
+        System.out.println("Serveur [2]");
+        System.out.println("Patron   [3]");
+        System.out.println("Barman [4]");
+        choix = sc.nextLine();
+        if ("1".equals(choix)) { //pour l'instant on peut offrir qu'à un client. En attente du débug arthur pour le reste
+            for (int i = 0; i <= client.length - 1; i++) {
+                personneSelectionne = client[i];
+                System.out.println(personneSelectionne.prenom + " [" + i + "]");
+            }
+            choix_2 = sc.nextLine();
+            int str3ToInt = Integer.parseInt(choix_2); 
+            ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
+            System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + client[str3ToInt].prenom);
+            System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
+        }
+    }
+
     public static void menuActionClient() {
         Humain personneAvecQuiInterragire;
         System.out.println("Que souhaites-tu faire ?");
@@ -156,7 +191,7 @@ public class Histoire {
         System.out.println("Apporter une boisson [7]      Jouer aux flechettes [8]");
         System.out.println("Sortir du bar                 [9]");
         choix = sc.nextLine();
-        Random r= new Random();
+        Random r = new Random();
         int aleatoire;
         String str3;
         switch (choix) {
@@ -179,17 +214,8 @@ public class Histoire {
                 ((Client) joueur).parler(personneAvecQuiInterragire, str);
                 break;
             case "5":
-                   Humain personneSelectionne=null;
-                   System.out.println("A qui veux-tu offrir un verre ?");
-                   for (int i = 0; i <= client.length - 1; i++) {
-                        personneSelectionne = client[i];
-                        System.out.println(personneSelectionne.prenom + " [" + i + "]");
-                    }
-                   str3=sc.nextLine();  
-                   int str3ToInt=Integer.parseInt(str3); //Converti String en Integer
-                  ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
-                  System.out.println("Argent restant dans mon porte monnaie : "+((Humain) joueur).getArgent()+"€");
-                  System.out.println("Rédémarre le programme pour rejouer");
+                choixOffrirVerre();
+                System.out.println("Rédémarre le programme pour rejouer");
                 break;
             case "6":
                 ((Client) joueur).sePresenter();
@@ -202,7 +228,7 @@ public class Histoire {
                 System.out.println("Jouer avec un client   [1]");
                 System.out.println("Jouer avec le patron  [2]");
                 System.out.println("Voir la notice              [3]");
-                
+
                 str3 = sc.nextLine();
                 if ("1".equals(str3)) {
                     System.out.println("Nous allons tirer au sort ton adversaire ");
@@ -250,9 +276,9 @@ public class Histoire {
                     Jeu.notice();
                     System.out.println("Fin de la partie, redémarre pour rejouer");
                     break;
+                } else {
+                    break;
                 }
-                else { 
-                break;}
 
             case "9":
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
