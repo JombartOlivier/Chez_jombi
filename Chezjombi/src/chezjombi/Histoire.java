@@ -149,10 +149,10 @@ public class Histoire {
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
         //(Client)joueur.
-        System.out.println("Se Battre                       [1]      Aller au toillette     [2]");
-        System.out.println("Payer                             [3]      Parler                       [4]");
-        System.out.println("Offrire un verre            [5]      Se presenter           [6]");
-        System.out.println("Apporter une boisson [7]      Jouer au flechette  [8]");
+        System.out.println("Se Battre                       [1]      Aller aux toillettes    [2]");
+        System.out.println("Payer                             [3]      Parler                          [4]");
+        System.out.println("Offrir un verre              [5]      Se presenter              [6]");
+        System.out.println("Apporter une boisson [7]      Jouer aux flechettes [8]");
         System.out.println("Sortir du bar                 [9]");
         choix = sc.nextLine();
         switch (choix) {
