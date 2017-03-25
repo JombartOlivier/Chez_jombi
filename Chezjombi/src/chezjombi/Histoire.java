@@ -38,10 +38,17 @@ public class Histoire {
         "Margarita", "Tequila Sunrise", "Absinthe", "Rhum", "Vodka", "Whisky", "Tequila", "Ricard", "Pastis", "SuzeBrandy", "Martinez", "Maverick", "Mint Julep", "Negroni", "Paradise", "Pink Lady", "Porto Flip",
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
+<<<<<<< Updated upstream
     public static Serveur serveur[]=new Serveur[20];
     public static Barman barman[] = new Barman[20];
     public static Client client[] = new Client[20];
     public static Patron patron[] = new Patron[20];
+=======
+    public static Serveur serveur[] ={};
+    public static Barman barman[] = {};
+    public static Client client[] = {};
+    public static Patron patron[] = {};
+>>>>>>> Stashed changes
 
     public static void jeu() {
 
@@ -286,7 +293,11 @@ public class Histoire {
             case "Client":
                 for (int i = 0; i <= nbPersonne; i++) {
                     generationAleatoirePersonnage("Client");
+<<<<<<< Updated upstream
                     client[i] = new Client(nom, surnom, boissonPreferee, sexe);
+=======
+                   client[i] = new Client(nom, surnom, boissonPreferee, sexe);
+>>>>>>> Stashed changes
                 }
                 break;
             case "Serveur":
