@@ -1,5 +1,6 @@
 package chezjombi;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -114,13 +115,13 @@ public class Histoire {
             choix = sc.nextLine();
             switch (choix) {
                 case "1":
-                    for (int i = 0; i <= client.length-2; i++) {
+                    for (int i = 0; i <= client.length - 2; i++) {
                         personneSelectionne = client[i];
                         System.out.println(personneSelectionne.prenom + " [" + i + "]");
                     }
                     break;
                 case "2":
-                    for (int i = 0; i <= serveur.length-2; i++){
+                    for (int i = 0; i <= serveur.length - 2; i++) {
                         personneSelectionne = serveur[i];
                         System.out.println(personneSelectionne.prenom + " [" + i + "]");
                     }
@@ -158,7 +159,7 @@ public class Histoire {
     }
 
     /**
-     * Méthode permettant d'offrir un verre à n'importe quel personnage 
+     * Méthode permettant d'offrir un verre à n'importe quel personnage
      */
     // a revoire au niveaux de la boisson attribué
     public static void choixOffrirVerre() {
@@ -220,7 +221,7 @@ public class Histoire {
                     System.out.println("Je n'ai pas d'argent, il est préférable de recommencer le jeu.");
                 }
                 break;
-            default :
+            default:
                 System.out.println("Numéro de saisi incorrect");
                 break;
         }
@@ -261,7 +262,7 @@ public class Histoire {
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 System.out.println("Que veux-tu dire ?");
                 String str = sc.nextLine();
-                ((Client)joueur).parler(personneAvecQuiInterragire,str);
+                ((Client) joueur).parler(personneAvecQuiInterragire, str);
                 System.out.println("");
                 break;
             case "5": //Ok
@@ -281,17 +282,17 @@ public class Histoire {
                 System.out.println("");
                 break;
             case "9":
-                ((Client)joueur).boire();
+                ((Client) joueur).boire();
                 System.out.println("");
                 break;
             case "10":
                 aleatoire = r.nextInt(serveur.length);
-                ((Client)joueur).commander(serveur[aleatoire], barman[0]);
+                ((Client) joueur).commander(serveur[aleatoire], barman[0]);
                 System.out.println("");
                 break;
-            case  "11":
-                System.out.println("Degré d'alcoolémie dans le sang : "+((Client)joueur).degreeAlcoolemie);
-                if (((Client)joueur).degreeAlcoolemie>15) {
+            case "11":
+                System.out.println("Degré d'alcoolémie dans le sang : " + ((Client) joueur).degreeAlcoolemie);
+                if (((Client) joueur).degreeAlcoolemie > 15) {
                     System.out.println("Mieux vaut que j'arrête de boire ou d'aller aux toilettes afin d'évacuer mon alcoolémie");
                 }
                 break;
@@ -552,7 +553,7 @@ public class Histoire {
         System.out.println("Il te faut créer ta boisson preferée");
         String pNom;
         boolean alcoolisee = false;
-        float degresDAlcool = 0.0f;
+        double degresDAlcool = 0.0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Entre le nom de ta boisson favorite :");
         pNom = sc.nextLine();
@@ -566,7 +567,17 @@ public class Histoire {
                 case "1":
                     alcoolisee = true;
                     System.out.println("Quel est son degré d'alcool ?");
-                    degresDAlcool = sc.nextFloat();
+
+                    try {
+                        degresDAlcool = sc.nextDouble();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Une erreur c'est produise veuillez entrer un nombre de type 0,00 ou 0");
+                        str = "0";
+                        System.out.println("Ta boisson est-elle alcoolisée ?");
+                        System.out.println("Oui  [1]");
+                        System.out.println("Non [2]");
+                    }
+
                     break;
                 case "2":
                     alcoolisee = false;
@@ -576,9 +587,9 @@ public class Histoire {
                     System.out.println("Le numéro de saisi est incorrect");
             }
         }
-        Commande boisson = new Commande(pNom, alcoolisee, degresDAlcool);
+        Commande boisson = new Commande(pNom, alcoolisee, (float) degresDAlcool);
         boisson.calculPrix();
-        
+
         System.out.println("Ta boisson préferée est donc " + boisson);
         return boisson;
     }
@@ -662,7 +673,7 @@ public class Histoire {
                 surnom = TABLEAUSURNOM[aleatoire];
 
                 boissonPreferee = generationAleatoireBoisson();
-                System.out.println(boissonPreferee);
+                //System.out.println(boissonPreferee);
                 break;
             case "Barman":
                 nbElementSurnom = TABLEAUSURNOM.length;
