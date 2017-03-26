@@ -231,12 +231,12 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        System.out.println("Se Battre                       [1]      Aller aux toillettes       [2]");
-        System.out.println("Payer                             [3]      Parler                             [4]");
-        System.out.println("Offrir un verre              [5]      Se presenter                 [6]");
-        System.out.println("Apporter une boisson [7]      Jouer aux flechettes    [8]");
-        System.out.println("Boire                              [9]      Commander à Boire    [10]");
-        System.out.println("Sortir du bar                 [11]");
+        System.out.println("Se Battre                                                          [1]      Aller aux toillettes       [2]");
+        System.out.println("Payer                                                                [3]      Parler                             [4]");
+        System.out.println("Offrir un verre                                                 [5]      Se presenter                 [6]");
+        System.out.println("Apporter une boisson                                    [7]      Jouer aux flechettes    [8]");
+        System.out.println("Boire                                                                 [9]      Commander à Boire    [10]");
+        System.out.println("Consulter mon degré alcoolémie                 [11]     Quitter le jeu               [12]");
         choix = sc.nextLine();
         Random r = new Random();
         int aleatoire;
@@ -264,7 +264,7 @@ public class Histoire {
                 ((Client)joueur).parler(personneAvecQuiInterragire,str);
                 System.out.println("");
                 break;
-            case "5":
+            case "5": //Ok
                 choixOffrirVerre();
                 System.out.println("");
                 break;
@@ -289,8 +289,13 @@ public class Histoire {
                 ((Client)joueur).commander(serveur[aleatoire], barman[0]);
                 System.out.println("");
                 break;
-
-            case "11":// Ok
+            case  "11":
+                System.out.println("Degré d'alcoolémie dans le sang : "+((Client)joueur).degreeAlcoolemie);
+                if (((Client)joueur).degreeAlcoolemie>15) {
+                    System.out.println("Mieux vaut que j'arrête de boire ou d'aller aux toilettes afin d'évacuer mon alcoolémie");
+                }
+                break;
+            case "12":// Ok
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive. ");
                 System.out.println("Oui  [1]");
                 System.out.println("Non [2]");
