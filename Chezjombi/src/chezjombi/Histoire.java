@@ -92,15 +92,16 @@ public class Histoire {
                     menuActionClient();
                     break;
                 case "Serveur":
-                    System.out.println("Disponnible lors de la prochaine mise a jour");
-                    fin = true;
+
+                    System.out.println("Disponnible lors de la prochaine mise a jour, seul Client peut être utiliser comme personnage, redémarrez pour rejouer");
+                    fin=true;
                     break;
                 case "Barman":
-                    System.out.println("Disponnible lors de la prochaine mise a jour");
+                    System.out.println("Disponnible lors de la prochaine mise a jour, seul Client peut être utiliser comme personnage, redémarrez pour rejouer");
                     fin = true;
                     break;
                 case "Patron":
-                    System.out.println("Disponnible lors de la prochaine mise a jour");
+                    System.out.println("Disponnible lors de la prochaine mise a jour, seul Client peut être utiliser comme personnage, redémarrez pour rejouer");
                     fin = true;
                     break;
             }
@@ -246,7 +247,7 @@ public class Histoire {
     }
 
     /**
-     * Méthode permettant de desiner et d'interagire avec le menu des action
+     * Méthode permettant de desiner et d'interagir avec le menu des actionS
      * pour un personnage de type Client
      */
     public static void menuActionClient() {
@@ -254,12 +255,13 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        System.out.println("Se Battre                           [1]      Aller aux toillettes       [2]");
-        System.out.println("Payer                               [3]      Parler                     [4]");
-        System.out.println("Offrir un verre                     [5]      Se presenter               [6]");
-        System.out.println("Apporter une boisson                [7]      Jouer aux flechettes       [8]");
-        System.out.println("Boire                               [9]      Commander à Boire          [10]");
-        System.out.println("Consulter mon degré alcoolémie     [11]     Quitter le jeu              [12]");
+        System.out.println("Se Battre                                [1]      Aller aux toillettes       [2]");
+        System.out.println("Payer                                      [3]      Parler                             [4]");
+        System.out.println("Offrir un verre                       [5]      Se presenter                 [6]");
+        System.out.println("Apporter une boisson          [7]      Jouer aux flechettes    [8]");
+        System.out.println("Boire                                       [9]      Commander à Boire    [10]");
+        System.out.println("Consulter mon état (porte feuillle/alcoolémie)                 [11]");
+        System.out.println(" Quitter le jeu                        [12]");
         choix = sc.nextLine();
         Random r = new Random();
         int aleatoire;
@@ -314,9 +316,11 @@ public class Histoire {
                 break;
             case "11":
                 System.out.println("Degré d'alcoolémie dans le sang : " + ((Client) joueur).degreeAlcoolemie);
-                if (((Client) joueur).degreeAlcoolemie > 15) {
+                if (((Client) joueur).degreeAlcoolemie > 25) {
                     System.out.println("Mieux vaut que j'arrête de boire ou d'aller aux toilettes afin d'évacuer mon alcoolémie");
                 }
+                System.out.println("Mon porte-feuille : "+((Client) joueur).argent+"€");
+                System.out.println("");
                 break;
             case "12":
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive. ");
@@ -351,8 +355,8 @@ public class Histoire {
         Scanner sc = new Scanner(System.in);
         System.out.println("Que veux-tu faire ? ");
         System.out.println("Jouer avec un client   [1]");
-        System.out.println("Jouer avec le patron  [2]");
-        System.out.println("Voir la notice              [3]");
+        System.out.println("Jouer avec le patron   [2]");
+        System.out.println("Voir la notice               [3]");
         String str3;
         str3 = sc.nextLine();
         if (null == str3) {
@@ -400,15 +404,15 @@ public class Histoire {
     }
 
     /**
-     * Méthode pour creer son personnage
+     * Méthode pour créer son personnage
      */
     public static void creationPersonnage() {
 
         System.out.println("Quel personnage souhaites-tu jouer ?");
-        System.out.println("Client    [1]");
+        System.out.println("Client      [1]");
         System.out.println("Serveur   [2]");
-        System.out.println("Barman    [3]");
-        System.out.println("Patron    [4]");
+        System.out.println("Barman   [3]");
+        System.out.println("Patron     [4]");
         Scanner sc = new Scanner(System.in);
         System.out.println("Entre le numéro du personnage");
         classe = "0";
@@ -448,7 +452,7 @@ public class Histoire {
     }
 
     /**
-     * Méthode pour construire un patron.
+     * Méthode pour générer un patron.
      */
     public static void constructionPatron() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -478,7 +482,7 @@ public class Histoire {
     }
 
     /**
-     * Méthode pour construire un barman
+     * Méthode pour générer un barman
      */
     public static void constructionBarman() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -510,7 +514,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour construire un serveur
+     * Methode pour générer un serveur
      */
     public static void constructionServeur() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -539,7 +543,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour construire un client
+     * Methode pour générer un client
      */
     public static void constructionClient() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -570,7 +574,7 @@ public class Histoire {
     }
 
     /**
-     * Pour génerer une boisson
+     * Méthode pour génerer une boisson
      *
      * @return une boisson de type Commande
      */
@@ -620,7 +624,7 @@ public class Histoire {
     }
 
     /**
-     * pour generer aleatoirement une boisson
+     * Méthode pour generer aleatoirement une boisson suivant le tableau ci-dessus
      *
      * @return une boisson de type Commande
      */
@@ -637,7 +641,7 @@ public class Histoire {
     }
 
     /**
-     * Pour construire aleatoirement un/plusieurs personnage du type souhaiter
+     * Pour générer aleatoirement un/plusieurs personnage(s)  souhaités
      *
      * @param nbPersonne
      * @param classeAcreer
