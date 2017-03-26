@@ -93,12 +93,15 @@ public class Histoire {
                     break;
                 case "Serveur":
                     System.out.println("Disponnible lors de la prochaine mise a jour");
+                    fin = true;
                     break;
                 case "Barman":
                     System.out.println("Disponnible lors de la prochaine mise a jour");
+                    fin = true;
                     break;
                 case "Patron":
                     System.out.println("Disponnible lors de la prochaine mise a jour");
+                    fin = true;
                     break;
             }
         }
