@@ -141,7 +141,7 @@ public class Histoire {
             int numerosPersonne = -1;
 
             while (numerosPersonne == -1) {
-                numerosPersonne = sc.nextInt();// gerer les execeptions !!!!!!!
+                numerosPersonne = sc.nextInt();                                                                     // gerer les execeptions !!!!!!!
                 if (numerosPersonne >= 0 & numerosPersonne <= client.length & "1".equals(choix)) {
                     personneSelectionne = client[numerosPersonne];
                 } else if (numerosPersonne >= 0 && numerosPersonne <= serveur.length && "2".equals(choix)) {
@@ -165,6 +165,7 @@ public class Histoire {
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
         String choix_2 = "";
+        int str3ToInt = 0;
         Humain personneSelectionne = null;
         System.out.println("A qui veux-tu offrir un verre ?");
         System.out.println("Client    [1]");
@@ -172,16 +173,47 @@ public class Histoire {
         System.out.println("Patron   [3]");
         System.out.println("Barman [4]");
         choix = sc.nextLine();
-        if ("1".equals(choix)) { //pour l'instant on peut offrir qu'à un client. En attente du débug arthur pour le reste
-            for (int i = 0; i <= client.length - 2; i++) {
-                personneSelectionne = client[i];
-                System.out.println(personneSelectionne.prenom + " [" + i + "]");
-            }
-            choix_2 = sc.nextLine();
-            int str3ToInt = Integer.parseInt(choix_2);
-            ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
-            System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + client[str3ToInt].prenom);
-            System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
+        switch (choix) {
+            case "1":
+                for (int i = 0; i <= client.length - 2; i++) {
+                    personneSelectionne = client[i];
+                    System.out.println(personneSelectionne.prenom + " [" + i + "]");
+                }
+                System.out.println("Choisi ton client");
+                choix_2 = sc.nextLine();
+                str3ToInt = Integer.parseInt(choix_2);
+                ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
+                System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + client[str3ToInt].prenom);
+                System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
+                break;
+            case "2":
+                for (int i = 0; i <= serveur.length - 2; i++) {
+                    personneSelectionne = serveur[i];
+                    System.out.println(personneSelectionne.prenom + " [" + i + "]");
+                }
+                System.out.println("Choisi ton serveur");
+                choix_2 = sc.nextLine();
+                str3ToInt = Integer.parseInt(choix_2);
+                System.out.println("Le/La serveur(se) n'accepte pas que tu lui payes un coup, il/elle travaille");
+                break;
+            case "3":
+                System.out.println(joueur.getArgent());
+                System.out.println(boissonPreferee.getPrix());
+                if (boissonPreferee.getPrix() < joueur.getArgent()) {
+                    ((Client) joueur).offrirUnVerre(boissonPreferee, patron[0]);
+                    System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + patron[0].prenom);
+                    ((Client) joueur).payer(boissonPreferee.getPrix());
+                    System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
+                } else {
+                    System.out.println("Je n'ai pas d'argent, il est préférable de recommencer le jeu.");
+                }
+
+                break;
+            case "4":
+                ((Client) joueur).offrirUnVerre(boissonPreferee, barman[0]);
+                System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + barman[0].prenom);
+                System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
+                break;
         }
     }
 
@@ -190,12 +222,12 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        System.out.println("Se Battre            [1]      Aller aux toillettes [2]");
-        System.out.println("Payer                [3]      Parler               [4]");
-        System.out.println("Offrir un verre      [5]      Se presenter         [6]");
-        System.out.println("Apporter une boisson [7]      Jouer aux flechettes [8]");
-        System.out.println("Boire                [9]      Commander à Boire    [10]");
-        System.out.println("Sortir du bar        [11]");
+        System.out.println("Se Battre                       [1]      Aller aux toillettes       [2]");
+        System.out.println("Payer                             [3]      Parler                             [4]");
+        System.out.println("Offrir un verre              [5]      Se presenter                 [6]");
+        System.out.println("Apporter une boisson [7]      Jouer aux flechettes    [8]");
+        System.out.println("Boire                              [9]      Commander à Boire    [10]");
+        System.out.println("Sortir du bar                 [11]");
         choix = sc.nextLine();
         Random r = new Random();
         int aleatoire;
@@ -205,12 +237,15 @@ public class Histoire {
                 System.out.println("Avec qui veux-tu te battre ? ");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 joueur.seBattre(personneAvecQuiInterragire);
+                System.out.println("");
                 break;
             case "2":// Ok
                 joueur.allerAuWC();
+                System.out.println("");
                 break;
             case "3":
                 joueur.payer(choixJoueur);
+                System.out.println("");
                 break;
             case "4":// OK
                 System.out.println("A qui veux-tu parler ?");
@@ -218,30 +253,36 @@ public class Histoire {
                 System.out.println("Que veux-tu dire ?");
                 String str = sc.nextLine();
                 ((Client)joueur).parler(personneAvecQuiInterragire,str);
+                System.out.println("");
                 break;
             case "5":
                 choixOffrirVerre();
-                System.out.println("Rédémarre le programme pour rejouer");
+                System.out.println("");
                 break;
             case "6":// Ok 
                 ((Client) joueur).sePresenter();
+                System.out.println("");
                 break;
             case "7":// Ok
                 System.out.println("Tu es un client, tu ne peux pas apporter une boisson");
+                System.out.println("");
                 break;
             case "8":// Ok
                 lancerJeuFlechette();
+                System.out.println("");
                 break;
             case "9":
                 ((Client)joueur).boire();
+                System.out.println("");
                 break;
             case "10":
                 aleatoire = r.nextInt(serveur.length);
                 ((Client)joueur).commander(serveur[aleatoire], barman[0]);
+                System.out.println("");
                 break;
 
             case "11":// Ok
-                System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
+                System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive. ");
                 System.out.println("Oui  [1]");
                 System.out.println("Non [2]");
                 String str1 = "-1";
@@ -258,6 +299,7 @@ public class Histoire {
                 break;
             default:
                 System.out.println("Le numéro de saisi est incorrect");
+                System.out.println("");
                 break;
 
         }
@@ -274,7 +316,7 @@ public class Histoire {
         String str3;
         str3 = sc.nextLine();
         if (null == str3) {
-            System.out.println("Le numeros entrée est incorrecte");
+            System.out.println("Le numero de saisie est incorrect");
         } else {
             switch (str3) {
                 case "1":
@@ -293,10 +335,10 @@ public class Histoire {
                     Jeu.notice();
                     break;
                 default:
-                    System.out.println("Le numeros entrée est incorrecte");
+                    System.out.println("Le numero de saisi est incorrect");
                     break;
             }
-            System.out.println("Veux-tu les résultats de la partie ?");
+            System.out.println("Veux-tu les résultats de la partie précédente ?");
             System.out.println("Oui  [1]");
             System.out.println("Non [2]");
             str3 = "-1";
@@ -307,7 +349,7 @@ public class Histoire {
                 } else if ("2".equals(str3)) {
 
                 } else {
-                    System.out.println("le numeros entrée est incorrecte");
+                    System.out.println("Le numero de saisi est incorrect");
                     str3 = "-1";
                 }
 
@@ -522,6 +564,7 @@ public class Histoire {
         }
         Commande boisson = new Commande(pNom, alcoolisee, degresDAlcool);
         boisson.calculPrix();
+        
         System.out.println("Ta boisson préferée est donc " + boisson);
         return boisson;
     }

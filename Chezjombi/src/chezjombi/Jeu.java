@@ -243,7 +243,7 @@ public class Jeu {
             }
             br.close();
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println("Fichier introuvable, pas de résultats auparavent;");
         }
         try {
             InputStream ips2 = new FileInputStream(fichier2);
