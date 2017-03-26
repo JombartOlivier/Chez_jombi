@@ -41,6 +41,12 @@ public interface ActionCommune {
      * Methode abstraite permettant aux differents personnages de se présenter.
      */
     abstract public void sePresenter();
+    /**
+     * Methode permettant de commander une boisson
+     * @param serv1
+     * @param bar1 
+     */
+    abstract public void commander(Serveur serv1,Barman bar1);
 
  
 }

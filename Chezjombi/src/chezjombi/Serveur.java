@@ -76,6 +76,7 @@ public class Serveur extends Humain{
 
     @Override
     public void prendreCommande(Humain personne, Barman personne1) {
+        float prix;
         Scanner sc = new Scanner(System.in);
         String str = "Souhaitez vous boire votre boisson préferée ou voulez vous la composer vous-même ?";
         this.parler(personne, str);
@@ -110,14 +111,20 @@ public class Serveur extends Humain{
             }
             if ("1".equals(str)) {
                 personne1.setAlcoolise(true);
-                str = "Quel est le degré d'alcool de votre boisson ?";
+                str = "Quel est le degré d'alcool de votre boisson ? attention plus le degres d'alcool est fort plus le prix est élevée";
                 this.parler(personne, str);
                 str = sc.nextLine();
                 int degreedalcool = Integer.parseInt(str);
                 personne1.setDegresDalcool(degreedalcool);
+                prix = degreedalcool*(float)1.25;
+                str = "En resumer nous avons un "+personne1.getNomBoisson()+" Alcoolisée avec un degres d'acool a "+personne1.getDegresDalcool()+" Au prix de "+prix;
+                this.parler(personne, str);
             } 
             else {
                 personne1.setAlcoolise(false);
+                prix = (float)3.5;
+               str = "En resumer nous avons un "+personne1.getNomBoisson()+" non alcoolisée au prix de "+prix;
+               this.parler(personne, str);
             }
         }
         str = "Je vous rapporte ça tout de suite";

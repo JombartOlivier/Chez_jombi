@@ -101,4 +101,13 @@ public class Client extends Humain {
         }
         
     }
+    @Override
+    public void commander(Serveur serv1,Barman bar1){
+        serv1.prendreCommande(this, bar1);
+        this.maBoisson = bar1.preparerUneBoisson();
+        String str = "Voici votre boisson cela fera un total de " +maBoisson.getPrix();
+        serv1.parler(this, str);
+        this.payer(maBoisson.getPrix());
+        bar1.setCaisse(maBoisson.getPrix()+bar1.getCaisse());
+    }
 }

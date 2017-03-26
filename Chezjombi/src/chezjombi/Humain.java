@@ -16,7 +16,7 @@ public class Humain implements ActionCommune{
     protected int agilite;
     protected int charme;
     protected float degreeAlcoolemie;
-    protected int argent;
+    protected float argent;
     protected Commande boissonDe;
     protected Commande maBoisson;
 
@@ -141,7 +141,7 @@ public class Humain implements ActionCommune{
         this.degreeAlcoolemie = degreeAlcoolemie;
     }
 
-    public int getArgent() {
+    public float getArgent() {
         return argent;
     }
 
@@ -177,7 +177,7 @@ public class Humain implements ActionCommune{
             System.out.println("Aie j'ai mal ça fait mal !");
             System.out.println("Vous avez perdu !");
         }
-        if (this.tailleBiceps == personne.tailleBiceps) {
+        else if (this.tailleBiceps == personne.tailleBiceps) {
             System.out.println("ça pique !");
             System.out.println("Vous êtes à égalité !");
         } else {
@@ -233,7 +233,7 @@ public class Humain implements ActionCommune{
      *
      * @param prix
      */
-    protected void payer(int prix) {
+    protected void payer(float prix) {
 
         if (this.argent - prix < 0) {
             System.out.println("Je n'ai pas d'argent.");
@@ -242,7 +242,10 @@ public class Humain implements ActionCommune{
             this.argent = this.argent - prix;
         }
     }
-
+    @Override
+    public void commander(Serveur serv1,Barman bar1){
+    
+    }
     @Override
     public void parler(Humain personne, String phrase) {
 

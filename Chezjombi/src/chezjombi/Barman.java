@@ -57,15 +57,23 @@ public class Barman extends Humain {
         this.caisse = caisse;
     }
 
-    protected void preparerUneBoisson() {
+    protected Commande preparerUneBoisson() {
+        Commande boisson;
         if (this.alcoolise == true) {
-            float prix = this.degresDalcool * (float) 1.2;
-            Commande b1 = new Commande(this.nomBoisson, prix, this.alcoolise, this.degresDalcool);
+            
+            Commande b1 = new Commande(this.nomBoisson, this.alcoolise, this.degresDalcool);
+            b1.calculPrix();
+            boisson = b1;
 
         }
-        if (this.alcoolise == false) {
-            Commande b1 = new Commande(this.nomBoisson, 3, this.alcoolise, this.degresDalcool);
+        else{
+            Commande b1 = new Commande(this.nomBoisson, this.alcoolise, this.degresDalcool);
+            b1.calculPrix();
+            boisson = b1;
+            
         }
+        return boisson;
+
 
     }
 

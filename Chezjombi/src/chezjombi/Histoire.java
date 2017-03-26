@@ -173,7 +173,7 @@ public class Histoire {
         System.out.println("Barman [4]");
         choix = sc.nextLine();
         if ("1".equals(choix)) { //pour l'instant on peut offrir qu'à un client. En attente du débug arthur pour le reste
-            for (int i = 0; i <= client.length - 1; i++) {
+            for (int i = 0; i <= client.length - 2; i++) {
                 personneSelectionne = client[i];
                 System.out.println(personneSelectionne.prenom + " [" + i + "]");
             }
@@ -190,28 +190,29 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        System.out.println("Se Battre                       [1]      Aller aux toillettes    [2]");
-        System.out.println("Payer                             [3]      Parler                          [4]");
-        System.out.println("Offrir un verre              [5]      Se presenter              [6]");
+        System.out.println("Se Battre            [1]      Aller aux toillettes [2]");
+        System.out.println("Payer                [3]      Parler               [4]");
+        System.out.println("Offrir un verre      [5]      Se presenter         [6]");
         System.out.println("Apporter une boisson [7]      Jouer aux flechettes [8]");
-        System.out.println("Sortir du bar                 [9]");
+        System.out.println("Boire                [9]      Commander à Boire    [10]");
+        System.out.println("Sortir du bar        [11]");
         choix = sc.nextLine();
         Random r = new Random();
         int aleatoire;
         String str3;
         switch (choix) {
-            case "1":
+            case "1":// Ok
                 System.out.println("Avec qui veux-tu te battre ? ");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 joueur.seBattre(personneAvecQuiInterragire);
                 break;
-            case "2":
+            case "2":// Ok
                 joueur.allerAuWC();
                 break;
             case "3":
                 joueur.payer(choixJoueur);
                 break;
-            case "4":
+            case "4":// OK
                 System.out.println("A qui veux-tu parler ?");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 System.out.println("Que veux-tu dire ?");
@@ -222,17 +223,24 @@ public class Histoire {
                 choixOffrirVerre();
                 System.out.println("Rédémarre le programme pour rejouer");
                 break;
-            case "6":
+            case "6":// Ok 
                 ((Client) joueur).sePresenter();
                 break;
-            case "7":
+            case "7":// Ok
                 System.out.println("Tu es un client, tu ne peux pas apporter une boisson");
                 break;
-            case "8":
+            case "8":// Ok
                 lancerJeuFlechette();
                 break;
-
             case "9":
+                ((Client)joueur).boire();
+                break;
+            case "10":
+                aleatoire = r.nextInt(serveur.length);
+                ((Client)joueur).commander(serveur[aleatoire], barman[0]);
+                break;
+
+            case "11":// Ok
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
                 System.out.println("Oui  [1]");
                 System.out.println("Non [2]");

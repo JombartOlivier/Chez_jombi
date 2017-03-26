@@ -26,7 +26,7 @@ public class Patron extends Humain {
         while(aleatoire <= 25){
             aleatoire = r.nextInt(201);
         }
-        this.argent = aleatoire;
+        this.argent = (float)aleatoire;
     }
     
 
