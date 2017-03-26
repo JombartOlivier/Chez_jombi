@@ -45,7 +45,8 @@ public class Histoire {
     public static Patron patron[] = new Patron[1];
 
     /**
-     * Méthode permettant d'initialiser le jeu, c'est la méthode principale du projet.
+     * Méthode permettant d'initialiser le jeu, c'est la méthode principale du
+     * projet.
      */
     public static void jeu() {
         System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans");
@@ -85,10 +86,12 @@ public class Histoire {
         }
         System.out.println("Environnement créer");
         System.out.println("");
-        switch (classe) {
-            case "Client":
-                menuActionClient();
-                break;
+        while (fin == false) {
+            switch (classe) {
+                case "Client":
+                    menuActionClient();
+                    break;
+            }
         }
 
     }
@@ -152,13 +155,13 @@ public class Histoire {
 
     }
 
-    /** 
+    /**
      * Méthode permettant d'offrir un verre à n'importe quel personnage
      */
     public static void choixOffrirVerre() {
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        String choix_2="";
+        String choix_2 = "";
         Humain personneSelectionne = null;
         System.out.println("A qui veux-tu offrir un verre ?");
         System.out.println("Client    [1]");
@@ -172,7 +175,7 @@ public class Histoire {
                 System.out.println(personneSelectionne.prenom + " [" + i + "]");
             }
             choix_2 = sc.nextLine();
-            int str3ToInt = Integer.parseInt(choix_2); 
+            int str3ToInt = Integer.parseInt(choix_2);
             ((Client) joueur).offrirUnVerre(boissonPreferee, client[str3ToInt]);
             System.out.println("Tu as offert : " + ((Client) joueur).boissonPreferee + " à " + client[str3ToInt].prenom);
             System.out.println("Argent restant dans mon porte monnaie : " + ((Client) joueur).getArgent() + "€");
@@ -224,61 +227,8 @@ public class Histoire {
                 System.out.println("Tu es un client, tu ne peux pas apporter une boisson");
                 break;
             case "8":
-                System.out.println("Que veux-tu faire ? ");
-                System.out.println("Jouer avec un client   [1]");
-                System.out.println("Jouer avec le patron  [2]");
-                System.out.println("Voir la notice              [3]");
-
-                str3 = sc.nextLine();
-                if ("1".equals(str3)) {
-                    System.out.println("Nous allons tirer au sort ton adversaire ");
-                    aleatoire = r.nextInt(client.length);
-                    System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
-                    Jeu.duel(joueur, client[aleatoire]);
-                    System.out.println("Veux-tu les résultats de la partie ?");
-                    System.out.println("Oui  [1]");
-                    System.out.println("Non [2]");
-                    str3 = sc.nextLine();
-                    if ("1".equals(str3)) {
-                        Jeu.afficherResultat();
-                        System.out.println("Fin de la partie, redémarre pour rejouer");
-                        break;
-                    }
-                    if ("2".equals(str3)) {
-                        System.out.println("Fin de la partie, redémarre pour rejouer");
-                        break;
-                    } else {
-                        System.out.println("Numero de saisie incorrect, redémarre pour rejouer");
-                    }
-                }
-
-                if ("2".equals(str3)) {
-                    System.out.println("Tu vas jouer contre " + patron[0].prenom);
-                    Jeu.duel(joueur, patron[0]);
-                    System.out.println("Veux-tu les résultats de la partie ?");
-                    System.out.println("Oui  [1]");
-                    System.out.println("Non [2]");
-                    str3 = sc.nextLine();
-                    if ("1".equals(str3)) {
-                        Jeu.afficherResultat();
-                        System.out.println("Fin de la partie, redémarre pour rejouer");
-                        break;
-                    }
-                    if ("2".equals(str3)) {
-                        System.out.println("Fin de la partie, redémarre pour rejouer");
-                        break;
-                    } else {
-                        System.out.println("Numero de saisie incorrect, redémarre pour rejouer");
-                        break;
-                    }
-                }
-                if ("3".equals(str3)) {
-                    Jeu.notice();
-                    System.out.println("Fin de la partie, redémarre pour rejouer");
-                    break;
-                } else {
-                    break;
-                }
+                lancerJeuFlechette();
+                break;
 
             case "9":
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive ? ");
@@ -301,6 +251,60 @@ public class Histoire {
                 break;
 
         }
+    }
+
+    public static void lancerJeuFlechette() {
+        Random r = new Random();
+        int aleatoire;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que veux-tu faire ? ");
+        System.out.println("Jouer avec un client   [1]");
+        System.out.println("Jouer avec le patron  [2]");
+        System.out.println("Voir la notice              [3]");
+        String str3;
+        str3 = sc.nextLine();
+        if (null == str3) {
+            System.out.println("Le numeros entrée est incorrecte");
+        } else {
+            switch (str3) {
+                case "1":
+                    System.out.println("Nous allons tirer au sort ton adversaire ");
+                    aleatoire = r.nextInt(client.length);
+                    System.out.println("Tu vas jouer contre " + client[aleatoire].prenom);
+                    Jeu.duel(joueur, client[aleatoire]);
+
+                    break;
+                case "2":
+                    System.out.println("Tu vas jouer contre " + patron[0].prenom);
+                    Jeu.duel(joueur, patron[0]);
+
+                    break;
+                case "3":
+                    Jeu.notice();
+                    break;
+                default:
+                    System.out.println("Le numeros entrée est incorrecte");
+                    break;
+            }
+            System.out.println("Veux-tu les résultats de la partie ?");
+            System.out.println("Oui  [1]");
+            System.out.println("Non [2]");
+            str3 = "-1";
+            while ("-1".equals(str3)) {
+                str3 = sc.nextLine();
+                if ("1".equals(str3)) {
+                    Jeu.afficherResultat();
+                } else if ("2".equals(str3)) {
+
+                } else {
+                    System.out.println("le numeros entrée est incorrecte");
+                    str3 = "-1";
+                }
+
+            }
+
+        }
+
     }
 
     /**
