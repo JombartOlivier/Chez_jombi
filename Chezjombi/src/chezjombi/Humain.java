@@ -245,7 +245,7 @@ public class Humain implements ActionCommune{
 
     @Override
     public void parler(Humain personne, String phrase) {
-        
+
     }
 
     @Override

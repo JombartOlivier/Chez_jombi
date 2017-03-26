@@ -39,7 +39,7 @@ public class Histoire {
         "Margarita", "Tequila Sunrise", "Absinthe", "Rhum", "Vodka", "Whisky", "Tequila", "Ricard", "Pastis", "SuzeBrandy", "Martinez", "Maverick", "Mint Julep", "Negroni", "Paradise", "Pink Lady", "Porto Flip",
         "Presidente", "Red Lion", "Sazerac", "Scotch Sour", "Side Car", "Stinger", "Summit", "White Lady", "Eau"};
 
-    public static Serveur serveur[] = new Serveur[20];
+    public static Serveur serveur[] = new Serveur[6];
     public static Barman barman[] = new Barman[1];
     public static Client client[] = new Client[21];
     public static Patron patron[] = new Patron[1];
@@ -68,7 +68,7 @@ public class Histoire {
                 break;
             case "Serveur":
                 constructionAleatoire(20, "Client");
-                constructionAleatoire(4, "Serveur");
+                constructionAleatoire(5, "Serveur");
                 constructionAleatoire(1, "Barman");
                 constructionAleatoire(1, "Patron");
                 break;
@@ -114,13 +114,13 @@ public class Histoire {
             choix = sc.nextLine();
             switch (choix) {
                 case "1":
-                    for (int i = 0; i <= client.length - 1; i++) {
+                    for (int i = 0; i <= client.length-2; i++) {
                         personneSelectionne = client[i];
                         System.out.println(personneSelectionne.prenom + " [" + i + "]");
                     }
                     break;
                 case "2":
-                    for (int i = 0; i <= serveur.length - 1; i++) {
+                    for (int i = 0; i <= serveur.length-2; i++){
                         personneSelectionne = serveur[i];
                         System.out.println(personneSelectionne.prenom + " [" + i + "]");
                     }
@@ -136,17 +136,19 @@ public class Histoire {
                     break;
             }
         }
-        System.out.println("Entre le numéro de la personne que tu as choisi");
-        int numerosPersonne = -1;
+        if ("1".equals(choix) || "2".equals(choix)) {
+            System.out.println("Entre le numéro de la personne que tu as choisi");
+            int numerosPersonne = -1;
 
-        while (numerosPersonne == -1) {
-            numerosPersonne = sc.nextInt();
-            if (numerosPersonne >= 0 & numerosPersonne <= client.length & "1".equals(choix)) {
-                personneSelectionne = client[numerosPersonne];
-            } else if (numerosPersonne >= 0 && numerosPersonne <= serveur.length && "2".equals(choix)) {
-                personneSelectionne = serveur[numerosPersonne];
-            } else {
-                numerosPersonne = -1;
+            while (numerosPersonne == -1) {
+                numerosPersonne = sc.nextInt();// gerer les execeptions !!!!!!!
+                if (numerosPersonne >= 0 & numerosPersonne <= client.length & "1".equals(choix)) {
+                    personneSelectionne = client[numerosPersonne];
+                } else if (numerosPersonne >= 0 && numerosPersonne <= serveur.length && "2".equals(choix)) {
+                    personneSelectionne = serveur[numerosPersonne];
+                } else {
+                    numerosPersonne = -1;
+                }
             }
         }
         System.out.println("Tu as selectionné " + personneSelectionne.prenom);
@@ -158,6 +160,7 @@ public class Histoire {
     /**
      * Méthode permettant d'offrir un verre à n'importe quel personnage
      */
+    // a revoire au niveaux de la boisson attribué
     public static void choixOffrirVerre() {
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
@@ -187,7 +190,6 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        //(Client)joueur.
         System.out.println("Se Battre                       [1]      Aller aux toillettes    [2]");
         System.out.println("Payer                             [3]      Parler                          [4]");
         System.out.println("Offrir un verre              [5]      Se presenter              [6]");
@@ -214,7 +216,7 @@ public class Histoire {
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 System.out.println("Que veux-tu dire ?");
                 String str = sc.nextLine();
-                ((Client) joueur).parler(personneAvecQuiInterragire, str);
+                ((Client)joueur).parler(personneAvecQuiInterragire,str);
                 break;
             case "5":
                 choixOffrirVerre();
@@ -475,7 +477,6 @@ public class Histoire {
             }
         }
         boissonPreferee = generateurBoisson();
-
     }
 
     /**

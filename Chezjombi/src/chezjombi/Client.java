@@ -36,13 +36,13 @@ public class Client extends Humain {
  */    
     @Override
     public void parler(Humain personne, String phrase) {
-        if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>0){
+        if(this.degreeAlcoolemie<5 && this.degreeAlcoolemie>=0){
              System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase);
         }
-        if(this.degreeAlcoolemie<10 && this.degreeAlcoolemie>5){
+        if(this.degreeAlcoolemie<=10 && this.degreeAlcoolemie>5){
             System.out.println(this.prenom + " dit à " + personne.prenom + " : "+ phrase + "Hip");
         }
-        if(this.degreeAlcoolemie<15 && this.degreeAlcoolemie>10){
+        if(this.degreeAlcoolemie<=15 && this.degreeAlcoolemie>10){
             System.out.println(this.prenom + " dit à " + personne.prenom + " : " +personne.prenom+ phrase);
         }
         if(this.degreeAlcoolemie>15){
