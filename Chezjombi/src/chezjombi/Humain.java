@@ -192,10 +192,10 @@ public class Humain implements ActionCommune{
      * alcoolisée et augmente le taux d'alcoolmie.
      */
     protected void boire() {
-        int quantite = this.maBoisson.getQuantite();
         if (this.maBoisson == null) {
             System.out.println("Je n'ai pas de boisson, il m'en faut vite une");
         } else {
+            int quantite = this.maBoisson.getQuantite();
             this.maBoisson.setQuantite(quantite - 25);
             System.out.println("*Glou Glou Glou* Il me reste " + this.maBoisson.getQuantite() + "% de ma boisson.");
             if (this.maBoisson.getTauxAlcool() != -1) {

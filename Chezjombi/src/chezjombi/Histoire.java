@@ -231,12 +231,12 @@ public class Histoire {
         System.out.println("Que souhaites-tu faire ?");
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
-        System.out.println("Se Battre                                                          [1]      Aller aux toillettes       [2]");
-        System.out.println("Payer                                                                [3]      Parler                             [4]");
-        System.out.println("Offrir un verre                                                 [5]      Se presenter                 [6]");
-        System.out.println("Apporter une boisson                                    [7]      Jouer aux flechettes    [8]");
-        System.out.println("Boire                                                                 [9]      Commander à Boire    [10]");
-        System.out.println("Consulter mon degré alcoolémie                 [11]     Quitter le jeu               [12]");
+        System.out.println("Se Battre                           [1]      Aller aux toillettes       [2]");
+        System.out.println("Payer                               [3]      Parler                     [4]");
+        System.out.println("Offrir un verre                     [5]      Se presenter               [6]");
+        System.out.println("Apporter une boisson                [7]      Jouer aux flechettes       [8]");
+        System.out.println("Boire                               [9]      Commander à Boire          [10]");
+        System.out.println("Consulter mon degré alcoolémie     [11]     Quitter le jeu              [12]");
         choix = sc.nextLine();
         Random r = new Random();
         int aleatoire;
