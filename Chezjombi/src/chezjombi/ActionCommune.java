@@ -5,7 +5,8 @@ package chezjombi;
  * @author Arthur
  */
 public interface ActionCommune {
-        /**
+
+    /**
      * Methode abstraite permettant aux differents personnages de parler
      *
      * @param personne
@@ -33,7 +34,8 @@ public interface ActionCommune {
      * Methode abstraite permettant aux differents personnages de prendre une
      * commande
      *
-     * @param boisson
+     * @param personne
+     * @param personne1
      */
     abstract public void prendreCommande(Humain personne, Barman personne1);
 
@@ -41,12 +43,13 @@ public interface ActionCommune {
      * Methode abstraite permettant aux differents personnages de se présenter.
      */
     abstract public void sePresenter();
+
     /**
      * Methode permettant de commander une boisson
+     *
      * @param serv1
-     * @param bar1 
+     * @param bar1
      */
-    abstract public void commander(Serveur serv1,Barman bar1);
+    abstract public void commander(Serveur serv1, Barman bar1);
 
- 
 }

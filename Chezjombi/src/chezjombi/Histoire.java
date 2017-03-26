@@ -46,8 +46,7 @@ public class Histoire {
     public static Patron patron[] = new Patron[1];
 
     /**
-     * Méthode permettant d'initialiser le jeu, c'est la méthode principale du
-     * projet.
+     * Méthode permettant lancer le jeu, c'est la méthode principale du projet.
      */
     public static void jeu() {
         System.out.println("Avant toutes choses ce simulateur est déconseillé au moins de 12 ans");
@@ -56,7 +55,7 @@ public class Histoire {
         System.out.println("Chaque personnnage dispose d'un privilège, tu les découvriras suivant tes actions choisies.");
         System.out.println("Maintenant à toi de jouer ;).");
         System.out.println("");
-        System.out.println("Tu vas commencer par créer ton personnage. Attention au choix que tu fais, ils seront définitif");
+        System.out.println("Tu vas commencer par créer ton personnage. Attention au choix que tu fais, seront définitif");
         creationPersonnage();
         System.out.println("");
         System.out.println("Generation de l'environnement");
@@ -92,22 +91,31 @@ public class Histoire {
                 case "Client":
                     menuActionClient();
                     break;
+                case "Serveur":
+                    System.out.println("Disponnible lors de la prochaine mise a jour");
+                    break;
+                case "Barman":
+                    System.out.println("Disponnible lors de la prochaine mise a jour");
+                    break;
+                case "Patron":
+                    System.out.println("Disponnible lors de la prochaine mise a jour");
+                    break;
             }
         }
 
     }
 
     /**
-     * Méthode permettant d'intéragir avec n'importe quel personnage.
+     * Méthode permettant de chosir avec quel personnage interragire.
      *
      * @return personneSelectionne
      */
     public static Humain choixPersonneInteraction() {
         System.out.println("Avec quel personnage souhaites-tu interagir ?");
-        System.out.println("Client    [1]");
+        System.out.println("Client  [1]");
         System.out.println("Serveur [2]");
-        System.out.println("Patron   [3]");
-        System.out.println("Barman [4]");
+        System.out.println("Patron  [3]");
+        System.out.println("Barman  [4]");
         Humain personneSelectionne = null;
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
@@ -141,14 +149,22 @@ public class Histoire {
             System.out.println("Entre le numéro de la personne que tu as choisi");
             int numerosPersonne = -1;
 
-            while (numerosPersonne == -1) {
-                numerosPersonne = sc.nextInt();                                                                     // gerer les execeptions !!!!!!!
+            while (numerosPersonne == -1 && fin == false) {
+                try {
+                    numerosPersonne = sc.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Une erreur c'est produite veuillez continuer jusqu'a l'arret du programme ");
+
+                    fin = true;
+                }
+
                 if (numerosPersonne >= 0 & numerosPersonne <= client.length & "1".equals(choix)) {
                     personneSelectionne = client[numerosPersonne];
                 } else if (numerosPersonne >= 0 && numerosPersonne <= serveur.length && "2".equals(choix)) {
                     personneSelectionne = serveur[numerosPersonne];
                 } else {
                     numerosPersonne = -1;
+                    System.out.println("veuillez entrer un numeros correcte");
                 }
             }
         }
@@ -161,7 +177,6 @@ public class Histoire {
     /**
      * Méthode permettant d'offrir un verre à n'importe quel personnage
      */
-    // a revoire au niveaux de la boisson attribué
     public static void choixOffrirVerre() {
         Scanner sc = new Scanner(System.in);
         String choix = "-1";
@@ -170,9 +185,9 @@ public class Histoire {
         Humain personneSelectionne = null;
         System.out.println("A qui veux-tu offrir un verre ?");
         System.out.println("Client    [1]");
-        System.out.println("Serveur [2]");
-        System.out.println("Patron   [3]");
-        System.out.println("Barman [4]");
+        System.out.println("Serveur   [2]");
+        System.out.println("Patron    [3]");
+        System.out.println("Barman    [4]");
         choix = sc.nextLine();
         switch (choix) {
             case "1":
@@ -227,6 +242,10 @@ public class Histoire {
         }
     }
 
+    /**
+     * Méthode permettant de desiner et d'interagire avec le menu des action
+     * pour un personnage de type Client
+     */
     public static void menuActionClient() {
         Humain personneAvecQuiInterragire;
         System.out.println("Que souhaites-tu faire ?");
@@ -243,13 +262,13 @@ public class Histoire {
         int aleatoire;
         String str3;
         switch (choix) {
-            case "1":// Ok
+            case "1":
                 System.out.println("Avec qui veux-tu te battre ? ");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 joueur.seBattre(personneAvecQuiInterragire);
                 System.out.println("");
                 break;
-            case "2":// Ok
+            case "2":
                 joueur.allerAuWC();
                 System.out.println("");
                 break;
@@ -257,7 +276,7 @@ public class Histoire {
                 joueur.payer(choixJoueur);
                 System.out.println("");
                 break;
-            case "4":// OK
+            case "4":
                 System.out.println("A qui veux-tu parler ?");
                 personneAvecQuiInterragire = choixPersonneInteraction();
                 System.out.println("Que veux-tu dire ?");
@@ -265,19 +284,19 @@ public class Histoire {
                 ((Client) joueur).parler(personneAvecQuiInterragire, str);
                 System.out.println("");
                 break;
-            case "5": //Ok
+            case "5":
                 choixOffrirVerre();
                 System.out.println("");
                 break;
-            case "6":// Ok 
+            case "6":
                 ((Client) joueur).sePresenter();
                 System.out.println("");
                 break;
-            case "7":// Ok
+            case "7":
                 System.out.println("Tu es un client, tu ne peux pas apporter une boisson");
                 System.out.println("");
                 break;
-            case "8":// Ok
+            case "8":
                 lancerJeuFlechette();
                 System.out.println("");
                 break;
@@ -296,7 +315,7 @@ public class Histoire {
                     System.out.println("Mieux vaut que j'arrête de boire ou d'aller aux toilettes afin d'évacuer mon alcoolémie");
                 }
                 break;
-            case "12":// Ok
+            case "12":
                 System.out.println("Es-tu sûr de vouloir sortir du bar ? Ton action sera definitive. ");
                 System.out.println("Oui  [1]");
                 System.out.println("Non [2]");
@@ -320,6 +339,9 @@ public class Histoire {
         }
     }
 
+    /**
+     * Méthode permettant de lancer le jeu de flechette
+     */
     public static void lancerJeuFlechette() {
         Random r = new Random();
         int aleatoire;
@@ -375,15 +397,15 @@ public class Histoire {
     }
 
     /**
-     * Methode pour Creer son personnage
+     * Méthode pour creer son personnage
      */
     public static void creationPersonnage() {
 
         System.out.println("Quel personnage souhaites-tu jouer ?");
         System.out.println("Client    [1]");
-        System.out.println("Serveur [2]");
-        System.out.println("Barman [3]");
-        System.out.println("Patron   [4]");
+        System.out.println("Serveur   [2]");
+        System.out.println("Barman    [3]");
+        System.out.println("Patron    [4]");
         Scanner sc = new Scanner(System.in);
         System.out.println("Entre le numéro du personnage");
         classe = "0";
@@ -423,7 +445,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour créer un patron.
+     * Méthode pour construire un patron.
      */
     public static void constructionPatron() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -453,7 +475,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour créer un barman
+     * Méthode pour construire un barman
      */
     public static void constructionBarman() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -485,7 +507,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour creer un serveur
+     * Methode pour construire un serveur
      */
     public static void constructionServeur() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -514,7 +536,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour creer un client
+     * Methode pour construire un client
      */
     public static void constructionClient() {
         System.out.println("Tu as choisi le personnage " + classe);
@@ -566,7 +588,7 @@ public class Histoire {
             switch (str) {
                 case "1":
                     alcoolisee = true;
-                    System.out.println("Quel est son degré d'alcool ?");
+                    System.out.println("Quel est son degré d'alcool ? Attention le degres d'alcool influe sur le prix de la boisson");
 
                     try {
                         degresDAlcool = sc.nextDouble();
@@ -612,6 +634,7 @@ public class Histoire {
     }
 
     /**
+     * Pour construire aleatoirement un/plusieurs personnage du type souhaiter
      *
      * @param nbPersonne
      * @param classeAcreer
@@ -648,7 +671,7 @@ public class Histoire {
     }
 
     /**
-     * Methode pour creer un personnage alaetoire
+     * Methode pour construire un personnage alaetoire
      *
      * @param classe
      */
@@ -673,7 +696,6 @@ public class Histoire {
                 surnom = TABLEAUSURNOM[aleatoire];
 
                 boissonPreferee = generationAleatoireBoisson();
-                //System.out.println(boissonPreferee);
                 break;
             case "Barman":
                 nbElementSurnom = TABLEAUSURNOM.length;

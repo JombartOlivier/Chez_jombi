@@ -3,22 +3,23 @@ package chezjombi;
 import java.util.Random;
 import java.util.Scanner;
 
-//import java.math.MathContext;
 /**
  * Classe Fille Serveur Created by Arthur Duytschaever on 13/02/2017.
  *
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Serveur extends Humain{
+public class Serveur extends Humain {
 
     private float monnaie;
     private Commande commande;
-/**
- * Construteur de serveur
- * @param prenom
- * @param sexe 
- */
+
+    /**
+     * Construteur de serveur
+     *
+     * @param prenom
+     * @param sexe
+     */
     public Serveur(String prenom, String sexe) {
         super(prenom, sexe);
         Random r = new Random();
@@ -26,31 +27,33 @@ public class Serveur extends Humain{
         this.tailleBiceps = aleatoire;
         this.monnaie = 0;
     }
-/**
- * Setteur Monnaie serveur
- * @param monnaie 
- */
+
+    /**
+     * Setteur Monnaie serveur
+     *
+     * @param monnaie
+     */
     public void setMonnaie(int monnaie) {
         this.monnaie = monnaie;
     }
 
     /**
+     * Méthode permettant à un personnage de type Serveur de parler
      *
      * @param personne
      * @param phrase
      */
-
     @Override
     public void parler(Humain personne, String phrase) {
         System.out.println(this.prenom + " dit à " + personne.prenom + " : " + phrase);
     }
 
     /**
+     * méthode bloquant l'action offrir un verre a un personnage de type Serveur
      *
      * @param boisson
      * @param personne
      */
-
     @Override
     public void offrirUnVerre(Commande boisson, Humain personne) {
         String str;
@@ -64,16 +67,26 @@ public class Serveur extends Humain{
         }
     }
 
-
+    /**
+     * Méthode permettant d'apporter une boisson à un personnage
+     *
+     * @param personne
+     */
     @Override
     public void apporterBoisson(Humain personne) {
 
-        System.out.println("Voici votre boisson, cela fera " + this.boissonDe.getPrix()+"€");
+        System.out.println("Voici votre boisson, cela fera " + this.boissonDe.getPrix() + "€");
         personne.maBoisson = this.boissonDe;
         this.boissonDe = null;
 
     }
 
+    /**
+     * Méthode permettant de prendre une commande
+     *
+     * @param personne
+     * @param personne1
+     */
     @Override
     public void prendreCommande(Humain personne, Barman personne1) {
         float prix;
@@ -116,22 +129,23 @@ public class Serveur extends Humain{
                 str = sc.nextLine();
                 int degreedalcool = Integer.parseInt(str);
                 personne1.setDegresDalcool(degreedalcool);
-                prix = degreedalcool*(float)1.25;
-                str = "En resumer nous avons un "+personne1.getNomBoisson()+" Alcoolisée avec un degres d'acool a "+personne1.getDegresDalcool()+" Au prix de "+prix;
+                prix = degreedalcool * (float) 1.25;
+                str = "En resumer nous avons un " + personne1.getNomBoisson() + " Alcoolisée avec un degres d'acool a " + personne1.getDegresDalcool() + " Au prix de " + prix;
                 this.parler(personne, str);
-            } 
-            else {
+            } else {
                 personne1.setAlcoolise(false);
-                prix = (float)3.5;
-               str = "En resumer nous avons un "+personne1.getNomBoisson()+" non alcoolisée au prix de "+prix;
-               this.parler(personne, str);
+                prix = (float) 3.5;
+                str = "En resumer nous avons un " + personne1.getNomBoisson() + " non alcoolisée au prix de " + prix;
+                this.parler(personne, str);
             }
         }
         str = "Je vous rapporte ça tout de suite";
         this.parler(personne, str);
     }
 
-    
+    /**
+     * Methode permettant à un personnage de type Serveur de se presenter
+     */
     @Override
     public void sePresenter() {
         if ("Homme".equals(this.sexe)) {
@@ -142,7 +156,9 @@ public class Serveur extends Humain{
         }
     }
 
-    
+    /**
+     * Methode permettant à un personnage de type Serveur de boire de l'eau
+     */
     @Override
     protected void boire() {
         if (this.maBoisson.isAlcoolise() == true) {
@@ -158,7 +174,7 @@ public class Serveur extends Humain{
      * @param personne
      */
     protected void transmettreArgentBarman(Barman personne) {
-        String str = "Voici de l'argent à mettre dans la caisse : " + this.monnaie+"€";
+        String str = "Voici de l'argent à mettre dans la caisse : " + this.monnaie + "€";
         this.parler(personne, str);
         personne.setCaisse(this.monnaie);
         this.monnaie = 0;

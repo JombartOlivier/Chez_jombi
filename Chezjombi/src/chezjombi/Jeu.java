@@ -43,8 +43,10 @@ public class Jeu {
     }
 
     /**
-     * méthode permettant lorqu'un personnage souhaite joueur de lancer sa partie, toutes les actions du joeur sont écrites dans un fichier texte
-     * afin d'être consultable par la suite. 
+     * méthode permettant lorqu'un personnage souhaite joueur de lancer sa
+     * partie, toutes les actions du joeur sont écrites dans un fichier texte
+     * afin d'être consultable par la suite.
+     *
      * @param personne
      * @return manche
      */
@@ -205,7 +207,9 @@ public class Jeu {
     }
 
     /**
-     *Méthode permettant de confronter deux joueurs et d'afficher le vainqueur du duel.
+     * Méthode permettant de confronter deux joueurs et d'afficher le vainqueur
+     * du duel.
+     *
      * @param joueur1
      * @param joueur2
      */
@@ -224,7 +228,7 @@ public class Jeu {
     }
 
     /**
-     * Méthode permettant d'afficher le résultat détaillé des deux joueurs. 
+     * Méthode permettant d'afficher le résultat détaillé des deux joueurs.
      */
     public static void afficherResultat() {
         String chaine = "";

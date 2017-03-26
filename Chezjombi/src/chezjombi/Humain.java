@@ -1,12 +1,12 @@
 package chezjombi;
 
 /**
- * Classe Mère Humain 
+ * Classe Mère Humain
  *
  * @author Olivie Jombart, Arthur Duytschaever
  * @version v1.0
  */
-public class Humain implements ActionCommune{
+public class Humain implements ActionCommune {
 
     protected String prenom;
     protected String surnom;
@@ -21,7 +21,8 @@ public class Humain implements ActionCommune{
     protected Commande maBoisson;
 
     /**
-     *  Construteur destiné à la classe Client
+     * Construteur destiné à la classe Client
+     *
      * @param prenom
      * @param surnom
      * @param boissonPreferee
@@ -43,7 +44,7 @@ public class Humain implements ActionCommune{
      */
     public Humain(String prenom, String sexe) {
         this.prenom = prenom;
-        this.sexe = sexe;     
+        this.sexe = sexe;
     }
 
     /**
@@ -67,6 +68,7 @@ public class Humain implements ActionCommune{
 
     /**
      * Construteur destiné à la classe Patron
+     *
      * @param prenom
      * @param boissonPreferee
      * @param sexe
@@ -76,7 +78,7 @@ public class Humain implements ActionCommune{
         this.boissonPreferee = boissonPreferee;
         this.sexe = sexe;
     }
-    
+
     public String getPrenom() {
         return prenom;
     }
@@ -165,19 +167,17 @@ public class Humain implements ActionCommune{
         this.maBoisson = maBoisson;
     }
 
- 
     /**
      * Methode pour se battre
      *
      * @param personne
      */
     protected void seBattre(Humain personne) {
-        
+
         if (this.tailleBiceps < personne.tailleBiceps) {
             System.out.println("Aie j'ai mal ça fait mal !");
             System.out.println("Vous avez perdu !");
-        }
-        else if (this.tailleBiceps == personne.tailleBiceps) {
+        } else if (this.tailleBiceps == personne.tailleBiceps) {
             System.out.println("ça pique !");
             System.out.println("Vous êtes à égalité !");
         } else {
@@ -209,8 +209,8 @@ public class Humain implements ActionCommune{
     }
 
     /**
-     * Méthode permettant aux differents personnages d'aller aux toillettes en cas
-     * de degré d'alcoolémie >25, baisse le degré d'alcoolémie de 25.
+     * Méthode permettant aux differents personnages d'aller aux toillettes en
+     * cas de degré d'alcoolémie >25, baisse le degré d'alcoolémie de 25.
      */
     protected void allerAuWC() {
 
@@ -242,10 +242,12 @@ public class Humain implements ActionCommune{
             this.argent = this.argent - prix;
         }
     }
+
     @Override
-    public void commander(Serveur serv1,Barman bar1){
-    
+    public void commander(Serveur serv1, Barman bar1) {
+
     }
+
     @Override
     public void parler(Humain personne, String phrase) {
 
